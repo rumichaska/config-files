@@ -9,6 +9,7 @@ set -o vi # Vim mode in terminal
 
 # Aliases
 alias tree="tree --dirsfirst -F"
+alias config="/usr/bin/git --git-dir=/home/chaska/.cfg/ --work-tree=/home/chaska"
 
 # Pandoc from terminal without RStudio
 export RSTUDIO_PANDOC="/usr/lib/rstudio/bin/quarto/bin/"
@@ -134,5 +135,3 @@ eval "$(starship init bash)"
 # BEGIN_KITTY_SHELL_INTEGRATION
 if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
 # END_KITTY_SHELL_INTEGRATION
-
-alias config='/usr/bin/git --git-dir=/home/chaska/.cfg/ --work-tree=/home/chaska'
