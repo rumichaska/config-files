@@ -9,7 +9,7 @@ set -o vi # Vim mode in terminal
 
 # Aliases
 alias tree="tree --dirsfirst -F"
-alias config="/usr/bin/git --git-dir=/home/chaska/.cfg/ --work-tree=/home/chaska"
+alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 
 # Pandoc from terminal without RStudio
 export RSTUDIO_PANDOC="/usr/lib/rstudio/bin/quarto/bin/"
