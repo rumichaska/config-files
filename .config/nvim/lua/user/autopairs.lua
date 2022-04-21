@@ -1,7 +1,7 @@
 -- Control de mensaje de errores por falta de autopairs
 local status_ok, npairs = pcall(require, "nvim-autopairs")
 if not status_ok then
-	return
+    return
 end
 
 -- Configuración de nvim-autopairs
@@ -21,7 +21,6 @@ npairs.setup({
         end_key = "$",
         keys = "qwertyuiopzxcvbnmasdfghjkl",
         check_comma = true,
-        -- highlight = "PmenuSel",
         highlight = "Search",
         highlight_grey = "Comment",
     },
@@ -37,4 +36,3 @@ if not cmp_status_ok then
 end
 
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done { map_char = { tex = "" } })
-

@@ -8,12 +8,12 @@ end
 toggleterm.setup({
     -- Función para el tamaño según horizontal o vertical
     size = function(term)
-            if term.direction == "horizontal" then
-                return 20
-            elseif term.direction == "vertical" then
-                return vim.o.columns * 0.4 -- 40% del ancho de la ventana del terminal
-            end
-        end,
+        if term.direction == "horizontal" then
+            return 20
+        elseif term.direction == "vertical" then
+            return vim.o.columns * 0.4 -- 40% del ancho de la ventana del terminal
+        end
+    end,
     open_mapping = [[<C-\>]], -- Depende de la configuración del teclado
     hide_numbers = true,
     shade_filetypes = {},
@@ -24,8 +24,7 @@ toggleterm.setup({
     persist_size = true,
     direction = "horizontal",
     close_on_exit = true,
-    shell = vim.o.shell, -- shell por defecto (linux)
-    -- shell = "pwsh.exe",
+    shell = vim.o.shell,
     -- Información relevante cuando direction = "float"
     float_opts = {
         border = "curved",
@@ -39,13 +38,13 @@ toggleterm.setup({
 
 -- Mapeo
 function _G.set_terminal_keymaps()
-  local opts = { noremap = true }
-  -- vim.api.nvim_buf_set_keymap(0, "t", "jk", [[<C-\><C-n>]], opts)
-  vim.api.nvim_buf_set_keymap(0, "t", "<esc>", [[<C-\><C-n>]], opts)
-  vim.api.nvim_buf_set_keymap(0, "t", "<C-h>", [[<C-\><C-n><C-W>h]], opts)
-  vim.api.nvim_buf_set_keymap(0, "t", "<C-j>", [[<C-\><C-n><C-W>j]], opts)
-  vim.api.nvim_buf_set_keymap(0, "t", "<C-k>", [[<C-\><C-n><C-W>k]], opts)
-  vim.api.nvim_buf_set_keymap(0, "t", "<C-l>", [[<C-\><C-n><C-W>l]], opts)
+    local opts = { noremap = true }
+    -- vim.api.nvim_buf_set_keymap(0, "t", "jk", [[<C-\><C-n>]], opts)
+    vim.api.nvim_buf_set_keymap(0, "t", "<esc>", [[<C-\><C-n>]], opts)
+    vim.api.nvim_buf_set_keymap(0, "t", "<C-h>", [[<C-\><C-n><C-W>h]], opts)
+    vim.api.nvim_buf_set_keymap(0, "t", "<C-j>", [[<C-\><C-n><C-W>j]], opts)
+    vim.api.nvim_buf_set_keymap(0, "t", "<C-k>", [[<C-\><C-n><C-W>k]], opts)
+    vim.api.nvim_buf_set_keymap(0, "t", "<C-l>", [[<C-\><C-n><C-W>l]], opts)
 end
 
 -- Mapeo personalizado cuando se usa toggleterm
@@ -63,7 +62,7 @@ local r = Terminal:new({
 })
 
 function _R_TOGGLE()
-	r:toggle()
+    r:toggle()
 end
 
 -- Terminal personalizado : Python
@@ -74,11 +73,11 @@ local python = Terminal:new({
 })
 
 function _PYTHON_TOGGLE()
-	python:toggle()
+    python:toggle()
 end
 
 -- Terminal personalizado : lazygit
 local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
 function _LAZYGIT_TOGGLE()
-	lazygit:toggle()
+    lazygit:toggle()
 end

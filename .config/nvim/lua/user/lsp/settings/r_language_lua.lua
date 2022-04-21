@@ -3,7 +3,8 @@ return {
     settings = {
         r = {
             lsp = {
-                diagnostics = false,
+                diagnostics = true,
+                rich_documentation = false,
             },
         },
 	},

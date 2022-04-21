@@ -1,4 +1,3 @@
-
 -- Control de mensaje de errores por falta de colorizer
 local status_ok, colorizer = pcall(require, "colorizer")
 if not status_ok then

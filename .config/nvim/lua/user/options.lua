@@ -3,6 +3,7 @@ local options = {
     -- Generales
     backup = false,                             -- Crea archivo de respaldo
     clipboard = "unnamedplus",                  -- Permite a nvim acceder al portapapeles
+    cmdheight = 2,                              -- Altura de la linea de comandos
     completeopt = { "menuone", "noselect" },    -- Opciones relacionadas al menú de autocompletado cmp
     colorcolumn = "80",                         -- Marcador de columna
     conceallevel = 0,                           -- ``` visible en archivos markdown

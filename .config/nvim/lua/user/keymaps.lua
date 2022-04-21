@@ -69,6 +69,8 @@ vim.cmd [[
 -- Lanzar consola de R
 keymap("n", "<Leader>tr", ":lua _R_TOGGLE()<CR>", opts)
 
+-- Python 3
+
 -- Lanzar consola de Python
 keymap("n", "<Leader>tp", ":lua _PYTHON_TOGGLE()<CR>", opts)
 

@@ -1,7 +1,7 @@
 -- Control de mensaje de errores por falta de cmp
 local status_ok, cmp = pcall(require, "cmp")
 if not status_ok then
-  return
+    return
 end
 
 -- Control de mensaje de errores por falta de luasnip
@@ -21,31 +21,31 @@ end
 
 --   פּ ﯟ   Íconos para el autocompletado
 local kind_icons = {
-  Text = "",
-  Method = "m",
-  Function = "",
-  Constructor = "",
-  Field = "",
-  Variable = "",
-  Class = "",
-  Interface = "",
-  Module = "",
-  Property = "",
-  Unit = "",
-  Value = "",
-  Enum = "",
-  Keyword = "",
-  Snippet = "",
-  Color = "",
-  File = "",
-  Reference = "",
-  Folder = "",
-  EnumMember = "",
-  Constant = "",
-  Struct = "",
-  Event = "",
-  Operator = "",
-  TypeParameter = "",
+    Text = "",
+    Method = "m",
+    Function = "",
+    Constructor = "",
+    Field = "",
+    Variable = "",
+    Class = "",
+    Interface = "",
+    Module = "",
+    Property = "",
+    Unit = "",
+    Value = "",
+    Enum = "",
+    Keyword = "",
+    Snippet = "",
+    Color = "",
+    File = "",
+    Reference = "",
+    Folder = "",
+    EnumMember = "",
+    Constant = "",
+    Struct = "",
+    Event = "",
+    Operator = "",
+    TypeParameter = "",
 }
 -- revisar mas información: https://www.nerdfotns.com/cheat-sheet
 
@@ -64,7 +64,7 @@ cmp.setup({
     mapping = {
         -- Mapeo para navegación entre las opciones de autocompletado
         ["<C-k>"] = cmp.mapping.select_prev_item(),
-		["<C-j>"] = cmp.mapping.select_next_item(),
+        ["<C-j>"] = cmp.mapping.select_next_item(),
         ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
         ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
         ["<C-a>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
@@ -120,21 +120,15 @@ cmp.setup({
     },
     sources = {
         -- Orden* para las `source` de autocompletado
-        { name = "nvim_lsp"},
-        { name = "luasnip"},
-        { name = "buffer"},
-        { name = "path"},
+        { name = "nvim_lsp" },
+        { name = "luasnip" },
+        { name = "buffer" },
+        { name = "path" },
     },
     confirm_opts = {
         behavior = cmp.ConfirmBehavior.Replace,
         select = false,
     },
-    -- Documentación sobre la opción de autocompletado
-    -- documentation = false, -- Para no mostrar documentación
-    -- documentation = {
-    --     -- border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-    --     border = "shadow",
-    -- },
     -- Experimental, revisar documentación de cmp
     experimental = {
         ghost_text = true,

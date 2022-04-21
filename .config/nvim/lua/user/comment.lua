@@ -1,14 +1,14 @@
 -- Control de mensaje de errores por falta de comment
 local status_ok, comment = pcall(require, "Comment")
 if not status_ok then
-  return
+    return
 end
 
 -- Configuración de comment
 comment.setup({
     -- Función para comentarios según lenguaje
     pre_hook = function(ctx)
-        local U = require("Comment.utils") 
+        local U = require("Comment.utils")
         local location = nil
         if ctx.ctype == U.ctype.block then
             location = require("ts_context_commentstring.utils").get_cursor_location()

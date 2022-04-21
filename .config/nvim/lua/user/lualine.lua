@@ -7,7 +7,7 @@ end
 -- Definiendo variable local para personalización de `diagnostics`
 local diagnostics = {
     "diagnostics",
-    sources = { "nvim_diagnostic" }, -- Alternativas: "ale" (¿R?), "nvim_lsp"
+    sources = { "nvim_diagnostic" },
     sections = { "error", "warn" },
     symbols = { error = " ", warn = " " },
     colored = true,
@@ -54,7 +54,7 @@ lualine.setup({
     },
     sections = {
         lualine_a = { mode },
-        lualine_b = { branch , diff, diagnostics },
+        lualine_b = { branch, diff, diagnostics },
         lualine_c = { "filename" },
         lualine_x = { "encoding", "fileformat", "filetype" },
         lualine_y = { "progress" },

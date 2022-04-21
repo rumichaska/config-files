@@ -24,7 +24,7 @@ local config = {
     float = {
         focusable = false,
         style = "minimal",
-        border = "shadow",
+        border = "rounded",
         source = "always",
         header = "",
         prefix = "",
@@ -35,9 +35,9 @@ vim.diagnostic.config(config)
 
 -- Handlers personalizados
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-    border = "shadow",
+    border = "rounded",
 })
 
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-    border = "shadow",
+    border = "rounded",
 })
