@@ -7,7 +7,8 @@ end
 -- Configuración de treesitter
 configs.setup({
     -- Configuración de treesitter, modificar según lenguajes
-    ensure_installed = "maintained",    -- Solo instalar lenguajes con soporte
+    -- ensure_installed = "maintained",    -- Solo instalar lenguajes con soporte
+    ensure_installed = "all",    -- Solo instalar lenguajes con soporte
     sync_install = false,               -- Sincronización solo lenguajes con soporte
     ignore_install = {},                -- Lista de `parsers` a ignorar en instalación
     highlight = {
