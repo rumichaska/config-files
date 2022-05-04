@@ -2,6 +2,8 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+# -------------------------------------------------------------------------
+
 # Custom DCG
 
 # Vim mode in terminal
@@ -10,9 +12,12 @@ set -o vi # Vim mode in terminal
 # Aliases
 alias tree="tree --dirsfirst -F"
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
+alias shinyapp="R -e 'shiny::runApp(port = 4545, launch.browser = FALSE)'"
 
 # Pandoc from terminal without RStudio
 export RSTUDIO_PANDOC="/usr/lib/rstudio/bin/quarto/bin/"
+
+# -------------------------------------------------------------------------
 
 # If not running interactively, don't do anything
 case $- in
