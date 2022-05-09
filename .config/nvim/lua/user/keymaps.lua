@@ -56,15 +56,26 @@ keymap("n", "<Leader>nh", ":noh<CR>", opts) -- Borrar resaltado de búqueda
 -- Insert --
 
 -- R language
-vim.cmd [[
-    augroup r_setup
-        autocmd!
-        autocmd FileType r,rmd inoremap <buffer> <M-M> <Esc>:normal! a %>%<CR>a 
-        autocmd FileType r,rmd inoremap <buffer> <M-I> <Esc>:normal! a %in%<CR>a 
-        autocmd FileType r,rmd inoremap <buffer> <M--> <Esc>:normal! a <-<CR>a 
-        autocmd FileType rmd set completefunc=pandoc#completion#Complete
-    augroup END
-]]
+local r_keymap = vim.api.nvim_create_augroup("r_keymap", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "r" , "rmd" },
+    callback = function()
+        keymap("i", "<M-M>", "<Esc>:normal! a %>%<CR>a ", opts)
+        keymap("i", "<M-I>", "<Esc>:normal! a %in%<CR>a ", opts)
+        keymap("i", "<M-->", "<Esc>:normal! a <-<CR>a ", opts)
+    end,
+    group = r_keymap
+})
+
+-- vim.cmd [[
+--     augroup r_setup
+--         autocmd!
+--         autocmd FileType r,rmd inoremap <buffer> <M-M> <Esc>:normal! a %>%<CR>a 
+--         autocmd FileType r,rmd inoremap <buffer> <M-I> <Esc>:normal! a %in%<CR>a 
+--         autocmd FileType r,rmd inoremap <buffer> <M--> <Esc>:normal! a <-<CR>a 
+--         autocmd FileType rmd set completefunc=pandoc#completion#Complete
+--     augroup END
+-- ]]
 
 -- Lanzar consola de R
 keymap("n", "<Leader>tr", ":lua _R_TOGGLE()<CR>", opts)
