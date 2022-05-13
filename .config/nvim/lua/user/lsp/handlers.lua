@@ -4,17 +4,26 @@ local M = {}
 -- Definiendo función para sombreado de dependencias
 local lsp_highlight_document = function(client)
     -- Establecer `autocommands` condicional en función a `server_capabilities`
-    if client.resolved_capabilities.document_highlight then
-        vim.api.nvim_exec(
-            [[
-            augroup lsp_document_highlight
-                autocmd! * <buffer>
-                autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-                autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-            augroup END
-            ]],
-            false
-        )
+    -- if client.server_capabilities.documentHighlightProvider then
+    if client.server_capabilities.documentHighlightProvider then
+        local bufnr = vim.api.nvim_get_current_buf()
+        local lsp_hl_au = vim.api.nvim_create_augroup("lsp_document_highlight", {
+            clear = false
+        })
+        vim.api.nvim_clear_autocmds({
+            buffer = bufnr,
+            group = lsp_hl_au
+        })
+        vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+            group = lsp_hl_au,
+            buffer = bufnr,
+            callback = vim.lsp.buf.document_highlight
+        })
+        vim.api.nvim_create_autocmd("CursorMoved", {
+            group = lsp_hl_au,
+            buffer = bufnr,
+            callback = vim.lsp.buf.clear_references
+        })
     end
 end
 
@@ -29,8 +38,8 @@ local lsp_keymaps = function(bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "gf", ":lua vim.lsp.buf.formatting()<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "K", ":lua vim.lsp.buf.hover()<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-k>", ":lua vim.lsp.buf.signature_help()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "<Leader>dk", ":lua vim.diagnostic.goto_prev({ border = 'shadow' })<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "<Leader>dj", ":lua vim.diagnostic.goto_next({ border = 'shadow' })<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<Leader>dk", ":lua vim.diagnostic.goto_prev({ border = 'rounded' })<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<Leader>dj", ":lua vim.diagnostic.goto_next({ border = 'rounded' })<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>dq", ":lua vim.diagnostic.setloclist()<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>rn", ":lua vim.lsp.buf.rename()<CR>", opts)
     -- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", ":lua vim.lsp.buf.code_action()<CR>", opts)

@@ -1,7 +1,7 @@
 -- Definiendo variables locales para el mapeo
 local opts = { noremap = true, silent = true }
+local term_opts = { noremap = true } -- Desactivar para usar toggleterm
 local keymap = vim.keymap.set
--- local term_opts = { silent = true } -- Desactivar para usar toggleterm
 
 -- Usar <Space> como tecla `leader`
 keymap("", "<Space>", "<Nop>", opts) -- Quitar el mapeo asignado a espacio
@@ -56,23 +56,25 @@ keymap("n", "<Leader>nh", ":noh<CR>", opts) -- Borrar resaltado de búqueda
 -- Insert --
 
 -- R language
-local r_keymap = vim.api.nvim_create_augroup("r_keymap", { clear = true })
+local r_au = vim.api.nvim_create_augroup("r_au", {
+    clear = true
+})
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "r" , "rmd" },
+    pattern = { "r", "rmd" },
     callback = function()
         keymap("i", "<M-M>", "<Esc>:normal! a %>%<CR>a ", opts)
         keymap("i", "<M-I>", "<Esc>:normal! a %in%<CR>a ", opts)
         keymap("i", "<M-->", "<Esc>:normal! a <-<CR>a ", opts)
     end,
-    group = r_keymap
+    group = r_au
 })
 
 -- vim.cmd [[
 --     augroup r_setup
 --         autocmd!
---         autocmd FileType r,rmd inoremap <buffer> <M-M> <Esc>:normal! a %>%<CR>a 
---         autocmd FileType r,rmd inoremap <buffer> <M-I> <Esc>:normal! a %in%<CR>a 
---         autocmd FileType r,rmd inoremap <buffer> <M--> <Esc>:normal! a <-<CR>a 
+--         autocmd FileType r,rmd inoremap <buffer> <M-M> <Esc>:normal! a %>%<CR>a
+--         autocmd FileType r,rmd inoremap <buffer> <M-I> <Esc>:normal! a %in%<CR>a
+--         autocmd FileType r,rmd inoremap <buffer> <M--> <Esc>:normal! a <-<CR>a
 --         autocmd FileType rmd set completefunc=pandoc#completion#Complete
 --     augroup END
 -- ]]
@@ -85,28 +87,30 @@ keymap("n", "<Leader>tr", ":lua _R_TOGGLE()<CR>", opts)
 -- Lanzar consola de Python
 keymap("n", "<Leader>tp", ":lua _PYTHON_TOGGLE()<CR>", opts)
 
--- Visual --
+-- Visual y Visual Blokck --
 
 -- Indentación continua
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
 -- Mover texto arriba o abajo
-keymap("v", "<M-j>", ":move '>+1<CR>gv=gv", opts)
-keymap("v", "<M-k>", ":move '<-2<CR>gv=gv", opts)
-
--- Visual Block --
-
--- Mover bloque de texto arriba o abajo
-keymap("x", "<M-j>", ":move '>+1<CR>gv=gv", opts)
-keymap("x", "<M-k>", ":move '<-2<CR>gv=gv", opts)
+keymap({ "v", "x" }, "<M-j>", ":move '>+1<CR>gv=gv", opts)
+keymap({ "v", "x" }, "<M-k>", ":move '<-2<CR>gv=gv", opts)
 
 -- Terminal --
 
--- Navegación desde terminal hacia ventanas (splits) -- Desactivar para usar toggleterm
--- keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
--- keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
--- keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
--- keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
--- keymap("t", "<Esc>", "<C-\\><C-N>", term_opts)
-
+-- toggleterm
+local toggleterm_au = vim.api.nvim_create_augroup("toggleterm_au", {
+    clear = true
+})
+vim.api.nvim_create_autocmd("TermOpen", {
+    pattern = "term://*",
+    callback = function()
+        keymap("t", "<Esc>", [[<C-\><C-n>]], term_opts)
+        keymap("t", "<C-h>", [[<C-\><C-n><C-W>h]], term_opts)
+        keymap("t", "<C-j>", [[<C-\><C-n><C-W>j]], term_opts)
+        keymap("t", "<C-k>", [[<C-\><C-n><C-W>k]], term_opts)
+        keymap("t", "<C-l>", [[<C-\><C-n><C-W>l]], term_opts)
+    end,
+    group = toggleterm_au
+})
