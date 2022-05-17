@@ -65,6 +65,9 @@ vim.api.nvim_create_autocmd("FileType", {
         keymap("i", "<M-M>", "<Esc>:normal! a %>%<CR>a ", opts)
         keymap("i", "<M-I>", "<Esc>:normal! a %in%<CR>a ", opts)
         keymap("i", "<M-->", "<Esc>:normal! a <-<CR>a ", opts)
+        keymap("n", "<M-L>", ":ToggleTermSendCurrentLine 1<CR>")
+        keymap("v", "<M-L>", ":ToggleTermSendVisualLines 1<CR>")
+        keymap("x", "<M-L>", ":ToggleTermSendVisualSelection 1<CR>")
     end,
     group = r_au
 })
