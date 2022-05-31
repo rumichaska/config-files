@@ -1,0 +1,15 @@
+
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Lua module
+[lua]
+symbol = " "
+
+# R module
+[rlang]
+symbol = "ﳒ "
+detect_files = [".Renviron"]
+
+# Python module
+[python]
+symbol = " "
