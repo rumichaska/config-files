@@ -1,4 +1,7 @@
 
+# Encondificación
+options(encoding = "UTF-8")
+
 # Función para ver dataframes en browser
 view <- function(.data) {
     if (interactive()) {
