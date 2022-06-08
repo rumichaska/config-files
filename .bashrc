@@ -13,6 +13,11 @@ set -o vi # Vim mode in terminal
 alias tree="tree --dirsfirst -F"
 alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 alias shinyapp="R -e 'shiny::runApp(port = 4545, launch.browser = FALSE)'"
+alias ls="lsd"
+alias l="ls -l"
+alias la="ls -a"
+alias lla="ls -la"
+alias lt="ls --tree"
 
 # Pandoc from terminal without RStudio
 export RSTUDIO_PANDOC="/usr/lib/rstudio/bin/quarto/bin/"
@@ -92,7 +97,7 @@ esac
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls -alh --color=auto --group-directories-first'
+    # alias ls='ls -alh --color=auto --group-directories-first'
     #alias ls='ls --color=auto'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
@@ -106,9 +111,9 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+# alias ll='ls -alF'
+# alias la='ls -A'
+# alias l='ls -CF'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
