@@ -62,12 +62,15 @@ local r_au = vim.api.nvim_create_augroup("r_au", {
 vim.api.nvim_create_autocmd("FileType", {
     pattern = { "r", "rmd" },
     callback = function()
+        -- Atajos para operadores de R %>% %in% <-
         keymap("i", "<M-M>", "<Esc>:normal! a %>%<CR>a ", opts)
         keymap("i", "<M-I>", "<Esc>:normal! a %in%<CR>a ", opts)
         keymap("i", "<M-->", "<Esc>:normal! a <-<CR>a ", opts)
+        -- Enviar código a consola, similar a Ctrl+Enter
         keymap("n", "<M-L>", ":ToggleTermSendCurrentLine 1<CR>j0")
         keymap("v", "<M-L>", ":ToggleTermSendVisualLines 1<CR>}")
         keymap("x", "<M-L>", ":ToggleTermSendVisualSelection 1<CR>}")
+        -- Comentario de sección tipo RStudio Ctrl+Shift+R
         keymap("n", "gch", "73i-<Esc>0:normal gcc<CR>2l<S-R>")
     end,
     group = r_au
