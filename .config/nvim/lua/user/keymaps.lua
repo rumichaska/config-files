@@ -55,45 +55,6 @@ keymap("n", "<Leader>nh", ":noh<CR>", opts) -- Borrar resaltado de búqueda
 
 -- Insert --
 
--- R language
-local r_au = vim.api.nvim_create_augroup("r_au", {
-    clear = true
-})
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "r", "rmd" },
-    callback = function()
-        -- Atajos para operadores de R %>% %in% <-
-        keymap("i", "<M-M>", "<Esc>:normal! a %>%<CR>a ", opts)
-        keymap("i", "<M-I>", "<Esc>:normal! a %in%<CR>a ", opts)
-        keymap("i", "<M-->", "<Esc>:normal! a <-<CR>a ", opts)
-        -- Enviar código a consola, similar a Ctrl+Enter
-        keymap("n", "<M-L>", ":ToggleTermSendCurrentLine 1<CR>j0")
-        keymap("v", "<M-L>", ":ToggleTermSendVisualLines 1<CR>}")
-        keymap("x", "<M-L>", ":ToggleTermSendVisualSelection 1<CR>}")
-        -- Comentario de sección tipo RStudio Ctrl+Shift+R
-        keymap("n", "gch", "73i-<Esc>0:normal gcc<CR>2l<S-R>")
-    end,
-    group = r_au
-})
-
--- vim.cmd [[
---     augroup r_setup
---         autocmd!
---         autocmd FileType r,rmd inoremap <buffer> <M-M> <Esc>:normal! a %>%<CR>a
---         autocmd FileType r,rmd inoremap <buffer> <M-I> <Esc>:normal! a %in%<CR>a
---         autocmd FileType r,rmd inoremap <buffer> <M--> <Esc>:normal! a <-<CR>a
---         autocmd FileType rmd set completefunc=pandoc#completion#Complete
---     augroup END
--- ]]
-
--- Lanzar consola de R
-keymap("n", "<Leader>tr", ":lua _R_TOGGLE()<CR>", opts)
-
--- Python 3
-
--- Lanzar consola de Python
-keymap("n", "<Leader>tp", ":lua _PYTHON_TOGGLE()<CR>", opts)
-
 -- Visual y Visual Blokck --
 
 -- Indentación continua
@@ -110,6 +71,7 @@ keymap({ "v", "x" }, "<M-k>", ":move '<-2<CR>gv=gv", opts)
 local toggleterm_au = vim.api.nvim_create_augroup("toggleterm_au", {
     clear = true
 })
+
 vim.api.nvim_create_autocmd("TermOpen", {
     pattern = "term://*",
     callback = function()
@@ -121,3 +83,53 @@ vim.api.nvim_create_autocmd("TermOpen", {
     end,
     group = toggleterm_au
 })
+
+-- Mapeos personalizados de lenguajes de programación
+
+-- R language
+
+-- Lanzar consola de R
+keymap("n", "<Leader>tr", ":lua _R_TOGGLE()<CR>", opts)
+
+-- Función para el autogroup personalizado de R
+local r_au = vim.api.nvim_create_augroup("r_au", {
+    clear = true
+})
+
+-- Keymaps personalizados de R
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "r", "rmd" },
+    callback = function()
+        -- Atajos para operadores de R %>% %in% <-
+        keymap("i", "<M-M>", "<Esc>:normal! a %>%<CR>a ", opts)
+        keymap("i", "<M-I>", "<Esc>:normal! a %in%<CR>a ", opts)
+        keymap("i", "<M-->", "<Esc>:normal! a <-<CR>a ", opts)
+        -- Enviar código a consola, similar a Ctrl+Enter
+        keymap("n", "<C-L>", ":ToggleTermSendCurrentLine 1<CR>j0")
+        keymap("v", "<C-L>", ":ToggleTermSendVisualLines 1<CR>}")
+        keymap("x", "<C-L>", ":ToggleTermSendVisualSelection 1<CR>}")
+        -- Enviar .R a consola, similar a Ctrl+Shift+S
+        keymap("n", "<Leader>L", ":1TermExec cmd='source(\"%\")'<CR>")
+        -- Enviar .Rmd a consola, similar a Ctrl+Shift+K
+        keymap("n", "<Leader>K", ":1TermExec cmd='rmarkdown::render(\"%\")'<CR>")
+        -- Comentario de sección tipo RStudio Ctrl+Shift+R
+        keymap("n", "gch", "73i-<Esc>0:normal gcc<CR>2l<S-R>")
+    end,
+    group = r_au
+})
+
+-- vim.cmd [[
+--     augroup r_setup
+--         autocmd!
+--         autocmd FileType r,rmd inoremap <buffer> <M-M> <Esc>:normal! a %>%<CR>a
+--         autocmd FileType r,rmd inoremap <buffer> <M-I> <Esc>:normal! a %in%<CR>a
+--         autocmd FileType r,rmd inoremap <buffer> <M--> <Esc>:normal! a <-<CR>a
+--         autocmd FileType rmd set completefunc=pandoc#completion#Complete
+--     augroup END
+-- ]]
+
+-- Python 3
+
+-- Lanzar consola de Python
+keymap("n", "<Leader>tp", ":lua _PYTHON_TOGGLE()<CR>", opts)
+
