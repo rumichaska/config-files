@@ -55,15 +55,15 @@ keymap("n", "<Leader>nh", ":noh<CR>", opts) -- Borrar resaltado de búqueda
 
 -- Insert --
 
--- Visual y Visual Blokck --
+-- Visual y Visual Block --
 
 -- Indentación continua
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
 -- Mover texto arriba o abajo
-keymap({ "v", "x" }, "<M-j>", ":move '>+1<CR>gv=gv", opts)
-keymap({ "v", "x" }, "<M-k>", ":move '<-2<CR>gv=gv", opts)
+keymap("v", "<M-j>", ":move '>+1<CR>gv=gv", opts)
+keymap("v", "<M-k>", ":move '<-2<CR>gv=gv", opts)
 
 -- Terminal --
 
@@ -105,9 +105,9 @@ vim.api.nvim_create_autocmd("FileType", {
         keymap("i", "<M-I>", "<Esc>:normal! a %in%<CR>a ", opts)
         keymap("i", "<M-->", "<Esc>:normal! a <-<CR>a ", opts)
         -- Enviar código a consola, similar a Ctrl+Enter
-        keymap("n", "<C-L>", ":ToggleTermSendCurrentLine 1<CR>j0")
-        keymap("v", "<C-L>", ":ToggleTermSendVisualLines 1<CR>}")
-        keymap("x", "<C-L>", ":ToggleTermSendVisualSelection 1<CR>}")
+        keymap("n", "<Leader>l", ":ToggleTermSendCurrentLine 1<CR>j0")
+        keymap("v", "<Leader>l", ":ToggleTermSendVisualLines 1<CR>}")
+        keymap("v", "<Leader>l", ":ToggleTermSendVisualSelection 1<CR>}")
         -- Enviar .R a consola, similar a Ctrl+Shift+S
         keymap("n", "<Leader>L", ":1TermExec cmd='source(\"%\")'<CR>")
         -- Enviar .Rmd a consola, similar a Ctrl+Shift+K
