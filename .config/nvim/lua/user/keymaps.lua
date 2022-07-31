@@ -33,15 +33,6 @@ keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 -- Navegación entre buffers
 keymap("n", "<Leader>k", ":bnext<CR>", opts)
 keymap("n", "<Leader>j", ":bprevious<CR>", opts)
-keymap("n", "<Leader>1", ":BufferLineGoToBuffer 1<CR>", opts)
-keymap("n", "<Leader>2", ":BufferLineGoToBuffer 2<CR>", opts)
-keymap("n", "<Leader>3", ":BufferLineGoToBuffer 3<CR>", opts)
-keymap("n", "<Leader>4", ":BufferLineGoToBuffer 4<CR>", opts)
-keymap("n", "<Leader>5", ":BufferLineGoToBuffer 5<CR>", opts)
-keymap("n", "<Leader>6", ":BufferLineGoToBuffer 6<CR>", opts)
-keymap("n", "<Leader>7", ":BufferLineGoToBuffer 7<CR>", opts)
-keymap("n", "<Leader>8", ":BufferLineGoToBuffer 8<CR>", opts)
-keymap("n", "<Leader>9", ":BufferLineGoToBuffer 9<CR>", opts)
 
 -- Nvimtree
 keymap("n", "<Leader>e", ":NvimTreeToggle<CR>", opts)
@@ -105,15 +96,15 @@ vim.api.nvim_create_autocmd("FileType", {
         keymap("i", "<M-I>", "<Esc>:normal! a %in%<CR>a ", opts)
         keymap("i", "<M-->", "<Esc>:normal! a <-<CR>a ", opts)
         -- Enviar código a consola, similar a Ctrl+Enter
-        keymap("n", "<Leader>l", ":ToggleTermSendCurrentLine 1<CR>j0")
-        keymap("v", "<Leader>l", ":ToggleTermSendVisualLines 1<CR>}")
-        keymap("v", "<Leader>l", ":ToggleTermSendVisualSelection 1<CR>}")
+        keymap("n", "<Leader>l", ":ToggleTermSendCurrentLine 10<CR>j0")
+        keymap("v", "<Leader>l", ":ToggleTermSendVisualLines 10<CR>}")
+        keymap("v", "<Leader>l", ":ToggleTermSendVisualSelection 10<CR>}")
         -- Enviar .R a consola, similar a Ctrl+Shift+S
-        keymap("n", "<Leader>L", ":1TermExec cmd='source(\"%\")'<CR>")
+        keymap("n", "<Leader>L", ":10TermExec cmd='source(\"%\")'<CR>")
         -- Enviar .Rmd a consola, similar a Ctrl+Shift+K
-        keymap("n", "<Leader>K", ":1TermExec cmd='rmarkdown::render(\"%\")'<CR>")
+        keymap("n", "<Leader>K", ":10TermExec cmd='rmarkdown::render(\"%\")'<CR>")
         -- Comentario de sección tipo RStudio Ctrl+Shift+R
-        keymap("n", "gch", "73i-<Esc>0:normal gcc<CR>2l<S-R>")
+        keymap("n", "gch", "73i-<Esc>0:normal gcc<CR>2l<S-R>", opts)
     end,
     group = r_au
 })

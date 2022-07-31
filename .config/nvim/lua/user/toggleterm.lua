@@ -28,12 +28,9 @@ toggleterm.setup({
     -- Información relevante cuando direction = "float"
     float_opts = {
         border = "curved",
-        winblend = 0,
-        highlights = {
-            border = "Normal",
-            background = "Normal",
-        },
+        winblend = 3,
     },
+    winbar = {},
 })
 
 -- Funciones para abrir terminales personalizados
@@ -44,7 +41,16 @@ local r = Terminal:new({
     cmd = "R",
     dir = vim.fn.getcwd(),
     hidden = true,
-    count = 1,
+    count = 10,
+    on_open = function(term)
+        vim.cmd("startinsert!")
+        vim.keymap.set("t", "<M-M>", " %>% ", { noremap = true, silent = true, buffer = term.bufnr })
+        vim.keymap.set("t", "<M-I>", " %in% ", { noremap = true, silent = true, buffer = term.bufnr })
+        vim.keymap.set("t", "<M-->", " <- ", { noremap = true, silent = true, buffer = term.bufnr })
+    end,
+    -- on_close = function(term)
+    --     vim.cmd("Closing terminal")
+    -- end,
 })
 
 function _R_TOGGLE()
@@ -54,8 +60,9 @@ end
 -- Terminal personalizado : Python
 local python = Terminal:new({
     cmd = "python3",
+    dir = vim.fn.getcwd(),
     hidden = true,
-    count = 2,
+    count = 20,
 })
 
 function _PYTHON_TOGGLE()
