@@ -6,22 +6,22 @@ local lsp_highlight_document = function(client)
     -- Establecer `autocommands` condicional en función a `server_capabilities`
     -- if client.server_capabilities.documentHighlightProvider then
     if client.server_capabilities.documentHighlightProvider then
-        local bufnr = vim.api.nvim_get_current_buf()
+        local buffer = vim.api.nvim_get_current_buf()
         local lsp_hl_au = vim.api.nvim_create_augroup("lsp_document_highlight", {
             clear = false
         })
         vim.api.nvim_clear_autocmds({
-            buffer = bufnr,
-            group = lsp_hl_au
+            group = lsp_hl_au,
+            buffer = buffer,
         })
         vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
             group = lsp_hl_au,
-            buffer = bufnr,
+            buffer = buffer,
             callback = vim.lsp.buf.document_highlight
         })
         vim.api.nvim_create_autocmd("CursorMoved", {
             group = lsp_hl_au,
-            buffer = bufnr,
+            buffer = buffer,
             callback = vim.lsp.buf.clear_references
         })
     end
@@ -40,7 +40,7 @@ local lsp_keymaps = function(bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, "v", "gf", ":lua vim.lsp.buf.range_formatting()<CR>", opts)
     -- mapeo provisional, mejorar con 'vim motion'?
     vim.api.nvim_buf_set_keymap(bufnr, "n", "K", ":lua vim.lsp.buf.hover()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-k>", ":lua vim.lsp.buf.signature_help()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "gK", ":lua vim.lsp.buf.signature_help()<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<Leader>dk", ":lua vim.diagnostic.goto_prev({ border = 'rounded' })<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<Leader>dj", ":lua vim.diagnostic.goto_next({ border = 'rounded' })<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>dq", ":lua vim.diagnostic.setloclist()<CR>", opts)
