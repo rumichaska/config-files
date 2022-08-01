@@ -13,7 +13,7 @@ vim.opt.fileencoding = "utf-8"                     -- Encoding usado para los ar
 vim.opt.laststatus = 3                             -- Global statusline
 vim.opt.list = true                                -- Opciones de `list`
 vim.opt.listchars:append("eol:↴")                  -- Simbología de CR al final de la línea
--- vim.opt.listchars:append("space:⋅")             -- Simbología de "⋅" para representar espacios
+vim.opt.listchars:append("space:⋅")                -- Simbología de "⋅" para representar espacios
 vim.opt.mouse = "a"                                -- Permite la integración del mouse (seleccionar texto, mover cursor)
 vim.opt.pumheight = 10                             -- Tamaño del menú popup
 vim.opt.showmode = false                           -- No mostrar modo actual
