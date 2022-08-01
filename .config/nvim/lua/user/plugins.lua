@@ -87,10 +87,10 @@ return packer.startup(function(use)
     use("williamboman/nvim-lsp-installer")       -- Language server installer
 
     -- TreeSitter
-    use {
+    use({
         "nvim-treesitter/nvim-treesitter",       -- TreeSitter, resaltador de sintaxis
         run = ":TSUpdate",                       -- Actualización automática de lenguajes
-    }
+    })
     use("p00f/nvim-ts-rainbow")                  -- Colores para corchetes|parentesis
 
     -- Comments
