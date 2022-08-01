@@ -9,7 +9,7 @@ project.setup({
     -- Configuración por defecto
     manual_mode = false,
     detection_methos = { "lsp", "pattern" },
-    patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json", ".Rproj" },
+    patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json", "*.Rproj" },
     ignore_lsp = {},
     exclude_dirs = {},
     show_hidden = false,

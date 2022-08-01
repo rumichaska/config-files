@@ -100,9 +100,9 @@ vim.api.nvim_create_autocmd("FileType", {
         keymap("v", "<Leader>l", ":ToggleTermSendVisualLines 10<CR>}")
         keymap("v", "<Leader>l", ":ToggleTermSendVisualSelection 10<CR>}")
         -- Enviar .R a consola, similar a Ctrl+Shift+S
-        keymap("n", "<Leader>L", ":10TermExec cmd='source(\"%\")'<CR>")
+        keymap("n", "<Leader>L", ":10TermExec cmd='source(\"%:p\")'<CR>")
         -- Enviar .Rmd a consola, similar a Ctrl+Shift+K
-        keymap("n", "<Leader>K", ":10TermExec cmd='rmarkdown::render(\"%\")'<CR>")
+        keymap("n", "<Leader>K", ":10TermExec cmd='rmarkdown::render(\"%:p\")'<CR>")
         -- Comentario de sección tipo RStudio Ctrl+Shift+R
         keymap("n", "gch", "73i-<Esc>0:normal gcc<CR>2l<S-R>", opts)
     end,
