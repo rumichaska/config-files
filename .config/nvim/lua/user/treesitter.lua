@@ -9,6 +9,7 @@ local ts_parser = {
     "css",
     "lua",
     "markdown",
+    "markdown_inline",
     "python",
     "r",
 }
