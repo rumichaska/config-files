@@ -35,7 +35,7 @@ local lsp_keymaps = function(bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", ":lua vim.lsp.buf.implementation()<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", ":lua vim.lsp.buf.references()<CR>", opts)
     vim.api.nvim_buf_set_keymap(bufnr, "n", "gl", ":lua vim.diagnostic.open_float()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "gf", ":lua vim.lsp.buf.formatting()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "gf", ":lua vim.lsp.buf.format({ async = true })<CR>", opts)
     -- mapeo provisional, mejorar con 'vim motion'?
     vim.api.nvim_buf_set_keymap(bufnr, "v", "gf", ":lua vim.lsp.buf.range_formatting()<CR>", opts)
     -- mapeo provisional, mejorar con 'vim motion'?
