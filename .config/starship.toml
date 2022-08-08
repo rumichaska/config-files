@@ -1,15 +1,105 @@
 
 # "$schema" = 'https://starship.rs/config-schema.json'
 
+# AWS Module
+[aws]
+symbol = "  "
+
+# Buf Module
+[buf]
+symbol = " "
+
+# C Module
+[c]
+symbol = " "
+
+# Command Duration Module
+[cmd_duration]
+format = '\[[祥$duration]($style)\] '
+
+# Conda Module
+[conda]
+symbol = " "
+
+# Dart Module
+[dart]
+symbol = " "
+
+# Directory Module
+[directory]
+read_only = " "
+
+# Docker Context module
+[docker_context]
+symbol = " "
+
+# Elixir Module
+[elixir]
+symbol = " "
+
+# Elm Module
+[elm]
+symbol = " "
+
+# Git Branch Module
+[git_branch]
+symbol = " "
+format = '\[[$symbol$branch(:$remote_branch)]($style)\]'
+
+# Go Module
+[golang]
+symbol = " "
+
+# Haskell Module
+[haskell]
+symbol = " "
+
+# Java Module
+[java]
+symbol = " "
+
+# Julia Module
+[julia]
+symbol = " "
+
 # Lua module
 [lua]
 symbol = " "
 
-# R module
-[rlang]
-symbol = "ﳒ "
-detect_files = [".Renviron"]
+# Memory Usage Module
+[memory_usage]
+symbol = " "
 
-# Python module
+# Nim Module
+[nim]
+symbol = " "
+
+# Nix-shell Module
+[nix_shell]
+symbol = " "
+
+# Node.js Module
+[nodejs]
+symbol = " "
+
+# Package Version Module
+[package]
+symbol = " "
+
+# Python Module
 [python]
-symbol = " "
+symbol = " "
+
+# R Module
+[rlang]
+symbol = "\ufcd2 "
+format = '\[[$symbol($version)]($style)\] '
+detect_files = [""]
+
+# Spack Module
+[spack]
+symbol = "🅢 "
+
+# Rust Module
+[rust]
+symbol = " "
