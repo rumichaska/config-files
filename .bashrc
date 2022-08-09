@@ -20,7 +20,7 @@ alias lla="ls -la"
 alias lt="ls --tree"
 
 # Pandoc from terminal without RStudio
-export RSTUDIO_PANDOC="/usr/lib/rstudio/bin/quarto/bin/tools/"
+export RSTUDIO_PANDOC="/usr/lib/rstudio/bin/quarto/bin/tools"
 
 # -------------------------------------------------------------------------
 
