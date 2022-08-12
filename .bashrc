@@ -22,6 +22,9 @@ alias lt="ls --tree"
 # Pandoc from terminal without RStudio
 export RSTUDIO_PANDOC="/usr/lib/rstudio/bin/quarto/bin/tools"
 
+# Launch quarto without RStudio
+alias quarto="/usr/lib/rstudio/bin/quarto/bin/quarto"
+
 # -------------------------------------------------------------------------
 
 # If not running interactively, don't do anything
