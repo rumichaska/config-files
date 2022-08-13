@@ -19,35 +19,11 @@ local check_backspace = function()
     return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
 end
 
---   פּ ﯟ   Íconos para el autocompletado
-local kind_icons = {
-    Text = "",
-    Method = "m",
-    Function = "",
-    Constructor = "",
-    Field = "",
-    Variable = "",
-    Class = "",
-    Interface = "",
-    Module = "",
-    Property = "",
-    Unit = "",
-    Value = "",
-    Enum = "",
-    Keyword = "",
-    Snippet = "",
-    Color = "",
-    File = "",
-    Reference = "",
-    Folder = "",
-    EnumMember = "",
-    Constant = "",
-    Struct = "",
-    Event = "",
-    Operator = "",
-    TypeParameter = "",
-}
--- revisar mas información: https://www.nerdfotns.com/cheat-sheet
+-- Importación de íconos
+local icons = require("user.icons")
+
+-- Asiganación de íconos cmp
+local kind_icons = icons.kind
 
 -- Configuración de cmp
 cmp.setup({
@@ -59,7 +35,7 @@ cmp.setup({
     },
     window = {
         completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered()
+        documentation = cmp.config.window.bordered(),
     },
     mapping = {
         -- Mapeo para navegación entre las opciones de autocompletado
@@ -106,7 +82,6 @@ cmp.setup({
         format = function(entry, vim_item)
             -- Íconos (Kind icons)
             -- Concatenación de íconos con el nombre del `item kind`
-            -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
             vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
             vim_item.menu = ({
                 -- source = [[name]] sintaxis*

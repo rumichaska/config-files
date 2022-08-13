@@ -1,5 +1,5 @@
 -- CONFIGURACIÓN GLOBAL DE LSP
---
+
 -- Cargar configuración personalizada de `setup`
 require("user.lsp.custom_config")
 

@@ -16,7 +16,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
     vim.cmd [[packadd packer.nvim]]
 end
 
--- Autocommand que recarga neovim cada vez que se guarda el archivo plugins.lua
+-- Autocommand que actualiza plugins cada vez que se guarda el archivo plugins.lua
 local packer_au = vim.api.nvim_create_augroup("paker_au", {
     clear = true
 })

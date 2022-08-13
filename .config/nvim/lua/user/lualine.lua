@@ -4,12 +4,18 @@ if not status_ok then
     return
 end
 
+-- Importación de íconos
+local icons = require("user.icons")
+
 -- Definiendo variable local para personalización de `diagnostics`
 local diagnostics = {
     "diagnostics",
     sources = { "nvim_diagnostic" },
     sections = { "error", "warn" },
-    symbols = { error = " ", warn = " " },
+    symbols = {
+        error = icons.diagnostics.Error .. " ",
+        warn = icons.diagnostics.Warning .. " ",
+    },
     colored = true,
     update_in_insert = false,
     always_visible = true,
@@ -23,7 +29,11 @@ end
 local diff = {
     "diff",
     colored = true,
-    symbols = { added = " ", modified = " ", removed = " " },
+    symbols = {
+        added = icons.git.Add .. " ",
+        modified = icons.git.Mod .. " ",
+        removed = icons.git.Remove .. " ",
+    },
     cond = hide_in_width,
 }
 

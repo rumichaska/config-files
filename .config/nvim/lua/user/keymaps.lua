@@ -33,6 +33,7 @@ keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 -- Navegación entre buffers
 keymap("n", "<Leader>k", ":bnext<CR>", opts)
 keymap("n", "<Leader>j", ":bprevious<CR>", opts)
+keymap("n", "<Leader>q", ":bprevious<CR>:bdelete #<CR>", opts) -- Cerrar buffer
 
 -- Nvimtree
 keymap("n", "<Leader>e", ":NvimTreeToggle<CR>", opts)

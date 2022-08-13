@@ -6,12 +6,15 @@ end
 --
 -- Parsers con soporte
 local ts_parser = {
+    "bash",
     "css",
     "lua",
+    "make",
     "markdown",
     "markdown_inline",
     "python",
     "r",
+    "yaml",
 }
 
 -- Configuración de treesitter
