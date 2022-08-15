@@ -57,7 +57,7 @@ lualine.setup({
     options = {
         icons_enabled = true,
         theme = "auto",
-        component_separators = "",  -- Deshabilitado, por defecto : { left = '', right = ''},
+        component_separators = "|",  -- Deshabilitado, por defecto : { left = '', right = ''},
         section_separators = "",    -- Deshabilitado, por defecto : { left = '', right = ''},
         disabled_filetypes = { "dashboard", "NvimTree", "Outline" },
         always_divide_middle = true,
