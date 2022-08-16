@@ -7,6 +7,5 @@ return {
                 rich_documentation = false,
             },
         },
-	},
+    },
 }
-
