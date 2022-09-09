@@ -64,7 +64,7 @@ local toggleterm_keymaps = vim.api.nvim_create_augroup("toggleterm_keymaps", {
     clear = true
 })
 
-vim.api.nvim_create_autocmd("TermOpen", {
+vim.api.nvim_create_autocmd({ "TermOpen" }, {
     pattern = "term://*",
     callback = function()
         keymap("t", "<Esc>", [[<C-\><C-n>]], term_opts)
@@ -89,7 +89,7 @@ local r_keymaps = vim.api.nvim_create_augroup("r_keymaps", {
 })
 
 -- Keymaps personalizados de R
-vim.api.nvim_create_autocmd("FileType", {
+vim.api.nvim_create_autocmd({ "FileType" }, {
     pattern = { "r", "rmd" },
     callback = function()
         -- Atajos para operadores de R %>% %in% <-

@@ -19,7 +19,7 @@ local lsp_highlight_document = function(client)
             buffer = buffer,
             callback = vim.lsp.buf.document_highlight
         })
-        vim.api.nvim_create_autocmd("CursorMoved", {
+        vim.api.nvim_create_autocmd({ "CursorMoved" }, {
             group = lsp_hl_au,
             buffer = buffer,
             callback = vim.lsp.buf.clear_references

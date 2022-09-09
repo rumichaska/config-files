@@ -25,18 +25,15 @@ ts_onedark.setup({
 
 -- TEMA TOKYONIGHT: Configuración
 
-vim.g.tokyonight_style = "storm"
-vim.g.tokyonight_dark_sidebar = true
-vim.g.tokyonight_dark_float = true
-vim.g.tokyonight_sidebars = { "packer", "terminal" }
-vim.g.tokyonight_transparent = false
-vim.g.tokyonight_transparent_sidebar = false
--- Configuración dependiente de fuente
-vim.g.tokyonight_italic_keywords = true
-vim.g.tokyonight_italic_comments = true
-vim.g.tokyonight_italic_functions = true
-vim.g.tokyonight_italic_variables = true
-vim.g.tokyonight_lualine_bold = true
+local ts_tokyonight = require("tokyonight")
+ts_tokyonight.setup({
+    style = "night",
+    styles = {
+        functions = "italic",
+    },
+    sidebars = { "qf", "packer", "terminal" },
+    lualine_bold = true,
+})
 
 -- TEMA GRUVBOX: Configuración
 
@@ -51,7 +48,7 @@ vim.g.gruvbox_material_disable_italic_comment = 0
 vim.g.gruvbox_material_enable_bold = 1
 
 -- Definiendo variable local
-local colorscheme = "gruvbox-material"
+local colorscheme = "tokyonight"
 
 -- Control de mensaje de errores por falta de colorscheme
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
