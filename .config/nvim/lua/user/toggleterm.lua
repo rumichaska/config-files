@@ -16,14 +16,7 @@ toggleterm.setup({
     end,
     open_mapping = [[<C-\>]], -- Depende de la configuración del teclado
     hide_numbers = true,
-    shade_filetypes = {},
-    shade_terminals = true,
-    shading_factor = 1,
-    start_in_insert = true,
-    insert_mappings = true,
-    persist_size = true,
     direction = "horizontal",
-    close_on_exit = true,
     shell = vim.o.shell,
     -- Información relevante cuando direction = "float"
     float_opts = {

@@ -31,7 +31,7 @@ ts_tokyonight.setup({
     styles = {
         functions = "italic",
     },
-    sidebars = { "qf", "packer", "terminal" },
+    sidebars = { "qf", "packer", "terminal", "help" },
     lualine_bold = true,
 })
 
