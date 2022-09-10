@@ -68,10 +68,10 @@ vim.api.nvim_create_autocmd({ "TermOpen" }, {
     pattern = "term://*",
     callback = function()
         keymap("t", "<Esc>", [[<C-\><C-n>]], term_opts)
-        keymap("t", "<C-h>", [[<C-\><C-n><C-W>h]], term_opts)
-        keymap("t", "<C-j>", [[<C-\><C-n><C-W>j]], term_opts)
-        keymap("t", "<C-k>", [[<C-\><C-n><C-W>k]], term_opts)
-        keymap("t", "<C-l>", [[<C-\><C-n><C-W>l]], term_opts)
+        keymap("t", "<C-h>", [[<Cmd>wincmd h<CR>]], term_opts)
+        keymap("t", "<C-j>", [[<Cmd>wincmd j<CR>]], term_opts)
+        keymap("t", "<C-k>", [[<Cmd>wincmd k<CR>]], term_opts)
+        keymap("t", "<C-l>", [[<Cmd>wincmd l<CR>]], term_opts)
     end,
     group = toggleterm_keymaps
 })
