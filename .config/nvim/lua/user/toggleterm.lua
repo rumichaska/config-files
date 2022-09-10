@@ -33,6 +33,7 @@ toggleterm.setup({
     winbar = {},
 })
 
+
 -- Funciones para abrir terminales personalizados
 local Terminal = require("toggleterm.terminal").Terminal
 
@@ -48,9 +49,6 @@ local r = Terminal:new({
         vim.keymap.set("t", "<M-I>", " %in% ", { noremap = true, silent = true, buffer = term.bufnr })
         vim.keymap.set("t", "<M-->", " <- ", { noremap = true, silent = true, buffer = term.bufnr })
     end,
-    -- on_close = function(term)
-    --     vim.cmd("Closing terminal")
-    -- end,
 })
 
 function _R_TOGGLE()

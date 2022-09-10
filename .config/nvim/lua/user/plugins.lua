@@ -84,7 +84,6 @@ return packer.startup(function(use)
 
     -- LSP
     use("neovim/nvim-lspconfig")                 -- Activar LSP
-    --[[ use("williamboman/nvim-lsp-installer")       -- Language server installer ]]
     use("williamboman/mason.nvim")               -- LSP installer
     use("williamboman/mason-lspconfig.nvim")     -- LSP config tool
     use("mfussenegger/nvim-dap")                 -- Debug Adapter Protocol (DAP)
