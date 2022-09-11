@@ -20,6 +20,7 @@ local tree_cb = nvim_tree_config.nvim_tree_callback
 nvim_tree.setup({
     disable_netrw = true,
     sync_root_with_cwd = true,
+    respect_buf_cwd = true,
     view = {
         width = 40,
         mappings = {
@@ -49,8 +50,8 @@ nvim_tree.setup({
         "alpha",
     },
     filters = {
-        custom = { ".git" },
-        exclude = { ".gitignore" },
+        custom = { "^.git" },
+        exclude = { "^.gitignore" },
     },
     git = {
         timeout = 500,
