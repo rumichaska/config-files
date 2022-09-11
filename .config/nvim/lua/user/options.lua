@@ -67,7 +67,7 @@ vim.opt.autoindent = true                          -- Activar autoindentación1
 vim.opt.cindent = true                             -- Indentación tipo c, si no gusta puede cambiar a 'smartindent = true'
 vim.opt.breakindent = true                         -- Continuar con identación de texto cuando 'wrap = true'
 vim.opt.linebreak = true                           -- Corte de 'wrap' en palabras y no letras
-vim.opt.showbreak = string.rep(" ", 3)             -- Líneas largas usen 'wrap' inteligente (NOTE: Probar)
+--[[ vim.opt.showbreak = string.rep(" ", 3)             -- Líneas largas usen 'wrap' inteligente (NOTE: Probar) ]]
 --[[ vim.opt.smartindent = true                         -- Activar autoindentación ]]
 vim.opt.textwidth = 80                             -- Ancho de texto
 vim.opt.wrap = false                               -- No wrap
