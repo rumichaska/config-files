@@ -62,7 +62,7 @@ vim.opt.ignorecase = true                          -- Ignorar mayúsculas al hac
 vim.opt.incsearch = true                           -- Búsqueda incremental
 vim.opt.smartcase = true                           -- No ignorar mayúsculas si la palabra a buscar contiene mayúsculas
 
--- Tabs e indentación
+-- Wrap e indentación
 vim.opt.autoindent = true                          -- Activar autoindentación1
 vim.opt.cindent = true                             -- Indentación tipo c, si no gusta puede cambiar a 'smartindent = true'
 vim.opt.breakindent = true                         -- Continuar con identación de texto cuando 'wrap = true'
@@ -85,7 +85,7 @@ vim.opt.pumheight = 10                             -- Altura del menú
 vim.opt.wildmode = "longest:full,full"             -- Listado de opciones en línea de comandos
 vim.opt.wildoptions = "pum"                        -- Tipo de menú
 
--- Opciones de formato
+-- Opciones de formato de comentarios y texto
 vim.opt.formatoptions = {
     t = false,                                     -- Auto-wrap texto usando 'textwidth'
     c = true,                                      -- Auto-wrap comentarios usando 'textwidth'
@@ -95,6 +95,5 @@ vim.opt.formatoptions = {
     a = false,                                     -- No ejecutar autoformato
     j = true,                                      -- Auto-remove comentarios si es posible
     n = true,                                      -- Indentacion después de 'formatlistpat'
-    ['2'] = false,                                 -- No indentar después de la segunda línea del párrafo
+    ["2"] = false,                                 -- No indentar después de la segunda línea del párrafo
 }
-

@@ -7,6 +7,10 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     pattern = { "markdown" },
     callback = function()
         vim.opt_local.wrap = true
+        local opts = { noremap = true, silent = true , buffer = 0 }
+        local keymap = vim.keymap.set
+        keymap("n", "k", "gk", opts)
+        keymap("n", "j", "gj", opts)
     end,
 })
 

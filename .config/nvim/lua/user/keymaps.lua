@@ -80,22 +80,25 @@ vim.api.nvim_create_autocmd({ "TermOpen" }, {
 
 -- R language
 
--- Lanzar consola de R
-keymap("n", "<Leader>tr", ":lua _R_TOGGLE()<CR>", opts)
+-- Opciones de mapeo para R
+local r_opts = { noremap = true, silent = true , buffer = 0 }
 
 -- Función para el autogroup personalizado de R
 local r_keymaps = vim.api.nvim_create_augroup("r_keymaps", {
     clear = true
 })
 
+-- Lanzar consola de R
+keymap("n", "<Leader>tr", ":lua _R_TOGGLE()<CR>", opts)
+
 -- Keymaps personalizados de R
 vim.api.nvim_create_autocmd({ "FileType" }, {
     pattern = { "r", "rmd" },
     callback = function()
         -- Atajos para operadores de R %>% %in% <-
-        keymap("i", "<M-M>", "<Esc>:normal! a %>%<CR>a ", opts)
-        keymap("i", "<M-I>", "<Esc>:normal! a %in%<CR>a ", opts)
-        keymap("i", "<M-->", "<Esc>:normal! a <-<CR>a ", opts)
+        keymap("i", "<M-M>", "<Esc>:normal! a %>%<CR>a ", r_opts)
+        keymap("i", "<M-I>", "<Esc>:normal! a %in%<CR>a ", r_opts)
+        keymap("i", "<M-->", "<Esc>:normal! a <-<CR>a ", r_opts)
         -- Enviar código a consola, similar a Ctrl+Enter
         keymap("n", "<Leader>l", ":ToggleTermSendCurrentLine 10<CR>j0")
         keymap("v", "<Leader>l", ":ToggleTermSendVisualLines 10<CR>")
@@ -105,7 +108,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
         -- Enviar .Rmd a consola, similar a Ctrl+Shift+K
         keymap("n", "<Leader>K", ":10TermExec cmd='rmarkdown::render(\"%:p:.\")'<CR>")
         -- Comentario de sección tipo RStudio Ctrl+Shift+R
-        keymap("n", "gch", "73i-<Esc>0:normal gcc<CR>2l<S-R>", opts)
+        keymap("n", "gch", "73i-<Esc>0:normal gcc<CR>2l<S-R>", r_opts)
     end,
     group = r_keymaps
 })

@@ -38,9 +38,11 @@ local r = Terminal:new({
     count = 10,
     on_open = function(term)
         vim.cmd("startinsert!")
-        vim.keymap.set("t", "<M-M>", " %>% ", { noremap = true, silent = true, buffer = term.bufnr })
-        vim.keymap.set("t", "<M-I>", " %in% ", { noremap = true, silent = true, buffer = term.bufnr })
-        vim.keymap.set("t", "<M-->", " <- ", { noremap = true, silent = true, buffer = term.bufnr })
+        local keymap = vim.keymap.set
+        local opts = { noremap = true, silent = true, buffer = term.bufnr }
+        keymap("t", "<M-M>", " %>% ", opts)
+        keymap("t", "<M-I>", " %in% ", opts)
+        keymap("t", "<M-->", " <- ", opts)
     end,
 })
 
