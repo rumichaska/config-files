@@ -85,15 +85,21 @@ vim.opt.pumheight = 10                             -- Altura del menú
 vim.opt.wildmode = "longest:full,full"             -- Listado de opciones en línea de comandos
 vim.opt.wildoptions = "pum"                        -- Tipo de menú
 
--- Opciones de formato de comentarios y texto
-vim.opt.formatoptions = {
-    t = false,                                     -- Auto-wrap texto usando 'textwidth'
-    c = true,                                      -- Auto-wrap comentarios usando 'textwidth'
-    r = true,                                      -- Continuar comentarios cuando se presiona 'Enter <CR>'
-    o = false,                                     -- Pero no cuando se agrega un línea con 'o' y 'O'
-    q = true,                                      -- Formatear comentarios con 'gq'
-    a = false,                                     -- No ejecutar autoformato
-    j = true,                                      -- Auto-remove comentarios si es posible
-    n = true,                                      -- Indentacion después de 'formatlistpat'
-    ["2"] = false,                                 -- No indentar después de la segunda línea del párrafo
-}
+-- Opciones de formato, funcionan y sobreescriben 'formatoptions' de la ruta
+-- /usr/local/share/nvim/runtime/ftplugin/
+-- vim.api.nvim_create_autocmd({ "BufEnter" }, {
+--     callback = function()
+--         vim.opt_local.formatoptions = {
+--             t = false, -- Auto-wrap texto usando 'textwidth'
+--             c = true, -- Auto-wrap comentarios usando 'textwidth'
+--             r = true, -- Continuar comentarios cuando se presiona 'Enter <CR>'
+--             o = false, -- Pero no cuando se agrega un línea con 'o' y 'O'
+--             q = true, -- Formatear comentarios con 'gq'
+--             a = false, -- No ejecutar autoformato
+--             j = true, -- Auto-remove comentarios si es posible
+--             n = true, -- Indentacion después de 'formatlistpat'
+--             ["2"] = false, -- No indentar después de la segunda línea del párafo
+--         }
+--     end,
+-- })
+

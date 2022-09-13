@@ -23,7 +23,7 @@ local pandoc_setup = vim.api.nvim_create_augroup("pandoc_setup", {
 
 -- Keymaps personalizados de R
 vim.api.nvim_create_autocmd({ "FileType" }, {
-    pattern = { "rmd", "qmd" },
+    pattern = { "markdown", "rmd", "qmd" },
     command = "set completefunc=pandoc#completion#Complete",
     group = pandoc_setup
 })
