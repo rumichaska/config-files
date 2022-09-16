@@ -13,8 +13,8 @@ local diagnostics = {
     sources = { "nvim_diagnostic" },
     sections = { "error", "warn" },
     symbols = {
-        error = icons.diagnostics.Error .. " ",
-        warn = icons.diagnostics.Warning .. " ",
+        error = icons.diagnostics.ErrorOutline .. " ",
+        warn = icons.diagnostics.WarningOutline .. " ",
     },
     colored = true,
     update_in_insert = false,
@@ -31,7 +31,7 @@ local diff = {
     colored = true,
     symbols = {
         added = icons.git.Add .. " ",
-        modified = icons.git.Mod .. " ",
+        modified = icons.git.Mod .. "",
         removed = icons.git.Remove .. " ",
     },
     cond = hide_in_width,
