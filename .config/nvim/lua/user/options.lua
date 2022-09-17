@@ -3,7 +3,7 @@
 -- Generales
 vim.opt.backup = false                             -- Crea archivo de respaldo
 vim.opt.clipboard = "unnamedplus"                  -- Permite a nvim acceder al portapapeles
-vim.opt.cmdheight = 2                              -- Altura de la linea de comandos
+vim.opt.cmdheight = 1                              -- Altura de la linea de comandos
 vim.opt.completeopt = { "menuone", "noselect" }    -- Opciones relacionadas al menú de autocompletado cmp
 vim.opt.colorcolumn = "80"                         -- Marcador de columna
 vim.opt.conceallevel = 0                           -- ``` visible en archivos markdown
