@@ -32,11 +32,11 @@ local diagnostics = {
 -- Definiendo variables local para personalización de `diff`
 local diff = {
     "diff",
-    symbols = {
-        added = icons.git.Add .. " ",
-        modified = icons.git.Mod .. "",
-        removed = icons.git.Remove .. " ",
-    },
+    -- symbols = {
+    --     added = icons.git.Add .. " ",
+    --     modified = icons.git.Mod .. "",
+    --     removed = icons.git.Remove .. " ",
+    -- },
     cond = conditions.hide_in_width,
 }
 
