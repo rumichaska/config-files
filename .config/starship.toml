@@ -89,9 +89,11 @@ symbol = " "
 # Python Module
 [python]
 symbol = " "
+format = '\[[$symbol($version)]($style)\] '
 
 # R Module
 [rlang]
+
 symbol = "\ufcd2 "
 format = '\[[$symbol($version)]($style)\] '
 detect_files = [""]
