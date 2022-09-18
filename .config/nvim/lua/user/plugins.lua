@@ -52,8 +52,7 @@ return packer.startup(function(use)
     use("kyazdani42/nvim-web-devicons")          -- Iconos, se puede integrar con nvim-tree, lualine, ...
 
     -- Colorscheme y colores
-    use("shaunsingh/nord.nvim")                  -- Tema nord
-    use("ful1e5/onedark.nvim")                   -- Tema onedark
+    use("navarasu/onedark.nvim")                 -- Tema onedark
     use("folke/tokyonight.nvim")                 -- Tema tokyonight
     use("sainnhe/gruvbox-material")              -- Tema gruvbox
     use("norcalli/nvim-colorizer.lua")           -- Sombreado de colores
