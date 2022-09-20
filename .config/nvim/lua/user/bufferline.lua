@@ -26,7 +26,11 @@ bufferline.setup({
         tab_size = 22,
         diagnostics = false,
         diagnostics_update_in_insert = false,
-        offsets = { { filetype = "NvimTree", text = "Explorador", padding = 1 } },
+        offsets = { {
+            filetype = "NvimTree",
+            text = "Explorador",
+            highlight = "NvimTreeWindowPicker",
+        } },
         color_icons = true,
         show_buffer_icons = true,
         show_buffer_close_icons = true,
