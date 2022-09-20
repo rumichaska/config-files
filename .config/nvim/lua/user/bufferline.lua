@@ -30,7 +30,6 @@ bufferline.setup({
             {
                 filetype = "NvimTree",
                 text = "Explorador",
-                highlight = "NvimTreeWindowPicker",
             }
         },
         color_icons = true,

@@ -25,6 +25,11 @@ theme_tokyonight.setup({
     },
     sidebars = { "qf", "packer", "terminal", "help" },
     lualine_bold = true,
+    on_highlights = function(hl, c)
+        hl.NvimTreeVertSplit = {
+            fg = c.border
+        }
+    end,
 })
 
 -- TEMA GRUVBOX: Configuración
@@ -40,7 +45,7 @@ vim.g.gruvbox_material_ui_contrast = "high"
 vim.g.gruvbox_material_show_eob = 1
 vim.g.gruvbox_material_disable_temrinal_colors = 0
 vim.g.gruvbox_material_statusline_style = "dafault"
-vim.g.gruvbox_material_better_performance = 1
+-- vim.g.gruvbox_material_better_performance = 1
 vim.g.gruvbox_material_palette = "material"
 -- Configuración dependiente de fuente
 vim.g.gruvbox_material_disable_italic_comment = 0
