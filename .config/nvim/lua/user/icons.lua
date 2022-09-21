@@ -79,6 +79,7 @@ if vim.fn.has "unix" == 1 or vim.g.use_nerd_icons then
             Bug = "",
             Code = "",
             Telescope = "",
+            TelescopeCaret = "",
             Gear = "",
             Package = "",
             List = "",

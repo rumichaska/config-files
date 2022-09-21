@@ -43,6 +43,7 @@ keymap("n", "<Leader>ff", ":Telescope find_files<CR>", opts)
 keymap("n", "<Leader>fg", ":Telescope live_grep<CR>", opts)
 keymap("n", "<Leader>fb", ":Telescope buffers<CR>", opts)
 keymap("n", "<Leader>ft", ":Telescope help_tags<CR>", opts)
+keymap("n", "<Leader>fp", ":Telescope projects<CR>", opts)
 keymap("n", "<Leader>nh", ":noh<CR>", opts) -- Borrar resaltado de búqueda
 
 -- Insert --

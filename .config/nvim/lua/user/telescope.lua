@@ -15,7 +15,7 @@ telescope.setup({
     defaults = {
         -- Configuración general
         prompt_prefix = icons.ui.Telescope .. " ",
-        selection_caret = " ",
+        selection_caret = icons.ui.TelescopeCaret .. " ",
         path_display = { "smart" },
         -- Mapeo
         mappings = {
@@ -41,8 +41,10 @@ telescope.setup({
                 ["<C-v>"] = actions.select_vertical,
                 ["<C-t>"] = actions.select_tab,
                 -- Otras opciones de mapeo
-                ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
-                ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
+                -- ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
+                -- ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
+                ["<Tab>"] = actions.move_selection_previous,
+                ["<S-Tab>"] = actions.move_selection_next,
                 ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
                 ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
                 ["<C-l>"] = actions.complete_tag,
@@ -71,8 +73,10 @@ telescope.setup({
                 ["<C-v>"] = actions.select_vertical,
                 ["<C-t>"] = actions.select_tab,
                 -- Otras opciones de mapeo
-                ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
-                ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
+                -- ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
+                -- ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
+                ["<Tab>"] = actions.move_selection_previous,
+                ["<S-Tab>"] = actions.move_selection_next,
                 ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
                 ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
                 ["?"] = actions.which_key,
