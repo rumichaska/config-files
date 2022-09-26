@@ -75,10 +75,11 @@ return packer.startup(function(use)
     use("hrsh7th/cmp-buffer")                    -- Extensiones cmp - buffer
     use("hrsh7th/cmp-path")                      -- Extensiones cmp - path
     use("hrsh7th/cmp-cmdline")                   -- Extensiones cmp - cmdline
-
-    -- Lua snippets
-    use("L3MON4D3/LuaSnip")                      -- Motor para snippets (luasnip engine)
+    use("hrsh7th/cmp-nvim-lua")                  -- Extensiones cmp - Neovim lua API
     use("saadparwaiz1/cmp_luasnip")              -- Extensiones cmp - luasnip engine
+
+    -- Snippets
+    use("L3MON4D3/LuaSnip")                      -- Motor para snippets (luasnip engine)
     use("rafamadriz/friendly-snippets")          -- Snippets para varios lenguajes
 
     -- LSP
