@@ -18,9 +18,10 @@ end
 
 -- Definiendo variable local para control de LSP
 local servers = {
-    "sumneko_lua",
+    "julials",
     "pyright",
     "r_language_server",
+    "sumneko_lua",
 }
 
 -- Configuración de mason
@@ -55,10 +56,16 @@ for _, server in pairs(servers) do
 
     -- Configuración de cada lenguaje
 
-    -- LSP Lua: sumneko_lua
-    if server == "sumneko_lua" then
-        local sumneko_opts = require("user.lsp.settings.sumneko_lua")
-        opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
+    -- LSP Julia: julials
+    if server == "julials" then
+        local julia_opts = require("user.lsp.settings.julia_lua")
+        opts = vim.tbl_deep_extend("force", julia_opts, opts)
+    end
+
+    -- LSP Python: pyright
+    if server == "pyright" then
+        local pyright_opts = require("user.lsp.settings.pyright_lua")
+        opts = vim.tbl_deep_extend("force", pyright_opts, opts)
     end
 
     -- LSP R: r_language_server
@@ -67,10 +74,10 @@ for _, server in pairs(servers) do
         opts = vim.tbl_deep_extend("force", r_lang_opts, opts)
     end
 
-    -- LSP Python: pyright
-    if server == "pyright" then
-        local pyright_opts = require("user.lsp.settings.pyright_lua")
-        opts = vim.tbl_deep_extend("force", pyright_opts, opts)
+    -- LSP Lua: sumneko_lua
+    if server == "sumneko_lua" then
+        local sumneko_opts = require("user.lsp.settings.sumneko_lua")
+        opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
     end
 
     lspconfig[server].setup(opts)
