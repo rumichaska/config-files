@@ -31,6 +31,21 @@ nvim_tree.setup({
             },
         },
     },
+    renderer = {
+        icons = {
+            glyphs = {
+                git = {
+                    unstaged = icons.git_status.Unstaged,
+                    staged = icons.git_status.Staged,
+                    -- unmerged = icon.git_status.Unmerged,
+                    renamed = icons.git_status.Renamed,
+                    untracked = icons.git_status.Untracked,
+                    deleted = icons.git_status.Deleted,
+                    ignored = icons.git_status.Ignored,
+                },
+            },
+        },
+    },
     diagnostics = {
         enable = true,
         icons = {
