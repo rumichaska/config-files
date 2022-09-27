@@ -38,8 +38,8 @@ local r = Terminal:new({
     count = 10,
     on_open = function(term)
         vim.cmd("startinsert!")
-        local keymap = vim.keymap.set
         local opts = { noremap = true, silent = true, buffer = term.bufnr }
+        local keymap = vim.keymap.set
         keymap("n", "<Leader>tr", ":lua _R_TOGGLE()<CR>", opts)
         keymap("t", "<M-M>", " %>% ", opts)
         keymap("t", "<M-I>", " %in% ", opts)
@@ -59,8 +59,8 @@ local python = Terminal:new({
     count = 20,
     on_open = function(term)
         vim.cmd("startinsert!")
-        local keymap = vim.keymap.set
         local opts = { noremap = true, silent = true, buffer = term.bufnr }
+        local keymap = vim.keymap.set
         keymap("n", "<Leader>tp", ":lua _PYTHON_TOGGLE()<CR>", opts)
     end,
 })
