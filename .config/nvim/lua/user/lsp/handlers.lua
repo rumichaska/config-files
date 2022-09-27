@@ -5,7 +5,6 @@ local M = {}
 local lsp_highlight_document = function(client, bufnr)
     -- Establecer `autocommands` condicional en función a `server_capabilities`
     if client.server_capabilities.documentHighlightProvider then
-        -- local buffer = vim.api.nvim_get_current_buf()
         local lsp_hl_au = vim.api.nvim_create_augroup("lsp_document_highlight", {
             clear = false
         })
@@ -43,7 +42,7 @@ local lsp_keymaps = function(bufnr)
     keymap("n", "gf", function()
         vim.lsp.buf.format({ async = true })
     end, opts)
-    keymap("v", "gf", vim.lsp.buf.range_formatting, opts)
+    keymap("v", "gf", ":lua vim.lsp.buf.range_formatting()<CR>", opts)
     -- Documentation
     keymap("n", "gD", vim.lsp.buf.declaration, opts)
     keymap("n", "gd", vim.lsp.buf.definition, opts)
