@@ -58,8 +58,8 @@ for _, server in pairs(servers) do
 
     -- LSP Julia: julials
     if server == "julials" then
-        local julia_opts = require("user.lsp.settings.julia_lua")
-        opts = vim.tbl_deep_extend("force", julia_opts, opts)
+        local julials_opts = require("user.lsp.settings.julials_lua")
+        opts = vim.tbl_deep_extend("force", julials_opts, opts)
     end
 
     -- LSP Python: pyright
