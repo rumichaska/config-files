@@ -9,21 +9,8 @@
 # Vim mode in terminal
 set -o vi # Vim mode in terminal
 
-# Aliases
-alias tree="tree --dirsfirst -F"
-alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
-alias shinyapp="R -e 'shiny::runApp(port = 4545, launch.browser = FALSE)'"
-alias ls="lsd"
-alias l="ls -l"
-alias la="ls -a"
-alias lla="ls -la"
-alias lt="ls --tree"
-
 # Pandoc from terminal without RStudio
 export RSTUDIO_PANDOC="/usr/lib/rstudio/bin/quarto/bin/tools"
-
-# Launch quarto without RStudio
-alias quarto="/usr/lib/rstudio/bin/quarto/bin/quarto"
 
 # -------------------------------------------------------------------------
 
@@ -152,4 +139,3 @@ if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integr
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-. "$HOME/.cargo/env"
