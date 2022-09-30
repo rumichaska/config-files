@@ -26,8 +26,12 @@ theme_tokyonight.setup({
     sidebars = { "qf", "packer", "terminal", "help" },
     lualine_bold = true,
     on_highlights = function(hl, c)
-        hl.NvimTreeVertSplit = {
-            fg = c.border
+        hl.CursorLineNr = {
+            fg = c.yellow,
+            bold = true,
+        }
+        hl.NvimTreeWinSeparator = {
+            fg = c.bg_sidebar,
         }
     end,
 })
