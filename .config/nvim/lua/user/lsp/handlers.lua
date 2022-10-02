@@ -39,10 +39,10 @@ local lsp_keymaps = function(bufnr)
     end, opts)
     keymap("n", "<leader>dq", vim.diagnostic.setloclist, opts)
     -- Format
-    keymap("n", "gf", function()
+    keymap({ "n", "v" }, "gf", function()
         vim.lsp.buf.format({ async = true })
     end, opts)
-    keymap("v", "gf", ":lua vim.lsp.buf.range_formatting()<CR>", opts)
+    -- keymap("v", "gf", ":lua vim.lsp.buf.range_formatting()<CR>", opts)
     -- Documentation
     keymap("n", "gD", vim.lsp.buf.declaration, opts)
     keymap("n", "gd", vim.lsp.buf.definition, opts)
