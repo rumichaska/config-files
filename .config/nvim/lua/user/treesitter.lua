@@ -26,11 +26,11 @@ configs.setup({
     ignore_install = {},            -- Lista de `parsers` a ignorar en instalación
     highlight = {
         enable = true,              -- `false` deshabilitará la extensión
-        additional_vim_regex_highlighting = false,
+        disable = { "help" },
     },
-    indent = {
-        enable = true,
-    },
+    -- indent = {
+    --     enable = true,
+    -- },
     -- Agregando configuración complementaria de nvim-ts-rainbow
     rainbow = {
         enable = true,
