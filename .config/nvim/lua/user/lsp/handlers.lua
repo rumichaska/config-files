@@ -40,8 +40,8 @@ local lsp_keymaps = function(bufnr)
     keymap("n", "<leader>dq", vim.diagnostic.setloclist, opts)
     -- Format
     keymap({ "n", "v" }, "gf", function()
-        vim.lsp.buf.format()
-        -- vim.lsp.buf.format({ async = true })
+        -- vim.lsp.buf.format()
+        vim.lsp.buf.format({ async = true })
     end, opts)
     -- keymap("v", "gf", ":lua vim.lsp.buf.range_formatting()<CR>", opts)
     -- Documentation
