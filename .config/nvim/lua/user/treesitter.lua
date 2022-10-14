@@ -28,9 +28,10 @@ configs.setup({
         enable = true,              -- `false` deshabilitará la extensión
         disable = { "help" },
     },
-    -- indent = {
-    --     enable = true,
-    -- },
+    indent = {
+        enable = true,
+        disable = { "r" },
+    },
     -- Agregando configuración complementaria de nvim-ts-rainbow
     rainbow = {
         enable = true,
