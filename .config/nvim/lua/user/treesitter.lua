@@ -30,7 +30,8 @@ configs.setup({
     },
     indent = {
         enable = true,
-        disable = { "r" },
+        -- disable = { "r" },
+        disable = {},
     },
     -- Agregando configuración complementaria de nvim-ts-rainbow
     rainbow = {
