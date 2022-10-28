@@ -18,7 +18,7 @@ keymap("i", "<M-I>", "<Esc>:normal! a %in%<CR>a ", opts)
 keymap("i", "<M-->", "<Esc>:normal! a <-<CR>a ", opts)
 
 -- Enviar código a consola, similar a Ctrl+Enter
-keymap("n", "<Leader>l", ":ToggleTermSendCurrentLine 10<CR>j0")
+keymap("n", "<Leader>l", ":ToggleTermSendCurrentLine 10<CR>+")
 keymap("v", "<Leader>l", ":ToggleTermSendVisualLines 10<CR>")
 keymap("v", "<Leader>l", ":ToggleTermSendVisualSelection 10<CR>")
 
