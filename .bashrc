@@ -10,7 +10,8 @@
 set -o vi # Vim mode in terminal
 
 # Pandoc from terminal without RStudio
-export RSTUDIO_PANDOC="/usr/lib/rstudio/bin/quarto/bin/tools"
+# export RSTUDIO_PANDOC="/usr/lib/rstudio/bin/quarto/bin/tools"
+export RSTUDIO_PANDOC="/usr/lib/rstudio/resources/app/bin/quarto/bin/tools"
 
 # -------------------------------------------------------------------------
 
