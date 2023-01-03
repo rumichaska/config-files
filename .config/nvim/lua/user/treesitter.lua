@@ -9,6 +9,7 @@ local ts_parser = {
     "bash",
     "comment",
     "css",
+    "html",
     "lua",
     "make",
     "markdown",
