@@ -18,6 +18,7 @@ end
 
 -- Definiendo variable local para control de LSP
 local servers = {
+    "cssls",
     "html",
     "julials",
     "pyright",
