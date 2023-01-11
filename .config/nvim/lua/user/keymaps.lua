@@ -33,7 +33,6 @@ keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 -- Navegación entre buffers
 keymap("n", "<Leader>k", ":bnext<CR>", opts)
 keymap("n", "<Leader>j", ":bprevious<CR>", opts)
--- keymap("n", "<Leader>q", ":bprevious<CR>:bdelete #<CR>", opts) -- Cerrar buffer
 keymap("n", "<Leader>q", ":bdelete<CR>", opts) -- Cerrar buffer
 
 -- Nvimtree
@@ -61,11 +60,7 @@ keymap("v", "<M-k>", ":move '<-2<CR>gv=gv", opts)
 
 -- Terminal --
 
--- toggleterm
-local toggleterm_keymaps = vim.api.nvim_create_augroup("toggleterm_keymaps", {
-    clear = true
-})
-
+-- Navegación entre buffer y terminal
 vim.api.nvim_create_autocmd({ "TermOpen" }, {
     pattern = "term://*",
     callback = function()
@@ -75,5 +70,5 @@ vim.api.nvim_create_autocmd({ "TermOpen" }, {
         keymap("t", "<C-k>", [[<Cmd>wincmd k<CR>]], term_opts)
         keymap("t", "<C-l>", [[<Cmd>wincmd l<CR>]], term_opts)
     end,
-    group = toggleterm_keymaps
+    group = vim.api.nvim_create_augroup("term_keymaps", { clear = true })
 })
