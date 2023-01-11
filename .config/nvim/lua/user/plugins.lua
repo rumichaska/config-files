@@ -60,7 +60,7 @@ return packer.startup(function(use)
     -- Bufferline
     use({
         "akinsho/bufferline.nvim",               -- Bufferline, barra de estado de buffers activos
-        tag = "v2.*",                            -- Versión estable
+        tag = "v3.*",                            -- Versión estable
     })
 
     -- Lualine
@@ -109,11 +109,12 @@ return packer.startup(function(use)
     -- Proyectos
     use("ahmedkhalf/project.nvim")               -- Manejo de proyectos
 
-    -- Toggleterm
+    -- Terminal
     use({
         "akinsho/toggleterm.nvim",               -- Manejo de Terminales y consolas
         tag = "v2.*",                            -- Versión estable
     })
+    use("hkupty/iron.nvim")                      -- REPL
 
     -- Indent blankline
     use("lukas-reineke/indent-blankline.nvim")   -- indent-blankline, para mostrar indentación
