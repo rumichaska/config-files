@@ -7,18 +7,24 @@ local keymap = vim.keymap.set
 
 -- OPCIONES LOCALES
 
--- KEYMAPS
-
--- Lanzar consola de PYTHON
-keymap("n", "<Leader>tp", ":lua _PYTHON_TOGGLE()<CR>", opts)
-
--- Enviar código a consola de python3
-keymap("n", "<Leader>l", ":ToggleTermSendCurrentLine 20<CR>j0")
-keymap("v", "<Leader>l", ":ToggleTermSendVisualLines 20<CR>")
-keymap("v", "<Leader>l", ":ToggleTermSendVisualSelection 20<CR>")
+-- Código
 
 -- Ejecutar código en terminal
-keymap("n", "<Leader>L", ":1TermExec cmd='python3 %:p:.'<CR>")
+-- keymap("n", "<Leader>L", ":1TermExec cmd='python3 %:p:.'<CR>")
 
 -- Comentario de sección
 keymap("n", "gch", "73i-<Esc>0:normal gcc<CR>2l<S-R>", opts)
+
+-- Terminal --
+
+-- Lanzar consola de PYTHON
+keymap("n", "<Leader>tr", ":IronRepl<CR>", opts)
+
+-- Mapeos para ipython
+vim.api.nvim_create_autocmd({ "TermOpen" }, {
+    pattern = "term://*",
+    callback = function()
+        keymap("n", "<Leader>tr", ":IronHide python<CR>", opts)
+    end,
+    group = vim.api.nvim_create_augroup("term_ipython", { clear = true })
+})
