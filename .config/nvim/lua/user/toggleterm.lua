@@ -16,7 +16,7 @@ toggleterm.setup({
     end,
     open_mapping = [[<C-\>]], -- Depende de la configuración del teclado
     hide_numbers = true,
-    direction = "horizontal",
+    direction = "float",
     shell = vim.o.shell,
     -- Información relevante cuando direction = "float"
     float_opts = {
@@ -25,46 +25,3 @@ toggleterm.setup({
     },
     winbar = {},
 })
-
-
--- Funciones para abrir terminales personalizados
-local Terminal = require("toggleterm.terminal").Terminal
-
--- Terminal personalizado : R
-local r = Terminal:new({
-    cmd = "R",
-    dir = vim.fn.getcwd(),
-    hidden = true,
-    count = 10,
-    on_open = function(term)
-        vim.cmd("startinsert!")
-        local opts = { noremap = true, silent = true, buffer = term.bufnr }
-        local keymap = vim.keymap.set
-        keymap("n", "<Leader>tr", ":lua _R_TOGGLE()<CR>", opts)
-        keymap("t", "<M-M>", " %>% ", opts)
-        keymap("t", "<M-I>", " %in% ", opts)
-        keymap("t", "<M-->", " <- ", opts)
-    end,
-})
-
-function _R_TOGGLE()
-    r:toggle()
-end
-
--- Terminal personalizado : Python
-local python = Terminal:new({
-    cmd = "python3",
-    dir = vim.fn.getcwd(),
-    hidden = true,
-    count = 20,
-    on_open = function(term)
-        vim.cmd("startinsert!")
-        local opts = { noremap = true, silent = true, buffer = term.bufnr }
-        local keymap = vim.keymap.set
-        keymap("n", "<Leader>tp", ":lua _PYTHON_TOGGLE()<CR>", opts)
-    end,
-})
-
-function _PYTHON_TOGGLE()
-    python:toggle()
-end
