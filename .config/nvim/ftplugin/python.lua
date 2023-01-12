@@ -4,15 +4,18 @@
 
 local opts = { noremap = true, silent = true, buffer = 0 }
 local keymap = vim.keymap.set
+local py = {
+    source = vim.fn.expand("%:p:.")
+}
 
--- OPCIONES LOCALES
+-- MAPEOS LOCALES
 
 -- Código
 
 -- Ejecutar código en terminal
--- keymap("n", "<Leader>L", ":1TermExec cmd='python3 %:p:.'<CR>")
+keymap("n", "<Leader>L", ":!python3 " .. py.source .. "<CR>", opts)
 
--- Comentario de sección
+-- Insertar sección
 keymap("n", "gch", "73i-<Esc>0:normal gcc<CR>2l<S-R>", opts)
 
 -- Terminal --

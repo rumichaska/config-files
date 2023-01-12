@@ -4,25 +4,27 @@
 
 local opts = { noremap = true, silent = true, buffer = 0 }
 local keymap = vim.keymap.set
+local r = {
+    rmd_render = "\"rmarkdown::render('" .. vim.fn.expand("%") .. "')\"",
+    source = "source(\"" .. vim.fn.expand("%") .. "\")",
+}
 
--- OPCIONES LOCALES
+-- MAPEOS LOCALES
 
 -- Código
 
--- Atajos para operadores de R %>% %in% <-
+-- Operadores de R %>% %in% <-
 keymap("i", "<M-M>", "<Esc>:normal! a %>%<CR>a ", opts)
 keymap("i", "<M-I>", "<Esc>:normal! a %in%<CR>a ", opts)
 keymap("i", "<M-->", "<Esc>:normal! a <-<CR>a ", opts)
 
--- Enviar .R a consola, similar a Ctrl+Shift+S
--- keymap("n", "<Leader>L", ":10TermExec cmd='source(\"%:p:.\")'<CR>")
-keymap("n", "<Leader>L", ":call luaeval(\"require('iron').core.send(_A[1], _A[2])\", [&ft, \"source('\".expand('%').\"')\"])<CR>")
+-- Ejecutar código en consola, similar a Ctrl+Shift+S de RStudio
+keymap("n", "<Leader>L", ":IronSend " .. r.source .. "<CR>", opts)
 
--- Enviar .Rmd a consola, similar a Ctrl+Shift+K
--- keymap("n", "<Leader>K", ":10TermExec cmd='rmarkdown::render(\"%:p:.\")'<CR>")
-keymap("n", "<Leader>K", ":call luaeval(\"require('iron').core.send(_A[1], _A[2])\", [&ft, \"rmarkdown::render('\".expand('%').\"')\"])<CR>")
+-- Renderizar rmarkdown, similar a Ctrl+Shift+K de RStudio
+keymap("n", "<Leader>K", ":!R -e " .. r.rmd_render .. "<CR>", opts)
 
--- Comentario de sección tipo RStudio Ctrl+Shift+R
+-- Insertar sección, similar Ctrl+Shift+R de RStudio
 keymap("n", "gch", "73i-<Esc>0:normal gcc<CR>2l<S-R>", opts)
 
 -- Terminal --
