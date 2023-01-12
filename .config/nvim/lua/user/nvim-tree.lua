@@ -65,8 +65,8 @@ nvim_tree.setup({
         "alpha",
     },
     filters = {
-        custom = { "^.git" },
-        exclude = { "^.gitignore" },
+        dotfiles = true,
+        exclude = { ".gitignore" },
     },
     git = {
         timeout = 500,
