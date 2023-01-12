@@ -9,6 +9,7 @@ local ts_parser = {
     "bash",
     "comment",
     "css",
+    "help",
     "html",
     "lua",
     "make",
@@ -27,12 +28,18 @@ configs.setup({
     ignore_install = {},            -- Lista de `parsers` a ignorar en instalación
     highlight = {
         enable = true,              -- `false` deshabilitará la extensión
-        disable = { "help" },
     },
     indent = {
         enable = true,
-        -- disable = { "r" },
-        disable = {},
+    },
+    incremental_selection = {
+        enable = true,
+        keymaps = {
+            init_selection = "<c-space>",
+            node_incremental = "<c-space>",
+            scope_incremental = "<c-s>",
+            node_decremental = "<c-backspace>",
+        },
     },
     -- Agregando configuración complementaria de nvim-ts-rainbow
     rainbow = {
