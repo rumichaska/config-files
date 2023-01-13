@@ -44,82 +44,135 @@ packer.init({
 -- Installar plugins
 return packer.startup(function(use)
 
-    -- Plugins generales
-    use("wbthomason/packer.nvim")                -- Hace que `packer` se maneje así mismo
-    use("nvim-lua/popup.nvim")                   -- Implementación del Popup API de vim en neovim
-    use("nvim-lua/plenary.nvim")                 -- Diversas funciones lua usadas por otros plugins
-    use("windwp/nvim-autopairs")                 -- Autopairs, se puede integrar con cmp y treesitter
-    use("kyazdani42/nvim-web-devicons")          -- Iconos, se puede integrar con nvim-tree, lualine, ...
-
-    -- Colorscheme y colores
-    use("navarasu/onedark.nvim")                 -- Tema onedark
-    use("folke/tokyonight.nvim")                 -- Tema tokyonight
-    use("sainnhe/gruvbox-material")              -- Tema gruvbox
-    use("norcalli/nvim-colorizer.lua")           -- Sombreado de colores
-
-    -- Bufferline
-    use({
-        "akinsho/bufferline.nvim",               -- Bufferline, barra de estado de buffers activos
-        tag = "v3.*",                            -- Versión estable
-    })
-
-    -- Lualine
-    use("nvim-lualine/lualine.nvim")             -- Lualine, barra de estado inferior
-
-    -- Nvim tree
-    use("kyazdani42/nvim-tree.lua")              -- Nvim tree, explorador de archivos
-
-    -- Autocompletado cmp
-    use("hrsh7th/nvim-cmp")                      -- Plugin de autocompletado
-    use("hrsh7th/cmp-nvim-lsp")                  -- Extensiones cmp - lsp
-    use("hrsh7th/cmp-buffer")                    -- Extensiones cmp - buffer
-    use("hrsh7th/cmp-path")                      -- Extensiones cmp - path
-    use("hrsh7th/cmp-cmdline")                   -- Extensiones cmp - cmdline
-    use("hrsh7th/cmp-nvim-lua")                  -- Extensiones cmp - Neovim lua API
-    use("saadparwaiz1/cmp_luasnip")              -- Extensiones cmp - luasnip engine
-
-    -- Snippets
-    use("L3MON4D3/LuaSnip")                      -- Motor para snippets (luasnip engine)
-    use("rafamadriz/friendly-snippets")          -- Snippets para varios lenguajes
+    -- PLUGINS GENERALES
+    -- Manejo de packer con packer
+    use("wbthomason/packer.nvim")
+    -- Popup API de vim en neovim (revisar)
+    use("nvim-lua/popup.nvim")
+    -- Autocompletado de ', ", (, [, ,{ , etc.
+    use("windwp/nvim-autopairs")
+    -- Ićonos
+    use("kyazdani42/nvim-web-devicons")
 
     -- LSP
-    use("neovim/nvim-lspconfig")                 -- Activar LSP
-    use("williamboman/mason.nvim")               -- LSP installer
-    use("williamboman/mason-lspconfig.nvim")     -- LSP config tool
-    use("mfussenegger/nvim-dap")                 -- Debug Adapter Protocol (DAP)
-    use("jose-elias-alvarez/null-ls.nvim")       -- LSP diagnostic, code action, formatter
-    use("j-hui/fidget.nvim")                     -- Estado de activación del LSP
-    use("folke/neodev.nvim")                     -- Complemento para nvim lua
-
-    -- TreeSitter
+    -- Configuración por LSP
     use({
-        "nvim-treesitter/nvim-treesitter",       -- TreeSitter, resaltador de sintaxis
-        run = ":TSUpdate",                       -- Actualización automática de lenguajes
+        "neovim/nvim-lspconfig",
+        -- Complementos
+        requires = {
+            -- Manejo e instalación de LSP
+            "williamboman/mason.nvim",
+            "williamboman/mason-lspconfig.nvim",
+            -- Formato, bugs y linters
+            "mfussenegger/nvim-dap",
+            "jose-elias-alvarez/null-ls.nvim",
+            -- Actualización de estado
+            "j-hui/fidget.nvim",
+            -- Desarrollo con Lua
+            "folke/neodev.nvim",
+        },
     })
-    use("p00f/nvim-ts-rainbow")                  -- Colores para corchetes|parentesis
 
-    -- Comments
-    use("numToStr/Comment.nvim")                         -- Para comentar código
-    use("JoosepAlviste/nvim-ts-context-commentstring")   -- Comentarios en función a lenguaje
-
-    -- Telescope
-    use("nvim-telescope/telescope.nvim")         -- Telescope, buscador de archivos
-
-    -- Git
-    use("lewis6991/gitsigns.nvim")               -- Git, control de versiones junto a número de línea
-
-    -- Proyectos
-    use("ahmedkhalf/project.nvim")               -- Manejo de proyectos
-
-    -- Terminal
+    -- CMP
+    -- Para autocompletado según lenguaje
     use({
-        "akinsho/toggleterm.nvim",               -- Manejo de Terminales y consolas
-        tag = "v2.*",                            -- Versión estable
+        "hrsh7th/nvim-cmp",
+        -- Complementos
+        requires = {
+            -- Extensiones
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-path",
+            "hrsh7th/cmp-cmdline",
+            "hrsh7th/cmp-nvim-lua",
+            -- snippets
+            "saadparwaiz1/cmp_luasnip",
+            "L3MON4D3/LuaSnip",
+            "rafamadriz/friendly-snippets",
+        },
     })
-    use("hkupty/iron.nvim")                      -- REPL
 
-    -- Indent blankline
-    use("lukas-reineke/indent-blankline.nvim")   -- indent-blankline, para mostrar indentación
+    -- TREESITTER
+    -- Para sintax highlight según lenguaje
+    use({
+        "nvim-treesitter/nvim-treesitter",
+        -- Actualización constante
+        run = function()
+            pcall(require("nvim-treesitter.install").update({ with_sync = true }))
+        end,
+    })
+    -- Complemento para navegación con treesitter
+    use({
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        after = "nvim-treesitter",
+    })
+    -- Colores para corchetes, llaves, paréntesis, etc.
+    use("p00f/nvim-ts-rainbow")
+
+    -- TELESCOPE
+    -- Para búsqueda de archivos, texto, código, etc.
+    use({
+        "nvim-telescope/telescope.nvim",
+        branch = "0.1.x",
+        requires = { "nvim-lua/plenary.nvim" }
+    })
+    -- Complemento para uso de fzf cuando haya disponible make en SO
+    use({
+        "nvim-telescope/telescope-fzf-native.nvim",
+        run = "make",
+        cond = vim.fn.executable "make" == 1,
+    })
+
+    -- COLORSCHEME Y COLORES
+    -- Temas de neovim
+    use("folke/tokyonight.nvim")
+    use("navarasu/onedark.nvim")
+    use("sainnhe/gruvbox-material")
+    -- Mostrar colores en código
+    use("norcalli/nvim-colorizer.lua")
+
+    -- BUFFERLINE
+    -- Mostrar barra de estado de buffers activos
+    use({
+        "akinsho/bufferline.nvim",
+        -- Versión estable
+        tag = "v3.*",
+    })
+
+    -- LUALINE
+    -- Barra de estado inferior
+    use("nvim-lualine/lualine.nvim")
+
+    -- NVIMTREE
+    -- Exploración y navegación de archivos
+    use("kyazdani42/nvim-tree.lua")
+
+    -- COMMENTS
+    -- Implementación de comentarios según lenguaje
+    use("numToStr/Comment.nvim")
+    use("JoosepAlviste/nvim-ts-context-commentstring")
+
+    -- GIT
+    -- Estado de modificación según git
+    use("lewis6991/gitsigns.nvim")
+
+    -- PROYECTOS
+    -- Complemento para revisión de proyectos usando Telescope
+    use("ahmedkhalf/project.nvim")
+
+    -- TERMINAL
+    -- Abrir terminales
+    use({
+        "akinsho/toggleterm.nvim",
+        -- Versión estable
+        tag = "v2.*",
+    })
+    -- REPL
+    use("hkupty/iron.nvim")
+
+    -- INDENT BLANKLINE
+    -- Monstrar indentación
+    use("lukas-reineke/indent-blankline.nvim")
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
