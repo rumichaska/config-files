@@ -22,6 +22,23 @@ if not cmp_nvim_lsp_ok then
     return
 end
 
+-- Control de mensaje de errores por falta de fidget
+local fidget_ok, fidget = pcall(require, "fidget")
+if not fidget_ok then
+    return
+end
+
+-- Control de mensaje de errores por falta de neodev
+local neodev_ok, neodev = pcall(require, "neodev")
+if not neodev_ok then
+    return
+end
+
+-- LUA DEV TOOL
+
+-- Plugin para programar con Lua
+neodev.setup()
+
 -- LSP CONFIG
 
 -- Configuración de capabilities
@@ -75,9 +92,6 @@ local servers = {
     sumneko_lua = require("user.lsp.sumneko_lua"),
 }
 
--- Setup neovim lua configuration
--- require('neodev').setup()
-
 -- Configuración de mason
 mason.setup({
     ui = {
@@ -92,7 +106,6 @@ mason_lspconfig.setup {
 }
 
 -- Configuración final de los servidores (LSP)
-
 mason_lspconfig.setup_handlers({
     function(server_name)
         local opts = {
@@ -131,8 +144,8 @@ mason_lspconfig.setup_handlers({
 --     end
 -- end
 
--- Turn on lsp status information
--- require('fidget').setup()
+-- Ui para mostrar la activación del LPS
+fidget.setup()
 
 -- DIAGNOSTIC CONFIG
 

@@ -88,6 +88,8 @@ return packer.startup(function(use)
     use("williamboman/mason-lspconfig.nvim")     -- LSP config tool
     use("mfussenegger/nvim-dap")                 -- Debug Adapter Protocol (DAP)
     use("jose-elias-alvarez/null-ls.nvim")       -- LSP diagnostic, code action, formatter
+    use("j-hui/fidget.nvim")                     -- Estado de activación del LSP
+    use("folke/neodev.nvim")                     -- Complemento para nvim lua
 
     -- TreeSitter
     use({
