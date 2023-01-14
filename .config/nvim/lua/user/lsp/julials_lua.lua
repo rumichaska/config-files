@@ -3,8 +3,7 @@ return {
     settings = {
         julia = {
             lint = {
-                -- run = false,
-                -- missingrefs = "symbols",
+                missingrefs = "all",
             },
         },
     },
