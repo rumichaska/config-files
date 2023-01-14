@@ -55,9 +55,9 @@ iron.setup({
         })
     },
     keymaps = {
-        visual_send = "<space>l",
-        send_line = "<space>l",
-        clear = "<space>cl",
+        visual_send = "<Space>l",
+        send_line = "<Space>l",
+        clear = "<Space>cl",
     },
     ignore_blank_lines = true,
 })
