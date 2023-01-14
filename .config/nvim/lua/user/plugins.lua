@@ -154,10 +154,6 @@ return packer.startup(function(use)
     -- Estado de modificación según git
     use("lewis6991/gitsigns.nvim")
 
-    -- PROYECTOS
-    -- Complemento para revisión de proyectos usando Telescope
-    use("ahmedkhalf/project.nvim")
-
     -- TERMINAL
     -- Abrir terminales
     use({

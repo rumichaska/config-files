@@ -156,7 +156,6 @@ telescope.setup({
 })
 
 -- Configuración para proyectos
-telescope.load_extension("projects")
 telescope.load_extension("fzf")
 
 -- Keymaps
