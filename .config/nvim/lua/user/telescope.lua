@@ -1,14 +1,32 @@
 -- Control de mensaje de errores por falta de telescope
-local status_ok, telescope = pcall(require, "telescope")
-if not status_ok then
+local telescope_ok, telescope = pcall(require, "telescope")
+if not telescope_ok then
     return
 end
 
--- Definiendo variable local para `actions`
-local actions = require("telescope.actions")
+-- Control de mensaje de errores por falta de telescope.actions
+local actions_ok, actions = pcall(require, "telescope.actions")
+if not actions_ok then
+    return
+end
 
--- Importación de íconos
-local icons = require("user.icons")
+-- Control de mensaje de errores por falta de telescope.builtin
+local builtin_ok, builtin = pcall(require, "telescope.builtin")
+if not builtin_ok then
+    return
+end
+
+-- Control de mensaje de errores por falta de telescope.builtin
+local themes_ok, themes = pcall(require, "telescope.themes")
+if not themes_ok then
+    return
+end
+
+-- Control de mensaje de errores cuando se importa icons
+local icons_ok, icons = pcall(require, "user.icons")
+if not icons_ok then
+    return
+end
 
 -- Configuración de telescope
 telescope.setup({
@@ -139,3 +157,19 @@ telescope.setup({
 
 -- Configuración para proyectos
 telescope.load_extension("projects")
+telescope.load_extension("fzf")
+
+-- Keymaps
+vim.keymap.set("n", "<Leader>?", builtin.oldfiles, { desc = "[?] Find recently opened files" })
+vim.keymap.set("n", "<Leader><Space>", builtin.buffers, { desc = "[ ] Find existing buffers" })
+vim.keymap.set("n", "<Leader>/", function()
+    builtin.current_buffer_fuzzy_find(themes.get_dropdown({
+        winblend = 10,
+        previewer = false,
+    }))
+end, { desc = "[/] Fuzzily search in current buffer" })
+vim.keymap.set("n", "<Leader>ff", builtin.find_files, { desc = "[F]ind [F]iles" })
+vim.keymap.set("n", "<Leader>fh", builtin.help_tags, { desc = "[F]ind [H]elp" })
+vim.keymap.set("n", "<Leader>fw", builtin.grep_string, { desc = "[F]ind current [W]ord" })
+vim.keymap.set("n", "<Leader>fg", builtin.live_grep, { desc = "[F]ind by [G]rep" })
+vim.keymap.set("n", "<Leader>fd", builtin.diagnostics, { desc = "[F]ind [D]iagnostic" })

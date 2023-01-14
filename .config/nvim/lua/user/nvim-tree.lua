@@ -10,8 +10,11 @@ if not config_status_ok then
     return
 end
 
--- Importación de íconos
-local icons = require("user.icons")
+-- Control de mensaje de errores cuando se importa icons
+local icons_ok, icons = pcall(require, "user.icons")
+if not icons_ok then
+    return
+end
 
 -- Definiendo variable local
 local tree_cb = nvim_tree_config.nvim_tree_callback
@@ -72,3 +75,6 @@ nvim_tree.setup({
         timeout = 500,
     },
 })
+
+-- Keymaps
+vim.keymap.set("n", "<Leader>e", ":NvimTreeToggle<CR>", { desc = "[E]nter explorer" })

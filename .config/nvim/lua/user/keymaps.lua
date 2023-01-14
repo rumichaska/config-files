@@ -35,16 +35,8 @@ keymap("n", "<Leader>k", ":bnext<CR>", opts)
 keymap("n", "<Leader>j", ":bprevious<CR>", opts)
 keymap("n", "<Leader>q", ":bdelete<CR>", opts) -- Cerrar buffer
 
--- Nvimtree
-keymap("n", "<Leader>e", ":NvimTreeToggle<CR>", opts)
-
--- Telescope y búsqueda
-keymap("n", "<Leader>ff", ":Telescope find_files<CR>", opts)
-keymap("n", "<Leader>fg", ":Telescope live_grep<CR>", opts)
-keymap("n", "<Leader>fb", ":Telescope buffers<CR>", opts)
-keymap("n", "<Leader>ft", ":Telescope help_tags<CR>", opts)
-keymap("n", "<Leader>fp", ":Telescope projects<CR>", opts)
-keymap("n", "<Leader>nh", ":noh<CR>", opts) -- Borrar resaltado de búqueda
+-- Borrar resaltado de búqueda
+keymap("n", "<Leader>nh", ":noh<CR>", opts)
 
 -- Insert --
 

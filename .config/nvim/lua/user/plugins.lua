@@ -120,14 +120,12 @@ return packer.startup(function(use)
     use({
         "nvim-telescope/telescope-fzf-native.nvim",
         run = "make",
-        cond = vim.fn.executable "make" == 1,
+        -- cond = vim.fn.executable "make" == 1,
     })
 
     -- COLORSCHEME Y COLORES
     -- Temas de neovim
     use("folke/tokyonight.nvim")
-    use("navarasu/onedark.nvim")
-    use("sainnhe/gruvbox-material")
     -- Mostrar colores en código
     use("norcalli/nvim-colorizer.lua")
 

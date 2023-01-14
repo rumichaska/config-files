@@ -34,6 +34,12 @@ if not neodev_ok then
     return
 end
 
+-- Control de mensaje de errores por falta de telescope.builtin
+local builtin_ok, builtin = pcall(require, "telescope.builtin")
+if not builtin_ok then
+    return
+end
+
 -- LUA DEV TOOL
 
 -- Plugin para programar con Lua
@@ -60,15 +66,16 @@ local on_attach = function(_, bufnr)
     nmap("<Leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
     -- Utilidades
     nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
-    nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
+    nmap("gr", builtin.lsp_references, "[G]oto [R]eferences")
     nmap("gI", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
     nmap("<Leader>D", vim.lsp.buf.type_definition, "Type [D]efinition")
-    nmap("<Leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
-    nmap("<Leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
+    nmap("<Leader>ds", builtin.lsp_document_symbols, "[D]ocument [S]ymbols")
+    nmap("<Leader>ws", builtin.lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
     -- Documentación y diagnóstico
     nmap("K", vim.lsp.buf.hover, "Hover Documentation")
     nmap("gK", vim.lsp.buf.signature_help, "Signature Documentation")
-    nmap("gl", vim.diagnostic.open_float, "Show diagnostic")
+    nmap("gl", vim.diagnostic.open_float, "[G]oto diagnostic f[l]oat")
+    nmap("gL", vim.diagnostic.setloclist, "[G]oto diagnostic [L]ist")
     -- Lesser used LSP functionality
     nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
     nmap("<leader>wa", vim.lsp.buf.add_workspace_folder, "[W]orkspace [A]dd Folder")
@@ -79,7 +86,7 @@ local on_attach = function(_, bufnr)
     -- Formato
     vim.keymap.set({ "n", "v" }, "gf", function()
         vim.lsp.buf.format({ async = true })
-    end, { buffer = bufnr, desc = "LSP: Format code" })
+    end, { buffer = bufnr, desc = "LSP: [G]o [F]ormat code" })
 end
 
 -- Configuración de servidores (LSP)
