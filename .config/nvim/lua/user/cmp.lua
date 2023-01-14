@@ -13,12 +13,6 @@ end
 -- Relación de plugins de vscode para lua (*)
 require("luasnip/loaders/from_vscode").lazy_load()
 
--- Definiendo variable local para mejorar funcionamiento de super-tab
-local check_backspace = function()
-    local col = vim.fn.col "." - 1
-    return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
-end
-
 -- Importación de íconos
 local icons = require("user.icons")
 
@@ -39,29 +33,23 @@ cmp.setup({
     },
     mapping = {
         -- Mapeo para navegación entre las opciones de autocompletado
-        ["<C-k>"] = cmp.mapping.select_prev_item(),
-        ["<C-j>"] = cmp.mapping.select_next_item(),
-        ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
-        ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
-        ["<C-a>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-        ["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-        ["<C-e>"] = cmp.mapping {
-            i = cmp.mapping.abort(),
-            c = cmp.mapping.close(),
-        },
+        ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-f>"] = cmp.mapping.scroll_docs(4),
+        ["<C-Space>"] = cmp.mapping.complete(),
         -- Aceptar item seleccionado. Si ninguno está seleccionado, `select` primer item
         -- Seleccionar `select` a `false` para solo confirmar items seleccionados explícitamente
-        ["<CR>"] = cmp.mapping.confirm { select = true },
+        ["<CR>"] = cmp.mapping.confirm {
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true,
+        },
         -- Mapeo de navegación con super-tab
         ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
-            elseif luasnip.expandable() then
-                luasnip.expand()
             elseif luasnip.expand_or_jumpable() then
                 luasnip.expand_or_jump()
-            elseif check_backspace() then
-                fallback()
+            -- elseif check_backspace() then
+            --     fallback()
             else
                 fallback()
             end
