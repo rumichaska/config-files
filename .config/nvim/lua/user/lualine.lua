@@ -4,9 +4,6 @@ if not status_ok then
     return
 end
 
--- Importación de íconos
-local icons = require("user.icons")
-
 -- Condiciones
 local conditions = {
     buffer_not_empty = function()
@@ -17,26 +14,9 @@ local conditions = {
     end,
 }
 
--- Definiendo variable local para personalización de `diagnostics`
-local diagnostics = {
-    "diagnostics",
-    sources = { "nvim_diagnostic" },
-    sections = { "error", "warn" },
-    symbols = {
-        error = icons.diagnostics.ErrorOutline .. " ",
-        warn = icons.diagnostics.WarningOutline .. " ",
-    },
-    always_visible = true,
-}
-
 -- Definiendo variables local para personalización de `diff`
 local diff = {
     "diff",
-    -- symbols = {
-    --     added = icons.git.Add .. " ",
-    --     modified = icons.git.Mod .. "",
-    --     removed = icons.git.Remove .. " ",
-    -- },
     cond = conditions.hide_in_width,
 }
 
@@ -47,14 +27,6 @@ local filename = {
         return "%=" .. str
     end,
     color = { gui = "bold" }
-}
-
--- Definiendo variable local para personalización de `mode`
-local mode = {
-    "mode",
-    fmt = function(str)
-        return " " .. str
-    end,
 }
 
 -- Defeniendo variable local para personalización de `branch`
@@ -73,14 +45,14 @@ local encoding = {
 lualine.setup({
     options = {
         theme = "auto",
-        section_separators = "",    -- Deshabilitado, por defecto : { left = '', right = ''},
-        component_separators = "|",  -- Deshabilitado, por defecto : { left = '', right = ''},
+        section_separators = "",
+        component_separators = "|",
         disabled_filetypes = { "dashboard", "NvimTree", "Outline" },
         always_divide_middle = true,
     },
     sections = {
-        lualine_a = { mode },
-        lualine_b = { branch, diff, diagnostics },
+        lualine_a = { "mode" },
+        lualine_b = { branch, diff },
         lualine_c = { filename },
         lualine_x = { encoding, "fileformat", "filetype" },
         lualine_y = { "progress" },
