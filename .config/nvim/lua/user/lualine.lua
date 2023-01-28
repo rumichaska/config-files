@@ -66,7 +66,6 @@ lualine.setup({
         lualine_y = {},
         lualine_z = {},
     },
-    tabline = {},
-    winbar = {},
+    -- extensions = {},
     extensions = { "toggleterm" },
 })

@@ -10,6 +10,12 @@ if not config_status_ok then
     return
 end
 
+-- Control de mensaje de errores por falta de nvim-tree.api
+local api_status_ok, nvim_tree_api = pcall(require, "nvim-tree.api")
+if not api_status_ok then
+    return
+end
+
 -- Control de mensaje de errores cuando se importa icons
 local icons_ok, icons = pcall(require, "user.icons")
 if not icons_ok then
@@ -77,4 +83,4 @@ nvim_tree.setup({
 })
 
 -- Keymaps
-vim.keymap.set("n", "<Leader>e", ":NvimTreeToggle<CR>", { desc = "[E]nter explorer" })
+vim.keymap.set("n", "<Leader>e", nvim_tree_api.tree.toggle, { desc = "[E]nter explorer" })
