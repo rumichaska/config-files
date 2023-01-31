@@ -17,6 +17,7 @@ local ts_parser = {
     "markdown_inline",
     "python",
     "r",
+    "scss",
     "yaml",
 }
 
