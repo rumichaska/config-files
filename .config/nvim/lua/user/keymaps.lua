@@ -42,6 +42,9 @@ keymap("n", "<Leader>nh", ":noh<CR>", opts)
 
 -- Visual y Visual Block --
 
+-- Pegado inteligente
+keymap("x", "<Leader>p", "\"_dP")
+
 -- Indentación continua
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
