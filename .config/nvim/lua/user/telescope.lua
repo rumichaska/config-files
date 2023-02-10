@@ -163,7 +163,7 @@ vim.keymap.set("n", "<Leader>?", builtin.oldfiles, { desc = "[?] Find recently o
 vim.keymap.set("n", "<Leader><Space>", builtin.buffers, { desc = "[ ] Find existing buffers" })
 vim.keymap.set("n", "<Leader>/", function()
     builtin.current_buffer_fuzzy_find(themes.get_dropdown({
-        winblend = 10,
+        winblend = 3,
         previewer = false,
     }))
 end, { desc = "[/] Fuzzily search in current buffer" })
