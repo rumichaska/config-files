@@ -96,7 +96,7 @@ local servers = {
     julials = require("user.lsp.julials_lua"),
     pyright = require("user.lsp.pyright_lua"),
     r_language_server = require("user.lsp.r_language_lua"),
-    sumneko_lua = require("user.lsp.sumneko_lua"),
+    lua_ls = require("user.lsp.sumneko_lua"),
 }
 
 -- Configuración de mason
