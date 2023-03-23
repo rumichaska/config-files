@@ -68,11 +68,6 @@ nvim_tree.setup({
         enable = true,
         update_root = true,
     },
-    ignore_ft_on_setup = {
-        "startify",
-        "dashboard",
-        "alpha",
-    },
     filters = {
         dotfiles = true,
         exclude = { ".gitignore" },
