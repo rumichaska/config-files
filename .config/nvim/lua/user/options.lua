@@ -85,6 +85,10 @@ vim.opt.pumheight = 10                             -- Altura del menú
 vim.opt.wildmode = "longest:full,full"             -- Listado de opciones en línea de comandos
 vim.opt.wildoptions = "pum"                        -- Tipo de menú
 
+-- Deshabilitar netrw
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- Opciones de formato, funcionan y sobreescriben 'formatoptions' de la ruta
 -- /usr/local/share/nvim/runtime/ftplugin/
 -- vim.api.nvim_create_autocmd({ "BufEnter" }, {
