@@ -6,7 +6,7 @@ end
 --
 -- Parsers con soporte
 local ts_parser = {
-    "bash",
+    -- "bash",
     "comment",
     "css",
     "help",
