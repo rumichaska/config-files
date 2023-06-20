@@ -100,8 +100,6 @@ return packer.startup(function(use)
         "nvim-treesitter/nvim-treesitter-textobjects",
         after = "nvim-treesitter",
     })
-    -- Colores para corchetes, llaves, paréntesis, etc.
-    use("p00f/nvim-ts-rainbow")
 
     -- TELESCOPE
     -- Para búsqueda de archivos, texto, código, etc.

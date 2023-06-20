@@ -9,7 +9,6 @@ local ts_parser = {
     -- "bash",
     "comment",
     "css",
-    "help",
     "html",
     "lua",
     "make",
@@ -41,12 +40,6 @@ configs.setup({
             scope_incremental = "<c-s>",
             node_decremental = "<c-backspace>",
         },
-    },
-    -- Agregando configuración complementaria de nvim-ts-rainbow
-    rainbow = {
-        enable = true,
-        extended_mode = true,
-        max_file_lines = nil,
     },
     -- Agregando configuración para comentarios según lenguajes
     context_commentstring = {
