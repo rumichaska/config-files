@@ -1,29 +1,14 @@
 
 # "$schema" = 'https://starship.rs/config-schema.json'
 
-# AWS Module
-[aws]
-symbol = "  "
-
-# Buf Module
-[buf]
-symbol = " "
-
-# C Module
-[c]
-symbol = " "
-
 # Command Duration Module
 [cmd_duration]
-format = '\[[祥$duration]($style)\] '
+format = ' \[[祥$duration]($style)\]'
 
 # Conda Module
 [conda]
-symbol = " "
-
-# Dart Module
-[dart]
-symbol = " "
+symbol = "󱔎 "
+format = '\[[$symbol$environment]($style)\]'
 
 # Directory Module
 [directory]
@@ -33,77 +18,45 @@ read_only = " "
 [docker_context]
 symbol = " "
 
-# Elixir Module
-[elixir]
-symbol = " "
-
-# Elm Module
-[elm]
-symbol = " "
-
 # Git Branch Module
 [git_branch]
 symbol = " "
 format = '\[[$symbol$branch(:$remote_branch)]($style)\]'
 
-# Go Module
-[golang]
-symbol = " "
-
-# Haskell Module
-[haskell]
-symbol = " "
-
-# Java Module
-[java]
-symbol = " "
+# SSH Server Module
+[hostname]
+ssh_symbol = " "
+format = '\[[$ssh_symbol$hostname]($style)\]'
 
 # Julia Module
 [julia]
 symbol = " "
-format = '\[[$symbol($version)]($style)\] '
+format = '\[[$symbol($version)]($style)\]'
 
 # Lua module
 [lua]
 symbol = " "
-format = '\[[$symbol($version)]($style)\] '
+format = '\[[$symbol($version)]($style)\]'
 
 # Memory Usage Module
 [memory_usage]
 symbol = " "
 
-# Nim Module
-[nim]
-symbol = " "
-
-# Nix-shell Module
-[nix_shell]
-symbol = " "
-
-# Node.js Module
-[nodejs]
-symbol = " "
-
 # Package Version Module
 [package]
-symbol = " "
+symbol = " "
 
 # Python Module
 [python]
-symbol = " "
-format = '\[[$symbol($version)]($style)\] '
+symbol = " "
+format = '\[[$symbol($version)]($style)\]'
 
 # R Module
 [rlang]
-
-symbol = "\ufcd2 "
-format = '\[[$symbol($version)]($style)\] '
+symbol = " "
+format = '\[[$symbol($version)]($style)\]'
 detect_files = [""]
 
-# Spack Module
-[spack]
-symbol = "🅢 "
-
-# Rust Module
-[rust]
-symbol = " "
+# Username Module
+[username]
+format = '[$user]($style) '
