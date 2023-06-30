@@ -1,5 +1,5 @@
 
-# "$schema" = 'https://starship.rs/config-schema.json'
+# '$schema' = 'https://starship.rs/config-schema.json'
 
 # Command Duration Module
 [cmd_duration]
@@ -7,55 +7,62 @@ format = ' \[[祥$duration]($style)\]'
 
 # Conda Module
 [conda]
-symbol = "󱔎 "
+symbol = '󱔎 '
 format = '\[[$symbol$environment]($style)\]'
 
 # Directory Module
 [directory]
-read_only = " "
+read_only = ' '
 
 # Docker Context module
 [docker_context]
-symbol = " "
+symbol = ' '
 
 # Git Branch Module
 [git_branch]
-symbol = " "
+symbol = ' '
 format = '\[[$symbol$branch(:$remote_branch)]($style)\]'
+
+# Git Status Module
+[git_status]
+ahead = '⇡${count}'
+diverged = '⇕⇡${ahead_count}⇣${behind_count}'
+behind = '⇣${count}'
+format = '([\[$all_status$ahead_behind\]]($style))'
 
 # SSH Server Module
 [hostname]
-ssh_symbol = " "
+ssh_symbol = ' '
 format = '\[[$ssh_symbol$hostname]($style)\] '
 
 # Julia Module
 [julia]
-symbol = " "
-format = '\[[$symbol($version)]($style)\]'
+symbol = ' '
+format = ' \[[$symbol($version)]($style)\]'
 
 # Lua module
 [lua]
-symbol = " "
-format = '\[[$symbol($version)]($style)\]'
+symbol = ' '
+format = ' \[[$symbol($version)]($style)\]'
 
 # Memory Usage Module
 [memory_usage]
-symbol = " "
+symbol = ' '
 
 # Package Version Module
 [package]
-symbol = " "
+symbol = ' '
 
 # Python Module
 [python]
-symbol = " "
-format = '\[[$symbol($version)]($style)\]'
+symbol = ' '
+format = ' \[[$symbol($version)]($style)\]'
 
 # R Module
 [rlang]
-symbol = " "
-format = '\[[$symbol($version)]($style)\]'
-detect_files = [""]
+symbol = ' '
+format = ' \[[$symbol($version)]($style)\]'
+detect_files = ['']
 
 # Username Module
 [username]
