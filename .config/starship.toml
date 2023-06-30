@@ -26,7 +26,7 @@ format = '\[[$symbol$branch(:$remote_branch)]($style)\]'
 # SSH Server Module
 [hostname]
 ssh_symbol = " "
-format = '\[[$ssh_symbol$hostname]($style)\]'
+format = '\[[$ssh_symbol$hostname]($style)\] '
 
 # Julia Module
 [julia]
