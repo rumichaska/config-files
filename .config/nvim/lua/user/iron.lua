@@ -24,10 +24,10 @@ local bracketed_paste_radian = function(lines)
             table.insert(new, lines[line])
         end
 
-    table.insert(new, close_code)
+        table.insert(new, close_code)
 
-    return new
-  end
+        return new
+    end
 end
 
 -- Configuración de iron
@@ -37,12 +37,10 @@ iron.setup({
         scratch_repl = true,
         close_window_on_exit = true,
         repl_definition = {
-            -- r = require("iron.fts.r").radian,
             r = {
                 command = { "radian" },
                 format = bracketed_paste_radian,
             },
-            -- rmd = require("iron.fts.r").radian,
             rmd = {
                 command = { "radian" },
                 format = bracketed_paste_radian,
