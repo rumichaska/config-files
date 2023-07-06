@@ -65,4 +65,4 @@ symbol = ' '
 
 # Command Duration Module
 [cmd_duration]
-format = '\[[祥$duration]($style)\] '
+format = '\[[󱑌 $duration]($style)\] '
