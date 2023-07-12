@@ -11,7 +11,8 @@ if not snip_status_ok then
 end
 
 -- Relación de plugins de vscode para lua (*)
-require("luasnip/loaders/from_vscode").lazy_load()
+require("luasnip.loaders.from_vscode").lazy_load()
+-- require("luasnip").filetype_extend("htmldjango", { "html" })
 
 -- Importación de íconos
 local icons = require("user.icons")
@@ -48,8 +49,6 @@ cmp.setup({
                 cmp.select_next_item()
             elseif luasnip.expand_or_jumpable() then
                 luasnip.expand_or_jump()
-            -- elseif check_backspace() then
-            --     fallback()
             else
                 fallback()
             end

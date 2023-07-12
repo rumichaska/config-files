@@ -92,7 +92,7 @@ end
 -- Configuración de servidores (LSP)
 local servers = {
     cssls = {},
-    html = {},
+    html = require("user.lsp.html_lua"),
     julials = require("user.lsp.julials_lua"),
     pyright = require("user.lsp.pyright_lua"),
     r_language_server = require("user.lsp.r_language_lua"),

@@ -37,7 +37,6 @@ packer.init({
 
 -- Installar plugins
 return packer.startup(function(use)
-
     -- PLUGINS GENERALES
     -- Manejo de packer con packer
     use("wbthomason/packer.nvim")
@@ -79,11 +78,18 @@ return packer.startup(function(use)
             "hrsh7th/cmp-path",
             "hrsh7th/cmp-cmdline",
             "hrsh7th/cmp-nvim-lua",
-            -- snippets
-            "saadparwaiz1/cmp_luasnip",
-            "L3MON4D3/LuaSnip",
-            "rafamadriz/friendly-snippets",
         },
+    })
+    -- Snippets
+    use({
+        "L3MON4D3/LuaSnip",
+        tag = "v1.*",
+        run = "make install_jsregexp",
+        -- Complementos
+        requires = {
+            "saadparwaiz1/cmp_luasnip",
+            "rafamadriz/friendly-snippets",
+        }
     })
 
     -- TREESITTER
@@ -165,5 +171,4 @@ return packer.startup(function(use)
     if is_bootstrap then
         require("packer").sync()
     end
-
 end)
