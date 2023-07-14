@@ -47,7 +47,7 @@ format = ' \[[$symbol($version)]($style)\]'
 # Python Module
 [python]
 symbol = ' '
-format = ' \[[$symbol($version)]($style)\]'
+format = ' \[[$symbol($version)(\($virtualenv\))]($style)\]'
 
 # R Module
 [rlang]
@@ -62,7 +62,7 @@ format = '\[[$symbol$environment]($style)\] '
 
 # Memory Usage Module
 [memory_usage]
-symbol = '󰍛'
+symbol = '󰍛'
 
 # Command Duration Module
 [cmd_duration]

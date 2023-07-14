@@ -14,5 +14,9 @@ null_ls.setup({
             end,
         }),
         null_ls.builtins.formatting.autopep8,
+        -- CSS
+        null_ls.builtins.formatting.prettierd.with({
+            filetypes = { "css" }
+        })
     }
 })

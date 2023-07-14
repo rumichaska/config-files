@@ -101,6 +101,8 @@ local servers = {
 
 -- Configuración de mason
 mason.setup({
+    -- NOTE: Soluciona conflictos con pylint en entornos virutales
+    PATH = "append",
     ui = {
         border = "rounded",
     }
