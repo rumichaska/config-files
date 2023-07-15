@@ -4,12 +4,6 @@ if not status_ok then
     return
 end
 
--- Control de mensaje de errores por falta de nvim-tree.config
-local config_status_ok, nvim_tree_config = pcall(require, "nvim-tree.config")
-if not config_status_ok then
-    return
-end
-
 -- Control de mensaje de errores por falta de nvim-tree.api
 local api_status_ok, nvim_tree_api = pcall(require, "nvim-tree.api")
 if not api_status_ok then
@@ -102,17 +96,7 @@ nvim_tree.setup({
     view = { width = 40 },
     renderer = {
         icons = {
-            glyphs = {
-                git = {
-                    unstaged = icons.git_status.Unstaged,
-                    staged = icons.git_status.Staged,
-                    -- unmerged = icon.git_status.Unmerged,
-                    renamed = icons.git_status.Renamed,
-                    untracked = icons.git_status.Untracked,
-                    deleted = icons.git_status.Deleted,
-                    ignored = icons.git_status.Ignored,
-                },
-            },
+            glyphs = icons.nvimtree_glyphs,
         },
     },
     update_focused_file = {
@@ -121,12 +105,7 @@ nvim_tree.setup({
     },
     diagnostics = {
         enable = true,
-        icons = {
-            hint = icons.diagnostics.Hint,
-            info = icons.diagnostics.Information,
-            warning = icons.diagnostics.Warning,
-            error = icons.diagnostics.Error,
-        },
+        icons = icons.diagnostics,
     },
     filters = {
         dotfiles = true,

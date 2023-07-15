@@ -18,7 +18,7 @@ require("luasnip.loaders.from_vscode").lazy_load()
 local icons = require("user.icons")
 
 -- Asiganación de íconos cmp
-local kind_icons = icons.kind
+local kind_icons = icons.cmp_kind
 
 -- Configuración de cmp
 cmp.setup({

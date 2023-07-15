@@ -40,6 +40,12 @@ if not builtin_ok then
     return
 end
 
+-- Control de mensaje de errores cuando se importa icons
+local icons_ok, icons = pcall(require, "user.icons")
+if not icons_ok then
+    return
+end
+
 -- LUA DEV TOOL
 
 -- Plugin para programar con Lua
@@ -105,6 +111,7 @@ mason.setup({
     PATH = "append",
     ui = {
         border = "rounded",
+        icons = icons.mason_icons
     }
 })
 
@@ -158,15 +165,12 @@ fidget.setup()
 
 -- DIAGNOSTIC CONFIG
 
--- Importación de íconos
-local icons = require("user.icons")
-
 -- Definiendo variable local para signos personalizados
 local signs = {
-    { name = "DiagnosticSignError", text = icons.diagnostics.Error },
-    { name = "DiagnosticSignWarn", text = icons.diagnostics.Warning },
-    { name = "DiagnosticSignHint", text = icons.diagnostics.Hint },
-    { name = "DiagnosticSignInfo", text = icons.diagnostics.Information },
+    { name = "DiagnosticSignError", text = icons.diagnostics.error },
+    { name = "DiagnosticSignWarn",  text = icons.diagnostics.warning },
+    { name = "DiagnosticSignHint",  text = icons.diagnostics.hint },
+    { name = "DiagnosticSignInfo",  text = icons.diagnostics.information },
 }
 
 for _, sign in ipairs(signs) do
