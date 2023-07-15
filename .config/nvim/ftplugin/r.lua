@@ -14,15 +14,15 @@ local r = {
 -- Código
 
 -- Operadores de R %>% %in% <-
-keymap("i", "<M-M>", "<Esc>:normal! a %>%<CR>a ", opts)
-keymap("i", "<M-I>", "<Esc>:normal! a %in%<CR>a ", opts)
+keymap("i", "<C-S-m>", "<Esc>:normal! a %>%<CR>a ", opts)
+keymap("i", "<C-S-i>", "<Esc>:normal! a %in%<CR>a ", opts)
 keymap("i", "<M-->", "<Esc>:normal! a <-<CR>a ", opts)
 
 -- Ejecutar código en consola, similar a Ctrl+Shift+S de RStudio
 keymap("n", "<Leader>L", ":IronSend " .. r.source .. "<CR>", opts)
 
 -- Renderizar rmarkdown, similar a Ctrl+Shift+K de RStudio
-keymap("n", "<Leader>K", ":!R -e " .. r.rmd_render .. "<CR>", opts)
+keymap("n", "<C-S-k>", ":!R -e " .. r.rmd_render .. "<CR>", opts)
 
 -- Insertar sección, similar Ctrl+Shift+R de RStudio
 keymap("n", "gch", "73i-<Esc>0:normal gcc<CR>2l<S-R>", opts)
@@ -37,8 +37,8 @@ vim.api.nvim_create_autocmd({ "TermOpen" }, {
     pattern = "term://*",
     callback = function()
         keymap("n", "<Leader>tr", ":IronHide r<CR>", opts)
-        keymap("t", "<M-M>", " %>% ", opts)
-        keymap("t", "<M-I>", " %in% ", opts)
+        keymap("t", "<C-S-m>", " %>% ", opts)
+        keymap("t", "<C-S-i>", " %in% ", opts)
         keymap("t", "<M-->", " <- ", opts)
     end,
     group = vim.api.nvim_create_augroup("term_radian", { clear = true })
