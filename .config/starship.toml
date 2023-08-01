@@ -16,7 +16,7 @@ read_only = ' 󰌾'
 
 # Git Branch Module
 [git_branch]
-symbol = ' '
+symbol = ' '
 format = '\[[$symbol$branch(:$remote_branch)]($style)\]'
 
 # Git Status Module
