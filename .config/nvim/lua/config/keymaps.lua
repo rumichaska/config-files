@@ -3,6 +3,7 @@ local Util = require("util")
 -- Keymap function
 local function map(mode, lhs, rhs, opts)
     local keys = require("lazy.core.handler").handlers.keys
+    ---@cast keys LazyKeysHandler
     -- do not create the keymap if a lazy keys handler exists
     if not keys.active[keys.parse({ lhs, mode = mode }).id] then
         opts = opts or {}
@@ -111,6 +112,7 @@ end
 -- Toggle options
 map("n", "<Leader>uf", require("plugins.lsp.format").toggle, { desc = "Toggle Format On Save" })
 map("n", "<Leader>us", function() Util.toggle("spell") end, { desc = "Toggle Spelling" })
+map("n", "<Leader>uS", function() Util.language() end, { desc = "Changing Spelling Language" })
 map("n", "<Leader>uw", function() Util.toggle("wrap") end, { desc = "Toggle Word Wrap" })
 map("n", "<Leader>ul", function() Util.toggle_number() end, { desc = "Toggle Line Numbers" })
 map("n", "<Leader>ud", Util.toggle_diagnostics, { desc = "Toggle Diagnostics" })
@@ -121,8 +123,8 @@ if vim.lsp.inlay_hint then
 end
 
 -- Lazygit
--- map("n", "<Leader>gg", function() Util.float_term({ "lazygit" }, { cwd = Util.get_root(), esc_esc = false, ctrl_hjkl = false }) end, { desc = "Lazygit {root dir}" })
--- map("n", "<Leader>gG", function() Util.float_term({ "lazygit" }, { esc_esc = false, ctrl_hjkl = false }) end, { desc = "Lazygit {cwd}" })
+map("n", "<Leader>gg", function() Util.float_term({ "lazygit" }, { cwd = Util.get_root(), esc_esc = false, ctrl_hjkl = false }) end, { desc = "Lazygit {root dir}" })
+map("n", "<Leader>gG", function() Util.float_term({ "lazygit" }, { esc_esc = false, ctrl_hjkl = false }) end, { desc = "Lazygit {cwd}" })
 
 -- Quit
 map("n", "<Leader>qq", "<cmd>qa<CR>", { desc = "Quit All" })

@@ -170,6 +170,17 @@ function M.toggle(option, silent, values)
     end
 end
 
+-- Toggle language for spelling en|es
+function M.language()
+    if vim.opt_local["spelllang"]:get()[1] == "en" then
+        vim.opt_local.spelllang = "es"
+        Util.info("Enabled spanish language", { title = "Option" })
+    elseif vim.opt_local["spelllang"]:get()[1] == "es" then
+        vim.opt_local.spelllang = "en"
+        Util.info("Enabled english language", { title = "Option" })
+    end
+end
+
 -- Toggle line numbers
 local nu = { number = true, relativenumber = true }
 function M.toggle_number()
