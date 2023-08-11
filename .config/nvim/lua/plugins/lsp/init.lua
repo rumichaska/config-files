@@ -64,6 +64,18 @@ return {
                         },
                     },
                 },
+                pyright = {
+                    mason = false,
+                    settings = {
+                        python = {
+                            analysis = {
+                                autoSearchPaths = true,
+                                diagnosticMode = "workspace",
+                                useLibraryCodeForTypes = true,
+                            },
+                        },
+                    },
+                },
             },
             setup = {},
         },
@@ -121,8 +133,7 @@ return {
                     end
             end
 
-            -- vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
-            vim.diagnostic.config(opts.diagnostics)
+            vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
 
             local servers = opts.servers
             local has_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
@@ -195,7 +206,15 @@ return {
             return {
                 root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git"),
                 sources = {
+                    -- Lua
                     nls.builtins.formatting.stylua,
+                    -- Python
+                    nls.builtins.formatting.autopep8,
+                    nls.builtins.diagnostics.pylint.with({
+                        diagnostics_postprocess = function(diagnostic)
+                            diagnostic.code = diagnostic.message_id
+                        end,
+                    }),
                 },
             }
         end,
@@ -212,6 +231,8 @@ return {
         opts = {
             ensure_installed = {
                 "stylua",
+                "autopep8",
+                "pylint",
             },
         },
         config = function(_, opts)
