@@ -30,7 +30,7 @@ return {
                 severity_sort = true,
                 float = {
                     border = "rounded",
-                }
+                },
             },
             inlay_hints = {
                 enabled = false,
@@ -163,6 +163,7 @@ return {
                     end
                 end
                 require("lspconfig")[server].setup(server_opts)
+                require("lspconfig.ui.windows").default_options.border = "rounded"
             end
 
             -- get all the servers that are available thourgh mason-lspconfig
