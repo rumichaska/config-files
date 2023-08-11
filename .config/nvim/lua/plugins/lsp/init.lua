@@ -28,6 +28,9 @@ return {
                     prefix = "icons",
                 },
                 severity_sort = true,
+                float = {
+                    border = "rounded",
+                }
             },
             inlay_hints = {
                 enabled = false,

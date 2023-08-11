@@ -118,7 +118,7 @@ local terminals = {}
 function M.float_term(cmd, opts)
     opts = vim.tbl_deep_extend("force", {
         ft = "lazyterm",
-        size = { width = 0.9, height = 0.9 },
+        size = { width = 0.8, height = 0.9 },
     }, opts or {}, { persistent = true })
 
     local termkey = vim.inspect({ cmd = cmd or "shell", cwd = opts.cwd, env = opts.env, count = vim.v.count1 })
