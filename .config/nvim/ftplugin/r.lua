@@ -26,8 +26,17 @@ map("n", "<LocalLeader>cr", "<cmd>!R -e " .. r.rmd_render .. "<CR>", "R: Render 
 map("n", "<LocalLeader>cc", "73i-<Esc>0:normal gcc<CR>2l<S-R>", "R: Add Section Comment")
 
 -- Console
-map("n", "<Leader>tr", "<cmd>IronRepl<CR>", "Open/Hide R Console")
-map("n", "<Leader>tc", "<cmd>IronSend system('clear')<CR>", "Clear Console")
+map("n", "<LocalLeader>tr", "<cmd>IronRepl<CR>", "Open/Hide R Console")
+map("n", "<LocalLeader>tc", "<cmd>IronSend system('clear')<CR>", "Clear Console")
+
+-- Register keys
+require("util").on_load("which-key.nvim", function()
+    require("which-key").register({
+        mode = { "n", "v" },
+        ["<LocalLeader>c"] = { name = "+code" },
+        ["<LocalLeader>t"] = { name = "+REPL" },
+    })
+end)
 
 -- Autocmds
 vim.api.nvim_create_autocmd("TermOpen", {

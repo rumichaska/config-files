@@ -292,8 +292,6 @@ return {
                 keymaps = {
                     visual_send = "<C-CR>",
                     send_line = "<C-CR>",
-                    -- NOTE: 
-                    -- clear = "<Leader>tc",
                 },
                 ignore_blank_lines = true,
             }
