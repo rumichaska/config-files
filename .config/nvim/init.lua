@@ -35,6 +35,6 @@ require("lazy").setup("plugins", {
 })
 
 -- Load autocmds and keymaps
--- NOTE: this function loads config.autocmds and config.keymaps, its important
+-- NOTE: This function loads config.autocmds and config.keymaps, its important
 -- that this setup load after lazy (config.options)
 require("config").setup()
