@@ -143,8 +143,8 @@ local lazyterm = function()
 end
 map("n", "<Leader>ft", lazyterm, { desc = "Terminal (root dir)" })
 map("n", "<Leader>fT", function() Util.float_term() end, { desc = "Terminal (cwd)" })
-map("n", "<C-\\>", lazyterm, { desc = "Terminal (root dir)" })
--- Only works with ANSI keyboard distribution
+map("n", "<C-|>", lazyterm, { desc = "Terminal (root dir)" })
+-- NOTE: Only works with ANSI keyboard distribution
 -- map("n", "<C-/>", lazyterm, { desc = "Terminal (root dir)" })
 -- map("n", "<C-_>", lazyterm, { desc = "which_key_ignore" })
 
@@ -154,8 +154,8 @@ map("t", "<C-h>", "<cmd>wincmd h<CR>", { desc = "Go To Left Window" })
 map("t", "<C-j>", "<cmd>wincmd j<CR>", { desc = "Go To Lower Window" })
 map("t", "<C-k>", "<cmd>wincmd k<CR>", { desc = "Go To Upper Window" })
 map("t", "<C-l>", "<cmd>wincmd l<CR>", { desc = "Go To Right Window" })
-map("t", "<C-\\>", "<cmd>close<CR>", { desc = "Hide Terminal" })
--- Only works with ANSI keyboard distribution
+map("t", "<C-|>", "<cmd>close<CR>", { desc = "Hide Terminal" })
+-- NOTE: Only works with ANSI keyboard distribution
 -- map("n", "<C-/>", lazyterm, { desc = "Terminal (root dir)" })
 -- map("t", "<C-_>", "<cmd>close<CR>", { desc = "which_key_ignore" })
 
