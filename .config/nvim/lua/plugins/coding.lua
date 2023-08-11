@@ -123,9 +123,20 @@ return {
 
     -- Auto pairs
     {
-        "echasnovski/mini.pairs",
-        event = "VeryLazy",
-        opts = {},
+        "windwp/nvim-autopairs",
+        event = "InsertEnter",
+        opts = {
+            check_ts = true,
+            fast_wrap = {},
+        },
+        config = function(_, opts)
+            -- Integration with nvim-cmp
+            local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+            local cmp = require("cmp")
+            cmp.event:on("confirm_donde", cmp_autopairs.on_confirm_done())
+
+            require("nvim-autopairs").setup(opts)
+        end,
     },
 
     -- Surround
