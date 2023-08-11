@@ -87,3 +87,11 @@ vim.api.nvim_create_autocmd("BufWritePre", {
         vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
     end,
 })
+
+-- Set formatoptions
+vim.api.nvim_create_autocmd("FileType", {
+    group = augroup("formatoptions"),
+    callback = function()
+        vim.opt_local.formatoptions = "jcrqln"
+    end,
+})
