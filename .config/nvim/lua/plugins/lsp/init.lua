@@ -234,6 +234,9 @@ return {
                 "autopep8",
                 "pylint",
             },
+            ui = {
+                border = "rounded",
+            },
         },
         config = function(_, opts)
             require("mason").setup(opts)
