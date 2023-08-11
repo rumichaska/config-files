@@ -38,7 +38,6 @@ return {
     -- Auto completion
     {
         "hrsh7th/nvim-cmp",
-        version = false,
         event = "InsertEnter",
         dependencies = {
             "hrsh7th/cmp-nvim-lsp",
@@ -58,6 +57,16 @@ return {
                         require("luasnip").lsp_expand(args.body)
                     end,
                 },
+                window = {
+                    completion = cmp.config.window.bordered({
+                        winhighlight = "Normal:Normal,FloatBorder:CmpItemKindDefault,CursorLine:Visual,Search:None",
+                        scrollbar = false,
+                    }),
+                    documentation = cmp.config.window.bordered({
+                        winhighlight = "Normal:Normal,FloatBorder:CmpItemKindModule,CursorLine:Visual,Search:None",
+                        scrollbar = false,
+                    }),
+                },
                 completion = {
                     completeopt = "menu,menuone,noinsert",
                 },
@@ -68,19 +77,8 @@ return {
                     ["<C-f>"] = cmp.mapping.scroll_docs(4),
                     ["<C-Space>"] = cmp.mapping.complete(),
                     ["<C-e>"] = cmp.mapping.abort(),
-                    ["<CR>"] = cmp.mapping.confirm({
-                        i = function(fallback)
-                            if cmp.visible() and cmp.get_active_entry() then
-                                cmp.confirm({ behavior = cmp.ConfirmBehavior.replace, select = false })
-                            else
-                                fallback()
-                            end
-                        end,
-                        s = cmp.mapping.confirm({ select = true }),
-                        c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
-                    }), -- Accept current selection
-                    -- ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept current selection
-                    -- BUG: Conflicts with keymaps of R filetypes (%>%, %in% maps)
+                    ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept current selection
+                    -- BUG: Conflicts with R keymaps (%>%, %in% maps)
                     -- ["<S-CR>"] = cmp.mapping.confirm({
                     --     behavior = cmp.ConfirmBehavior.Replace,
                     --     select = true,
@@ -95,7 +93,7 @@ return {
                 }),
                 formatting = {
                     format = function(entry, vim_item)
-                        -- NOTE: Load plugin if installed, else use `config.icons`
+                        -- NOTE: Load plugin if installed, else use `config.icons.kinds`
                         local lspkind_ok, lspkind = pcall(require, "lspkind")
                         local icons = require("config").icons.kinds
                         if not lspkind_ok then
@@ -109,7 +107,7 @@ return {
                             })[entry.source.name]
                             return vim_item
                         else
-                            lspkind.cmp_format()
+                            lspkind.cmp_format()(entry, vim_item)
                         end
                     end,
                 },
