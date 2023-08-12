@@ -30,13 +30,10 @@ map("n", "<LocalLeader>tr", "<cmd>IronRepl<CR>", "Open/Hide R Console")
 map("n", "<LocalLeader>tc", "<cmd>IronSend system('clear')<CR>", "Clear Console")
 
 -- Register keys
-require("util").on_load("which-key.nvim", function()
-    require("which-key").register({
-        mode = { "n", "v" },
-        ["<LocalLeader>c"] = { name = "+code" },
-        ["<LocalLeader>t"] = { name = "+REPL" },
-    })
-end)
+require("which-key").register({
+    ["<LocalLeader>c"] = { name = "+code", buffer = 0 },
+    ["<LocalLeader>t"] = { name = "+REPL", buffer = 0 },
+})
 
 -- Autocmds
 vim.api.nvim_create_autocmd("TermOpen", {
