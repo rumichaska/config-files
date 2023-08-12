@@ -11,7 +11,7 @@ return {
                 functions = { italic = true, bold = true },
                 variables = {},
             },
-            sidebars = { "terminal" },
+            sidebars = { "terminal", "help" },
             lualine_bold = true,
             on_highlights = function(hl, c)
                 hl.CursorLineNr = {
