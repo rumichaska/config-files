@@ -77,12 +77,40 @@ return {
         "nvim-lualine/lualine.nvim",
         event = "VeryLazy",
         opts = function()
-            local icons = require("config").icons
             local Util = require("util")
+            local icons = require("config").icons
+
+            -- Add custom extensions for iron.nvim if installed
+            local function extension(tbl)
+                local ext = {}
+                if Util.has("iron.nvim") then
+                    ext = {
+                        {
+                            sections = {
+                                lualine_a = {
+                                    function()
+                                        return "IronREPL #"
+                                    end,
+                                },
+                            },
+                            -- requires set local filetype to 'ironterm' when open term
+                            -- check ftplugin/r.lua for example
+                            filetypes = { "ironterm" },
+                        },
+                    }
+                end
+                for _, v in pairs(tbl) do
+                    table.insert(ext, v)
+                end
+                return ext
+            end
+
             return {
                 options = {
                     disabled_filetypes = { statusline = { "dashboard", "alpha" } },
                     globalstatus = true,
+                    section_separators = "",
+                    component_separators = "|",
                 },
                 sections = {
                     lualine_a = { "mode" },
@@ -153,7 +181,10 @@ return {
                         end,
                     },
                 },
-                extensions = { "neo-tree", "lazy" },
+                extensions = extension({
+                    "lazy",
+                    "neo-tree",
+                }),
             }
         end,
     },

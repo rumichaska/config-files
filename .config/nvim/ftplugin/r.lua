@@ -43,6 +43,8 @@ vim.api.nvim_create_autocmd("TermOpen", {
         map("t", "<C-S-m>", " %>% ")
         map("t", "<C-S-i>", " %in% ")
         map("t", "<M-->", " <- ")
+        -- set filetype for lualine.nvim extension (optional)
+        vim.opt_local.filetype = "ironterm"
     end,
     group = augroup("console"),
 })
