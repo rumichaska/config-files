@@ -209,7 +209,7 @@ return {
             },
             show_current_context = true,
             use_treesitter = true,
-            use_treesitter_scope = true
+            use_treesitter_scope = true,
         },
     },
 
