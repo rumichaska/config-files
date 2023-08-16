@@ -10,10 +10,7 @@ local function augroup(name)
     return vim.api.nvim_create_augroup("R_" .. name, { clear = true })
 end
 
-local r = {
-    rmd_render = "\"rmarkdown::render('" .. vim.fn.expand("%") .. "')\"",
-    source = 'source("' .. vim.fn.expand("%") .. '")',
-}
+local source = 'source("' .. vim.fn.expand("%") .. '")'
 
 -- Operators (%>% %in% <-)
 map("i", "<C-S-m>", "<Esc>:normal! a %>%<CR>a ", "R: 'Pipe' Operator")
@@ -21,8 +18,7 @@ map("i", "<C-S-i>", "<Esc>:normal! a %in%<CR>a ", "R: `%in%` Operator")
 map("i", "<M-->", "<Esc>:normal! a <-<CR>a ", "R: 'Asign' Operator")
 
 -- Commands shortcuts
-map("n", "<LocalLeader>cs", "<cmd>:IronSend " .. r.source .. "<CR>", "R: Source Current File")
-map("n", "<LocalLeader>cr", "<cmd>!R -e " .. r.rmd_render .. "<CR>", "R: Render Rmd File")
+map("n", "<LocalLeader>cs", "<cmd>:IronSend " .. source .. "<CR>", "R: Source Current File")
 map("n", "<LocalLeader>cc", "73i-<Esc>0:normal gcc<CR>2l<S-R>", "R: Add Section Comment")
 
 -- Console

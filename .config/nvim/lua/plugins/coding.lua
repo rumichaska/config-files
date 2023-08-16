@@ -293,6 +293,10 @@ return {
                             command = { "radian" },
                             format = bracketed_paste_radian,
                         },
+                        rmd = {
+                            command = { "radian" },
+                            format = bracketed_paste_radian,
+                        },
                         python = require("iron.fts.python").ipython,
                     },
                     repl_open_cmd = view.split("30%", {
