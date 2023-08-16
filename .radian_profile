@@ -1,5 +1,4 @@
 options(
     radian.completion_timeout = 0,
-    radian.complete_while_typing = FALSE,
-    radian.insert_new_line = FALSE
+    radian.complete_while_typing = FALSE
 )
