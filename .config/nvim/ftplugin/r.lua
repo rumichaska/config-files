@@ -39,7 +39,7 @@ require("which-key").register({
 vim.api.nvim_create_autocmd("TermOpen", {
     pattern = "term://*",
     callback = function()
-        map("n", "<Leader>tr", ":IronHide r<CR>", "Hide R Console")
+        map("n", "<LocalLeader>tr", ":IronHide r<CR>", "Hide R Console")
         map("t", "<C-S-m>", " %>% ")
         map("t", "<C-S-i>", " %in% ")
         map("t", "<M-->", " <- ")

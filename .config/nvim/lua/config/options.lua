@@ -24,8 +24,8 @@ opt.list = true -- Show some invisible characters (tabs...
 opt.listchars = {
     eol = "↴",
     -- space = "⋅",
-    -- tab = "  ",
-    -- trail = "•",
+    tab = "  ",
+    trail = "•",
 }
 opt.mouse = "a" -- Enable mouse mode
 opt.number = true -- Print line number
