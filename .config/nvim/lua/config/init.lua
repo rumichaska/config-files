@@ -4,7 +4,7 @@ M.lazy_version = ">=9.1.0"
 
 local defaults = {
     colorscheme = function()
-        require("tokyonight").load()
+        require("catppuccin").load()
     end,
     -- Load default settings (autocmds and keymaps)
     defaults = {

@@ -107,6 +107,7 @@ return {
 
             return {
                 options = {
+                    theme = "catppuccin",
                     disabled_filetypes = { statusline = { "dashboard", "alpha" } },
                     globalstatus = true,
                     section_separators = "",

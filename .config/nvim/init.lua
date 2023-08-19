@@ -16,7 +16,7 @@ vim.opt.rtp:prepend(lazypath)
 -- NOTE: plugins.core load config.options with init function
 require("lazy").setup("plugins", {
     defaults = { lazy = true, version = false },
-    install = { colorscheme = { "tokyonight", "habamax" } },
+    install = { colorscheme = { "tokyonight", "catpuccin", "habamax" } },
     ui = {
         size = { width = 0.8, height = 0.9 },
         border = "rounded",
