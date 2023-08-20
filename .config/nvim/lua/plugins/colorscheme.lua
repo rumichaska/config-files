@@ -38,8 +38,47 @@ return {
             custom_highlights = function(colors)
                 return {
                     CursorLineNr = { fg = colors.yellow, bold = true },
+                    FloatBorder = { bg = colors.mantle },
+                    TelescopeNormal = { link = "NormalFloat" },
                 }
             end,
+            integrations = {
+                indent_blankline = {
+                    enabled = true,
+                    colored_indent_levels = false,
+                },
+                mason = true,
+                mini = true,
+                neotree = true,
+                noice = true,
+                native_lsp = {
+                    enabled = true,
+                    virtual_text = {
+                        errors = { "italic" },
+                        hints = { "italic" },
+                        warnings = { "italic" },
+                        information = { "italic" },
+                    },
+                    underlines = {
+                        errors = { "undercurl" },
+                        hints = { "undercurl" },
+                        warnings = { "undercurl" },
+                        information = { "undercurl" },
+                    },
+                    inlay_hints = {
+                        background = true,
+                    },
+                },
+                navic = {
+                    enabled = true,
+                    custom_bg = "NONE",
+                },
+                notify = true,
+                nvimtree = false,
+                lsp_trouble = true,
+                which_key = true,
+                illuminate = true,
+            },
         },
         config = function(_, opts)
             require("catppuccin").setup(opts)

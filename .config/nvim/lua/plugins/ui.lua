@@ -62,13 +62,27 @@ return {
                 offsets = {
                     {
                         filetype = "neo-tree",
-                        text = "Neo-tree",
-                        text_align = "left",
-                        highlight = "Directory",
+                        text = "File Explorer",
+                        text_align = "center",
+                        -- highlight = "Directory",
                     },
                 },
-                always_show_bufferline = false,
+                always_show_bufferline = true,
             },
+            highlights = require("catppuccin.groups.integrations.bufferline").get({
+                styles = { "italic", "bold" },
+                custom = {
+                    all = {
+                        fill = { fg = "#000000" },
+                    },
+                    mocha = {
+                        background = { fg = require("catppuccin.palettes").get_palette("mocha").text },
+                    },
+                    latte = {
+                        background = { fg = "#000000" },
+                    },
+                },
+            }),
         },
     },
 
@@ -252,7 +266,7 @@ return {
                 command_palette = true,
                 long_message_to_split = true,
                 inc_rename = true,
-                lsp_doc_border = true,
+                lsp_doc_border = true, -- rounded border for hover (K)
             },
         },
         -- stylua: ignore
