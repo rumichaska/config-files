@@ -33,16 +33,17 @@ require("which-key").register({
 
 -- Autocmds
 vim.api.nvim_create_autocmd("TermOpen", {
-    pattern = "term://*",
-    callback = function()
-        map("n", "<LocalLeader>tr", ":IronHide r<CR>", "Hide R Console")
-        map("t", "<C-S-m>", " %>% ")
-        map("t", "<C-S-i>", " %in% ")
-        map("t", "<M-->", " <- ")
-        -- set filetype for lualine.nvim extension (optional)
-        vim.opt_local.filetype = "ironterm"
-    end,
     group = augroup("console"),
+    callback = function(event)
+        if vim.bo[event.buf].filetype ~= "lazyterm" then
+            map("n", "<LocalLeader>tr", ":IronHide r<CR>", "Hide R Console")
+            map("t", "<C-S-m>", " %>% ")
+            map("t", "<C-S-i>", " %in% ")
+            map("t", "<M-->", " <- ")
+            -- set filetype as "ironterm"
+            vim.opt_local.filetype = "ironterm"
+        end
+    end,
 })
 
 -- NOTE: Dinamic enable/disable diagnostic in R file until LSP fix errors

@@ -199,6 +199,8 @@ return {
                 extensions = extension({
                     "lazy",
                     "neo-tree",
+                    "quickfix",
+                    "trouble",
                 }),
             }
         end,
@@ -219,8 +221,8 @@ return {
                 "lazy",
                 "mason",
                 "notify",
-                "toggleterm",
                 "lazyterm",
+                "ironterm",
             },
             show_current_context = true,
             use_treesitter = true,
