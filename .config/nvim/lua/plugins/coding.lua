@@ -60,11 +60,11 @@ return {
                 window = {
                     completion = cmp.config.window.bordered({
                         winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
-                        scrollbar = false,
+                        -- scrollbar = false,
                     }),
                     documentation = cmp.config.window.bordered({
                         winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
-                        scrollbar = false,
+                        -- scrollbar = false,
                     }),
                 },
                 completion = {

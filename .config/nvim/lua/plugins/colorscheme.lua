@@ -35,11 +35,14 @@ return {
         priority = 1000,
         opts = {
             flavour = "mocha",
+            term_colors = true,
             custom_highlights = function(colors)
                 return {
                     CursorLineNr = { fg = colors.yellow, bold = true },
                     FloatBorder = { bg = colors.mantle },
                     TelescopeNormal = { link = "NormalFloat" },
+                    NoiceSplit = { link = "Normal" },
+                    TroubleNormal = { link = "Normal" },
                 }
             end,
             integrations = {
