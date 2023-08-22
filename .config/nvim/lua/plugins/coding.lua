@@ -307,6 +307,7 @@ return {
                 keymaps = {
                     visual_send = "<C-CR>",
                     send_line = "<C-CR>",
+                    send_until_cursor = "<A-b>",
                 },
                 ignore_blank_lines = true,
             }
