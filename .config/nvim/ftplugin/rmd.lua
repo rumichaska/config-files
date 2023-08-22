@@ -1,4 +1,4 @@
--- Get config from r filetypes
+-- NOTE: Get config from r filetypes
 -- alternative to get all the configuration of r.lua into rmd.lua
 -- vim.cmd.runtime("ftplugin/r.lua")
 
@@ -29,7 +29,7 @@ map("n", "<LocalLeader>cc", "73i-<Esc>0:normal gcc<CR>2l<S-R>", "R: Add Section 
 map("n", "<LocalLeader>tr", "<cmd>IronRepl<CR>", "Open/Hide R Console")
 map("n", "<LocalLeader>tc", "<cmd>IronSend system('clear')<CR>", "Clear Console")
 
--- Register keys
+-- Register which-key
 require("which-key").register({
     ["<LocalLeader>c"] = { name = "+code", buffer = 0 },
     ["<LocalLeader>t"] = { name = "+REPL", buffer = 0 },

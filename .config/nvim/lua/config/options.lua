@@ -8,13 +8,12 @@ local opt = vim.opt
 opt.autowrite = true -- Enable auto write
 opt.clipboard = "unnamedplus" -- Sync with system clipboard
 opt.completeopt = "menu,menuone,noselect"
-opt.colorcolumn = "80" -- Column highlight
+-- opt.colorcolumn = "80" -- Column highlight (ftplugin/)
 opt.conceallevel = 3 -- Hide * markup for bold and italic
 opt.confirm = true -- Confirm to save changes before exiting modified buffer
 opt.cursorline = true -- Enable highlighting of the current line
 opt.expandtab = true -- Use spaces instead of tabs
--- BUG: Doesn't set properly, set this option in autocmds
--- opt.formatoptions = "jcrqln"
+-- opt.formatoptions = "jcrqln" (config.autocmds)
 opt.grepformat = "%f:%l:%c:%m"
 opt.grepprg = "rg --vimgrep"
 opt.ignorecase = true -- Ignore case
@@ -29,8 +28,7 @@ opt.listchars = {
 }
 opt.mouse = "a" -- Enable mouse mode
 opt.number = true -- Print line number
--- BUG: Disabling blend fixes NerdFonts icon size problems (kitty?)
--- opt.pumblend = 10 -- Popup blend
+-- opt.pumblend = 10 -- Popup blend (render problems NerdFont symbols)
 opt.pumheight = 10 -- Maximum number of entries in a popup
 opt.relativenumber = true -- Relative line numbers
 opt.scrolloff = 4 -- Lines of context
@@ -58,8 +56,8 @@ opt.wrap = false -- Disable line wrap
 
 -- Options with nvim versión > 0.9.0
 if vim.fn.has("nvim-0.9.0") == 1 then
-  opt.splitkeep = "screen"
-  opt.shortmess:append({ C = true })
+    opt.splitkeep = "screen"
+    opt.shortmess:append({ C = true })
 end
 
 -- Fix markdown indentation settings

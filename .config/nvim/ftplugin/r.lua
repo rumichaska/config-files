@@ -25,7 +25,7 @@ map("n", "<LocalLeader>cc", "73i-<Esc>0:normal gcc<CR>2l<S-R>", "R: Add Section 
 map("n", "<LocalLeader>tr", "<cmd>IronRepl<CR>", "Open/Hide R Console")
 map("n", "<LocalLeader>tc", "<cmd>IronSend system('clear')<CR>", "Clear Console")
 
--- Register keys
+-- Register which-key
 require("which-key").register({
     ["<LocalLeader>c"] = { name = "+code", buffer = 0 },
     ["<LocalLeader>t"] = { name = "+REPL", buffer = 0 },
@@ -45,37 +45,3 @@ vim.api.nvim_create_autocmd("TermOpen", {
         end
     end,
 })
-
--- NOTE: Dinamic enable/disable diagnostic in R file until LSP fix errors
--- with languagesever v3.15. Provisional fix installing via `remotes::install_github("REditorSupport/languageserver")`
---
--- vim.api.nvim_create_autocmd("BufEnter", {
---     callback = function(event)
---         local filetype = vim.bo[event.buf].filetype == "r"
---         if filetype and not vim.diagnostic.is_disabled() then
---             vim.diagnostic.disable()
---             require("lazy.core.util").info("Disabling diagnostic in current file", { title = "LSP" })
---         else
---             vim.diagnostic.enable()
---         end
---     end,
---     group = augroup("diagnostic"),
--- })
--- vim.api.nvim_create_autocmd("BufWritePost", {
---     callback = function(event)
---         local filetype = vim.bo[event.buf].filetype == "r"
---         if filetype and vim.diagnostic.is_disabled() then
---             vim.diagnostic.enable()
---         end
---     end,
---     group = augroup("enable_when_write"),
--- })
--- vim.api.nvim_create_autocmd("InsertEnter", {
---     callback = function(event)
---         local filetype = vim.bo[event.buf].filetype == "r"
---         if filetype and not vim.diagnostic.is_disabled() then
---             vim.diagnostic.disable()
---         end
---     end,
---     group = augroup("disable_in_insert"),
--- })
