@@ -13,10 +13,6 @@ return {
                 require("luasnip.loaders.from_vscode").lazy_load()
             end,
         },
-        opts = {
-            history = true,
-            delete_check_events = "TextChanged",
-        },
         -- stylua: ignore
         keys = {
             {
@@ -33,6 +29,28 @@ return {
                 "<S-Tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" },
             },
         },
+        opts = {
+            history = true,
+            delete_check_events = "TextChanged",
+            update_events = { "TextChanged", "TextChangedI" },
+        },
+        config = function(_, opts)
+            local ls = require("luasnip")
+
+            -- Filetype snippets
+            local s = ls.snippet
+            local t = ls.text_node
+            local i = ls.insert_node
+            local fmt = require("luasnip.extras.fmt").fmt
+
+            ls.add_snippets("r", {
+                s("cc1", fmt("# {} ----", { i(1, "SECTION 1") })),
+                s("cc2", fmt("## {} ----", { i(1, "SECTION 2") })),
+                s("cc3", fmt("### {} ----", { i(1, "SECTION 3") })),
+            })
+
+            ls.setup(opts)
+        end,
     },
 
     -- Auto completion
