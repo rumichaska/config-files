@@ -106,7 +106,16 @@ return {
                     { name = "nvim_lsp" },
                     { name = "luasnip" },
                     { name = "buffer" },
-                    { name = "path" },
+                    {
+                        name = "path",
+                        option = {
+                            -- get path to current working directory (cwd),
+                            -- defaults to current buffer directory
+                            get_cwd = function()
+                                return vim.fn.getcwd()
+                            end,
+                        },
+                    },
                     { name = "nvim_lua" },
                 }),
                 formatting = {
