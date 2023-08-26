@@ -22,11 +22,12 @@ return {
             diagnostics = {
                 underline = true,
                 update_in_insert = false,
-                virtual_text = {
-                    spacing = 4,
-                    source = "if_many",
-                    prefix = "icons",
-                },
+                virtual_text = false,
+                -- virtual_text = {
+                --     spacing = 4,
+                --     source = "if_many",
+                --     prefix = "icons",
+                -- },
                 severity_sort = true,
                 float = {
                     border = "rounded",
