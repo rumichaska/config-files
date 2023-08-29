@@ -58,15 +58,24 @@ return {
         },
         opts = {
             options = {
-                diagnostics = "nvim_lsp",
+                buffer_close_icon = "󰅖",
+                modified_icon = "●",
+                close_icon = "",
+                left_trunc_marker = "",
+                right_trunc_marker = "",
                 offsets = {
                     {
                         filetype = "neo-tree",
                         text = "File Explorer",
                         text_align = "center",
-                        -- highlight = "Directory",
+                        separator = true,
                     },
                 },
+                get_element_icon = function(element)
+                    local icon, hl = require("nvim-web-devicons").get_icon_by_filetype(element.filetype, { default = false })
+                    return icon, hl
+                end,
+                separator_style = "thick",
                 always_show_bufferline = true,
             },
             highlights = require("catppuccin.groups.integrations.bufferline").get({
