@@ -94,31 +94,6 @@ return {
             local Util = require("util")
             local icons = require("config").icons
 
-            -- Add custom extensions for iron.nvim if installed
-            local function extension(tbl)
-                local ext = {}
-                if Util.has("iron.nvim") then
-                    ext = {
-                        {
-                            sections = {
-                                lualine_a = {
-                                    function()
-                                        return "IronREPL #"
-                                    end,
-                                },
-                            },
-                            -- requires set local filetype to 'ironterm' when open term
-                            -- check ftplugin/r.lua for example
-                            filetypes = { "ironterm" },
-                        },
-                    }
-                end
-                for _, v in pairs(tbl) do
-                    table.insert(ext, v)
-                end
-                return ext
-            end
-
             return {
                 options = {
                     theme = "catppuccin",
@@ -194,12 +169,25 @@ return {
                         end,
                     },
                 },
-                extensions = extension({
+                extensions = {
                     "lazy",
                     "neo-tree",
                     "quickfix",
                     "trouble",
-                }),
+                    -- iron.nvim
+                    -- requires set local filetype to 'ironterm' when open term
+                    -- check ftplugin/r.lua for example
+                    {
+                        sections = {
+                            lualine_a = {
+                                function()
+                                    return "IronREPL #"
+                                end,
+                            },
+                        },
+                        filetypes = { "ironterm" },
+                    },
+                },
             }
         end,
     },
