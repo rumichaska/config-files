@@ -96,11 +96,6 @@ return {
                     ["<C-Space>"] = cmp.mapping.complete(),
                     ["<C-e>"] = cmp.mapping.abort(),
                     ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept current selection
-                    -- BUG: Conflicts with R keymaps (%>%, %in% maps)
-                    -- ["<S-CR>"] = cmp.mapping.confirm({
-                    --     behavior = cmp.ConfirmBehavior.Replace,
-                    --     select = true,
-                    -- }), -- Accept currently selected item
                 }),
                 sources = cmp.config.sources({
                     { name = "nvim_lsp" },

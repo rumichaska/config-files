@@ -58,6 +58,10 @@ return {
         },
         opts = {
             options = {
+                indicator = {
+                    icon = "▌",
+                    style = "icon",
+                },
                 buffer_close_icon = "󰅖",
                 modified_icon = "●",
                 close_icon = "",
@@ -75,7 +79,6 @@ return {
                     local icon, hl = require("nvim-web-devicons").get_icon_by_filetype(element.filetype, { default = false })
                     return icon, hl
                 end,
-                separator_style = "thick",
                 always_show_bufferline = true,
             },
             highlights = require("catppuccin.groups.integrations.bufferline").get({
