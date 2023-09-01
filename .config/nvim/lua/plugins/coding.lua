@@ -44,9 +44,9 @@ return {
             local fmt = require("luasnip.extras.fmt").fmt
 
             ls.add_snippets("r", {
-                s("cc1", fmt("# {} ----", { i(1, "SECTION 1") })),
-                s("cc2", fmt("## {} ----", { i(1, "SECTION 2") })),
-                s("cc3", fmt("### {} ----", { i(1, "SECTION 3") })),
+                s("head1", fmt("# {} ----", { i(1, "SECTION 1") })),
+                s("head2", fmt("## {} ----", { i(1, "SECTION 2") })),
+                s("head3", fmt("### {} ----", { i(1, "SECTION 3") })),
             })
 
             ls.setup(opts)

@@ -1,5 +1,5 @@
 -- Local options
-vim.opt_local.colorcolumn = "100"
+vim.opt_local.colorcolumn = "80"
 
 -- Functions and variables
 local function map(mode, lhs, rhs, desc)
