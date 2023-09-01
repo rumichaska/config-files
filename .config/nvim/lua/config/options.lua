@@ -6,6 +6,7 @@ vim.g.maplocalleader = ","
 local opt = vim.opt
 
 opt.autowrite = true -- Enable auto write
+opt.breakindent = true
 opt.clipboard = "unnamedplus" -- Sync with system clipboard
 opt.completeopt = "menu,menuone,noselect"
 -- opt.colorcolumn = "80" -- Column highlight (ftplugin/)
@@ -19,6 +20,7 @@ opt.grepprg = "rg --vimgrep"
 opt.ignorecase = true -- Ignore case
 opt.inccommand = "nosplit" -- preview incremental substitute
 opt.laststatus = 0
+opt.linebreak = true
 opt.list = true -- Show some invisible characters (tabs...
 opt.listchars = {
     eol = "↴",
