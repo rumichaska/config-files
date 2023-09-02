@@ -47,6 +47,7 @@ return {
                 s("head1", fmt("# {} ----", { i(1, "SECTION 1") })),
                 s("head2", fmt("## {} ----", { i(1, "SECTION 2") })),
                 s("head3", fmt("### {} ----", { i(1, "SECTION 3") })),
+                s("#!", t("#! /usr/bin/env Rscript")),
             })
 
             ls.setup(opts)

@@ -316,6 +316,7 @@ return {
             css = { css = true },
             html = { css = true },
             r = { names = false, rgb_fn = true },
+            rmd = { names = false, rgb_fn = true },
         },
     },
 
