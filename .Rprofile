@@ -2,6 +2,9 @@
 # Encondificación
 options(encoding = "UTF-8")
 
+# httpgd
+try(httpgd::hgd(silent = TRUE), silent = TRUE)
+
 # Función para ver dataframes en browser
 view <- function(.data) {
     if (interactive()) {
@@ -49,7 +52,7 @@ view <- function(.data) {
             ),
             style = list(
                 fontSize = "12px",
-                fontFamily = "-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif"
+                fontFamily = "sans-serif"
             )
         )
     }
