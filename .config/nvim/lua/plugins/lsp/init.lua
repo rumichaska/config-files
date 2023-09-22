@@ -54,6 +54,7 @@ return {
                             completion = {
                                 callSnippet = "Replace",
                             },
+                            hint = { enable = true },
                         },
                     },
                 },

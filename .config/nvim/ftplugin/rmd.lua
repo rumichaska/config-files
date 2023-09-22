@@ -23,6 +23,7 @@ map("i", "<M-->", "<Esc>:normal! a <-<CR>a ", "R: 'Asign' Operator")
 
 -- Commands shortcuts
 map("n", "<LocalLeader>cr", "<cmd>!R -e " .. render .. "<CR>", "R: Render Rmd File")
+map("n", "<LocalLeader>cv", "<cmd>IronSend httpgd::hgd_url()<CR>", "R: Viewer")
 
 -- Console
 map("n", "<LocalLeader>tr", "<cmd>IronRepl<CR>", "Open/Hide R Console")
@@ -39,7 +40,7 @@ vim.api.nvim_create_autocmd("TermOpen", {
     group = augroup("console"),
     callback = function(event)
         if vim.bo[event.buf].filetype ~= "lazyterm" then
-            map("n", "<LocalLeader>tr", ":IronHide r<CR>", "Hide R Console")
+            map("n", "<LocalLeader>tr", "<cmd>IronHide r<CR>", "Hide R Console")
             map("t", "<C-S-m>", " |> ")
             map("t", "<C-S-i>", " %in% ")
             map("t", "<M-->", " <- ")
@@ -48,6 +49,3 @@ vim.api.nvim_create_autocmd("TermOpen", {
         end
     end,
 })
-
--- Set environment variable for PANDOC
-vim.env["RSTUDIO_PANDOC"] = "/usr/lib/rstudio/resources/app/bin/quarto/bin/tools/"

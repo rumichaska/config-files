@@ -43,11 +43,19 @@ return {
             local i = ls.insert_node
             local fmt = require("luasnip.extras.fmt").fmt
 
+            -- R
             ls.add_snippets("r", {
                 s("head1", fmt("# {} ----", { i(1, "SECTION 1") })),
                 s("head2", fmt("## {} ----", { i(1, "SECTION 2") })),
                 s("head3", fmt("### {} ----", { i(1, "SECTION 3") })),
                 s("#!", t("#! /usr/bin/env Rscript")),
+            })
+
+            -- Rmd
+            ls.add_snippets("rmd", {
+                s("head1", fmt("# {} ----", { i(1, "SECTION 1") })),
+                s("head2", fmt("## {} ----", { i(1, "SECTION 2") })),
+                s("head3", fmt("### {} ----", { i(1, "SECTION 3") })),
             })
 
             ls.setup(opts)
