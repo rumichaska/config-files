@@ -38,7 +38,7 @@ return {
             term_colors = true,
             custom_highlights = function(colors)
                 return {
-                    CursorLineNr = { fg = colors.peach, bold = true },
+                    CursorLineNr = { bold = true },
                     FloatBorder = { bg = colors.mantle },
                     TelescopeNormal = { link = "NormalFloat" },
                     NoiceSplit = { link = "Normal" },
