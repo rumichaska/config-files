@@ -186,7 +186,7 @@ return {
                     "neo-tree",
                     "quickfix",
                     "trouble",
-                    -- iron.nvim
+                    -- NOTE: iron.nvim
                     -- requires set local filetype to 'ironterm' when open term
                     -- check ftplugin/r.lua for example
                     {
@@ -207,23 +207,26 @@ return {
     -- Indent guides
     {
         "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
         event = { "BufReadPost", "BufNewFile" },
         opts = {
-            filetype_exclude = {
-                "help",
-                "alpha",
-                "dashboard",
-                "neo-tree",
-                "Trouble",
-                "lazy",
-                "mason",
-                "notify",
-                "lazyterm",
-                "ironterm",
+            scope = {
+                show_start = false,
+                show_end = false,
             },
-            show_current_context = true,
-            use_treesitter = true,
-            use_treesitter_scope = true,
+            exclude = {
+                filetypes = {
+                    "alpha",
+                    "dashboard",
+                    "neo-tree",
+                    "Trouble",
+                    "lazy",
+                    "mason",
+                    "notify",
+                    "lazyterm",
+                    "ironterm",
+                },
+            },
         },
     },
 

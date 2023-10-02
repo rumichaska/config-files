@@ -38,7 +38,7 @@ return {
             term_colors = true,
             custom_highlights = function(colors)
                 return {
-                    CursorLineNr = { fg = colors.yellow, bold = true },
+                    CursorLineNr = { fg = colors.peach, bold = true },
                     FloatBorder = { bg = colors.mantle },
                     TelescopeNormal = { link = "NormalFloat" },
                     NoiceSplit = { link = "Normal" },
@@ -48,6 +48,7 @@ return {
             integrations = {
                 indent_blankline = {
                     enabled = true,
+                    scope_color = "lavender",
                     colored_indent_levels = false,
                 },
                 mason = true,
