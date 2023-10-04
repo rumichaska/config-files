@@ -210,10 +210,7 @@ return {
         main = "ibl",
         event = { "BufReadPost", "BufNewFile" },
         opts = {
-            scope = {
-                show_start = false,
-                show_end = false,
-            },
+            scope = { enabled = false },
             exclude = {
                 filetypes = {
                     "alpha",

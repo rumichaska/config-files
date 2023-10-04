@@ -38,7 +38,6 @@ return {
             },
             capabilities = {},
             autoformat = false,
-            format_notify = false,
             format = {
                 formatting_options = nil,
                 timeout_ms = nil,
@@ -204,7 +203,7 @@ return {
 
     -- Formatters (check for alternative)
     {
-        "jose-elias-alvarez/null-ls.nvim",
+        "nvimtools/none-ls.nvim",
         event = { "BufReadPre", "BufNewFile" },
         dependencies = { "williamboman/mason.nvim" },
         opts = function()

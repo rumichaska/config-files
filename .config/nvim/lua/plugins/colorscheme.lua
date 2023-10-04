@@ -46,15 +46,15 @@ return {
                 }
             end,
             integrations = {
+                illuminate = true,
                 indent_blankline = {
                     enabled = true,
                     scope_color = "lavender",
                     colored_indent_levels = false,
                 },
+                lsp_trouble = true,
                 mason = true,
                 mini = true,
-                neotree = true,
-                noice = true,
                 native_lsp = {
                     enabled = true,
                     virtual_text = {
@@ -67,7 +67,7 @@ return {
                         errors = { "undercurl" },
                         hints = { "undercurl" },
                         warnings = { "undercurl" },
-                        information = { "undercurl" },
+                        information = { "undercurl" }
                     },
                     inlay_hints = {
                         background = true,
@@ -75,13 +75,16 @@ return {
                 },
                 navic = {
                     enabled = true,
-                    custom_bg = "NONE",
+                    custom_bg = "lualine",
                 },
+                neotree = true,
+                noice = true,
                 notify = true,
                 nvimtree = false,
-                lsp_trouble = true,
+                semantic_tokens = true,
+                telescope = true,
+                treesitter = true,
                 which_key = true,
-                illuminate = true,
             },
         },
         config = function(_, opts)
