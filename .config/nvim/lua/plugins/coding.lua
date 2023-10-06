@@ -205,7 +205,12 @@ return {
     },
 
     -- Comments
-    { "JoosepAlviste/nvim-ts-context-commentstring" },
+    {
+        "JoosepAlviste/nvim-ts-context-commentstring",
+        opts = {
+            enable_autocmd = false,
+        },
+    },
     {
         "echasnovski/mini.comment",
         event = "VeryLazy",

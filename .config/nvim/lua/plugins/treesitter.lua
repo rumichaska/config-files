@@ -9,10 +9,6 @@ return {
         event = { "BufReadPost", "BufNewFile" },
         dependencies = {
             "nvim-treesitter/nvim-treesitter-textobjects",
-            init = function()
-                require("lazy.core.loader").disable_rtp_plugin("nvim-treesitter-textobjects")
-                load_textobjects = true
-            end,
         },
         cmd = { "TSUpdateSync" },
         keys = {
@@ -57,6 +53,15 @@ return {
                     node_decremental = "<BS>",
                 },
             },
+            textobjects = {
+                move = {
+                    enable = true,
+                    goto_next_start = { ["]f"] = "@function.outer", ["]c"] = "@class.outer" },
+                    goto_next_end = { ["]F"] = "@function.outer", ["]C"] = "@class.outer" },
+                    goto_previous_start = { ["[f"] = "@function.outer", ["[c"] = "@class.outer" },
+                    goto_previous_end = { ["[F"] = "@function.outer", ["[C"] = "@class.outer" },
+                },
+            },
         },
         config = function(_, opts)
             if type(opts.ensure_installed) == "table" then
@@ -70,21 +75,6 @@ return {
                 end, opts.ensure_installed)
             end
             require("nvim-treesitter.configs").setup(opts)
-
-            if load_textobjects then
-                -- PERF: no need to load the plugin, if que only need its queries for mini.ai
-                if opts.textobjects then
-                    for _, mod in ipairs({ "move", "select", "swap", "lsp_interop" }) do
-                        if opts.textobjects[mod] and opts.textobjects[mod].enable then
-                            local Loader = require("lazy.core.loader")
-                            Loader.disable_rtp_plugin["nvim-treesitter-textobjects"] = nil
-                            local plugin = require("lazy.core.config").plugins["nvim-treesitter-textobjects"]
-                            require("lazy.core.loader").source_runtime(plugin.dir, "plugin")
-                            break
-                        end
-                    end
-                end
-            end
         end,
     },
 }

@@ -20,10 +20,10 @@ map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true
 map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 
 -- Move to windows (splits) using <ctrl> hjkl keys
-map("n", "<C-h>", "<C-w>h", { desc = "Go To Left Window", remap = true } )
-map("n", "<C-j>", "<C-w>j", { desc = "Go To Lower Window", remap = true } )
-map("n", "<C-k>", "<C-w>k", { desc = "Go To Upper Window", remap = true } )
-map("n", "<C-l>", "<C-w>l", { desc = "Go To Right Window", remap = true } )
+map("n", "<C-h>", "<C-w>h", { desc = "Go To Left Window", remap = true })
+map("n", "<C-j>", "<C-w>j", { desc = "Go To Lower Window", remap = true })
+map("n", "<C-k>", "<C-w>k", { desc = "Go To Upper Window", remap = true })
+map("n", "<C-l>", "<C-w>l", { desc = "Go To Right Window", remap = true })
 
 -- Resize windows (splits) using <ctrl> arrow keys
 map("n", "<C-Up>", "<cmd>resize +2<CR>", { desc = "Increase Window Height" })
@@ -103,8 +103,8 @@ map("n", "<Leader>xq", "<cmd>copen<CR>", { desc = "Quickfix List" })
 
 -- Quickfix with trouble plugin
 if not Util.has("trouble.nvim") then
-    map("n", "[q", vim.cmd.cprev, {desc = "Previous Quickfix"})
-    map("n", "]q", vim.cmd.cnext, {desc = "Previous Quickfix"})
+    map("n", "[q", vim.cmd.cprev, { desc = "Previous Quickfix" })
+    map("n", "]q", vim.cmd.cnext, { desc = "Previous Quickfix" })
 end
 
 -- stylua: ignore start
@@ -133,16 +133,16 @@ map("n", "<Leader>qc", "<cmd>bdelete<CR>", { desc = "Quit Current Buffer" })
 -- stylua: ignore end
 
 -- Highlights under cursor
-if vim.fn.has("nvim-0.9.0") == 1 then
-    map("n", "<Leader>ui", vim.show_pos, { desc = "Inspect Pos" })
-end
+map("n", "<Leader>ui", vim.show_pos, { desc = "Inspect Pos" })
 
 -- Floating terminal
 local lazyterm = function()
     Util.float_term(nil, { cwd = Util.get_root() })
 end
 map("n", "<Leader>ft", lazyterm, { desc = "Terminal (root dir)" })
-map("n", "<Leader>fT", function() Util.float_term() end, { desc = "Terminal (cwd)" })
+map("n", "<Leader>fT", function()
+    Util.float_term()
+end, { desc = "Terminal (cwd)" })
 map("n", "<C-|>", lazyterm, { desc = "Terminal (root dir)" })
 -- NOTE: Only works with ANSI keyboard distribution
 -- map("n", "<C-/>", lazyterm, { desc = "Terminal (root dir)" })

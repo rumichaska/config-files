@@ -37,7 +37,7 @@ opt.scrolloff = 4 -- Lines of context
 opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }
 opt.shiftround = true -- Round indent
 opt.shiftwidth = 4 -- Size of an indent
-opt.shortmess:append({ W = true, I = true, c = true })
+opt.shortmess:append({ W = true, I = true, c = true, C = true })
 opt.showmode = false -- Don't show mode since we have a statusline
 opt.sidescrolloff = 8 -- Columns of context
 opt.signcolumn = "yes" -- Always show the signcolumn, otherwise it would shift the text each time
@@ -56,11 +56,31 @@ opt.wildmode = "longest:full,full" -- Command-line completion mode
 opt.winminwidth = 5 -- Minimum window width
 opt.wrap = false -- Disable line wrap
 
--- Options with nvim versión > 0.9.0
+opt.fillchars = {
+    foldopen = "",
+    foldclose = "",
+    -- fold = "⸱",
+    fold = " ",
+    foldsep = " ",
+    diff = "╱",
+    eob = " ",
+}
+
+if vim.fn.has("nvim-0.10") == 1 then
+    opt.smoothscroll = true
+end
+
+-- Folding
+opt.foldlevel = 99
+opt.foldtext = "v:lua.require'util.ui'.foldtext()"
+
 if vim.fn.has("nvim-0.9.0") == 1 then
-    opt.splitkeep = "screen"
-    opt.shortmess:append({ C = true })
+    opt.foldmethod = "expr"
+    opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+    opt.statuscolumn = [[%!v:lua.require'util.ui'.statuscolumn()]]
+else
+    opt.foldmethod = "indent"
 end
 
 -- Fix markdown indentation settings
-vim.g.markdown_recommended_style = -1
+vim.g.markdown_recommended_style = 0

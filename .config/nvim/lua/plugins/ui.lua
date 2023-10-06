@@ -76,7 +76,8 @@ return {
                     },
                 },
                 get_element_icon = function(element)
-                    local icon, hl = require("nvim-web-devicons").get_icon_by_filetype(element.filetype, { default = false })
+                    local icon, hl =
+                        require("nvim-web-devicons").get_icon_by_filetype(element.filetype, { default = false })
                     return icon, hl
                 end,
                 always_show_bufferline = true,
@@ -210,6 +211,10 @@ return {
         main = "ibl",
         event = { "BufReadPost", "BufNewFile" },
         opts = {
+            indent = {
+                char = "│",
+                tab_char = "│",
+            },
             scope = { enabled = false },
             exclude = {
                 filetypes = {

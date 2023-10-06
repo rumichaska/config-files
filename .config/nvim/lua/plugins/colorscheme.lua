@@ -46,12 +46,10 @@ return {
                 }
             end,
             integrations = {
+                cmp = true,
+                gitsigns = true,
                 illuminate = true,
-                indent_blankline = {
-                    enabled = true,
-                    scope_color = "lavender",
-                    colored_indent_levels = false,
-                },
+                indent_blankline = { enabled = true },
                 lsp_trouble = true,
                 mason = true,
                 mini = true,
@@ -67,7 +65,7 @@ return {
                         errors = { "undercurl" },
                         hints = { "undercurl" },
                         warnings = { "undercurl" },
-                        information = { "undercurl" }
+                        information = { "undercurl" },
                     },
                     inlay_hints = {
                         background = true,
