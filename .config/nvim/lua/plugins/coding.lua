@@ -238,12 +238,10 @@ return {
             return {
                 n_lines = 500,
                 custom_textobjects = {
-                    o = ai.gen_spec.treesitter({
-                        a = { "@block.outer", "@conditional.outer", "@loop.outer" },
-                        i = { "@block.inner", "@conditional.inner", "@loop.inner" },
-                    }, {}),
                     f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }, {}),
                     c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }, {}),
+                    i = ai.gen_spec.treesitter({ a = "@conditional.outer", i = "@conditional.inner" }, {}),
+                    o = ai.gen_spec.treesitter({ a = "@loop.outer", i = "@loop.inner" }, {}),
                     t = { "<([%p%w]-)%f[^<%w][^<>]->.-</%1>", "^<.->().*()</[^/]->$" },
                 },
             }
@@ -271,7 +269,8 @@ return {
                     b = "Balanced ), ], }",
                     c = "Class",
                     f = "Function",
-                    o = "Block, conditional, loop",
+                    i  = "Conditional",
+                    o = "Loop",
                     q = "Quote `, \", '",
                     t = "Tag",
                 }
