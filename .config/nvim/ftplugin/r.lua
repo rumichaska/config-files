@@ -19,11 +19,11 @@ map("i", "<M-->", "<Esc>:normal! a <-<CR>a ", "R: 'Asign' Operator")
 
 -- Commands shortcuts
 map("n", "<LocalLeader>cs", "<cmd>IronSend " .. source .. "<CR>", "R: Source Current File")
-map("n", "<LocalLeader>cv", "<cmd>IronSend httpgd::hgd_url()<CR>", "R: Viewer")
+map("n", "<LocalLeader>cv", "<cmd>IronSend httpgd::hgd_url()<CR>", "R: Plot Viewer")
 
 -- Console
-map("n", "<LocalLeader>tr", "<cmd>IronRepl<CR>", "Open/Hide R Console")
-map("n", "<LocalLeader>tc", "<cmd>IronSend system('clear')<CR>", "Clear Console")
+map("n", "<LocalLeader>tr", "<cmd>IronRepl<CR>", "R: Open/Hide Console")
+map("n", "<LocalLeader>tc", "<cmd>IronSend system('clear')<CR>", "R: Clear Console")
 
 -- Register which-key
 require("which-key").register({
@@ -36,7 +36,7 @@ vim.api.nvim_create_autocmd("TermOpen", {
     group = augroup("console"),
     callback = function(event)
         if vim.bo[event.buf].filetype ~= "lazyterm" then
-            map("n", "<LocalLeader>tr", "<cmd>IronHide r<CR>", "Hide R Console")
+            map("n", "<LocalLeader>tr", "<cmd>IronHide r<CR>", "R: Hide Console")
             map("t", "<C-S-m>", " |> ")
             map("t", "<C-S-i>", " %in% ")
             map("t", "<M-->", " <- ")
