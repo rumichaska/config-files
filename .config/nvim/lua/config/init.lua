@@ -92,7 +92,7 @@ function M.setup(opts)
     if vim.fn.argc(-1) == 0 then
         -- autocmds and keymaps can wait to load
         vim.api.nvim_create_autocmd("User", {
-            group = vim.api.nvim_create_augroup("LazyVim", { clear = true }),
+            group = vim.api.nvim_create_augroup("Config", { clear = true }),
             pattern = "VeryLazy",
             callback = function()
                 M.load("autocmds")

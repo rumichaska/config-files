@@ -4,6 +4,8 @@ local M = {}
 
 M.opts = nil
 
+M.custom_format = nil
+
 function M.enabled()
     return M.opts.autoformat
 end
@@ -28,12 +30,23 @@ function M.format(opts)
         return
     end
 
+    if
+        M.custom_format and Util.try(function()
+            return M.custom_format(buf)
+        end, { msg = "Custom formatter failed" })
+    then
+        return
+    end
+
     local formatters = M.get_formatters(buf)
     local client_ids = vim.tbl_map(function(client)
         return client.id
     end, formatters.active)
 
     if #client_ids == 0 then
+        if opts and opts.force then
+            Util.warn("No formatter available", { title = "LSPFormat" })
+        end
         return
     end
 
@@ -51,8 +64,8 @@ end
 function M.get_formatters(bufnr)
     local ft = vim.bo[bufnr].filetype
     -- check if we have any null-ls formatters for the current filetype
-    local null_ls = package.loaded["null-ls"] and require("null-ls.sources").get_available(ft, "NULL_LS_FORMATTING")
-        or {}
+    local null_ls = package.loaded["null-ls"] and require("null-ls.sources").get_available(ft, "NULL_LS_FORMATTING") or
+    {}
 
     local ret = {
         active = {},
@@ -60,7 +73,7 @@ function M.get_formatters(bufnr)
         null_ls = null_ls,
     }
 
-    local clients = vim.lsp.get_active_clients({ bufnr = bufnr })
+    local clients = require("util").get_clients({ bufnr = bufnr })
     for _, client in ipairs(clients) do
         if M.supports_format(client) then
             if (#null_ls > 0 and client.name == "null-ls") or #null_ls == 0 then

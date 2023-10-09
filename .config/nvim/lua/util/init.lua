@@ -3,6 +3,10 @@ local Util = require("lazy.core.util")
 local M = {}
 
 M.root_patterns = { ".git", "lua" }
+function M.get_clients(...)
+    local fn = vim.lsp.get_clients or vim.lsp.get_active_clients
+    return fn(...)
+end
 
 function M.on_attach(on_attach)
     vim.api.nvim_create_autocmd("LspAttach", {
@@ -52,7 +56,7 @@ function M.get_root()
     path = path ~= "" and vim.loop.fs_realpath(path) or nil
     local roots = {}
     if path then
-        for _, client in pairs(vim.lsp.get_active_clients({ bufnr = 0 })) do
+        for _, client in pairs(M.get_clients({ bufnr = 0 })) do
             local workspace = client.config.workspace_folders
             local paths = workspace and vim.tbl_map(function(ws)
                 return vim.uri_to_fname(ws.uri)
@@ -257,11 +261,12 @@ end
 function M.lsp_disable(server, cond)
     local util = require("lspconfig.util")
     local def = M.lsp_get_config(server)
-    def.document_config.on_new_config = util.add_hook_before(def.document_config.on_new_config, function(config, root_dir)
-        if cond(root_dir, config) then
-            config.enabled = false
-        end
-    end)
+    def.document_config.on_new_config = util.add_hook_before(def.document_config.on_new_config,
+        function(config, root_dir)
+            if cond(root_dir, config) then
+                config.enabled = false
+            end
+        end)
 end
 
 function M.on_load(name, fn)
@@ -280,6 +285,26 @@ function M.on_load(name, fn)
                 end
             end,
         })
+    end
+end
+
+function M.on_rename(from, to)
+    local clients = M.get_clients()
+    for _, client in ipairs(clients) do
+        if client.supports_method("workspace/willRenameFiles") then
+            ---@diagnostic disable-next-line: invisible
+            local resp = client.request_sync("workspace/willRenameFiles", {
+                files = {
+                    {
+                        oldUri = vim.uri_from_fname(from),
+                        newUri = vim.uri_from_fname(to),
+                    },
+                },
+            }, 1000, 0)
+            if resp and resp.result ~= nil then
+                vim.lsp.util.apply_workspace_edit(resp.result, client.offset_encoding)
+            end
+        end
     end
 end
 

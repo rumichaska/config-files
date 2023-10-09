@@ -2,17 +2,7 @@ local Util = require("util")
 
 -- Keymap function
 local function map(mode, lhs, rhs, opts)
-    local keys = require("lazy.core.handler").handlers.keys
-    ---@cast keys LazyKeysHandler
-    -- do not create the keymap if a lazy keys handler exists
-    if not keys.active[keys.parse({ lhs, mode = mode }).id] then
-        opts = opts or {}
-        opts.silent = opts.silent ~= false
-        if opts.remap and not vim.g.vscode then
-            opts.remap = nil
-        end
-        vim.keymap.set(mode, lhs, rhs, opts)
-    end
+    vim.keymap.set(mode, lhs, rhs, opts)
 end
 
 -- Better up/down
@@ -83,7 +73,7 @@ map("i", ".", ".<C-g>u")
 map("i", ";", ";<C-g>u")
 
 -- Save file
-map({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w<CR><Esc>", { desc = "Save File" })
+map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<CR><Esc>", { desc = "Save File" })
 
 -- Keywordprg
 map("n", "<Leader>K", "<cmd>norm! K<CR>", { desc = "Keywordprg" })
@@ -107,6 +97,11 @@ if not Util.has("trouble.nvim") then
     map("n", "]q", vim.cmd.cnext, { desc = "Previous Quickfix" })
 end
 
+-- Formatting
+map({ "n", "v" }, "<leader>cf", function()
+    require("plugins.lsp.format").format({ force = true })
+end, { desc = "Format" })
+
 -- stylua: ignore start
 
 -- Toggle options
@@ -117,7 +112,8 @@ map("n", "<Leader>uw", function() Util.toggle("wrap") end, { desc = "Toggle Word
 map("n", "<Leader>ul", function() Util.toggle_number() end, { desc = "Toggle Line Numbers" })
 map("n", "<Leader>ud", Util.toggle_diagnostics, { desc = "Toggle Diagnostics" })
 local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
-map( "n", "<Leader>uc", function() Util.toggle("conceallevel", false, {0, conceallevel}) end, { desc = "Toggle Conceal" })
+map("n", "<Leader>uc", function() Util.toggle("conceallevel", false, { 0, conceallevel }) end,
+    { desc = "Toggle Conceal" })
 if vim.lsp.inlay_hint then
     map("n", "<Leader>uh", function() vim.lsp.inlay_hint(0, nil) end, { desc = "Toggle Inlay Hints" })
 end
@@ -136,13 +132,9 @@ map("n", "<Leader>qc", "<cmd>bdelete<CR>", { desc = "Quit Current Buffer" })
 map("n", "<Leader>ui", vim.show_pos, { desc = "Inspect Pos" })
 
 -- Floating terminal
-local lazyterm = function()
-    Util.float_term(nil, { cwd = Util.get_root() })
-end
+local lazyterm = function() Util.float_term(nil, { cwd = Util.get_root() }) end
 map("n", "<Leader>ft", lazyterm, { desc = "Terminal (root dir)" })
-map("n", "<Leader>fT", function()
-    Util.float_term()
-end, { desc = "Terminal (cwd)" })
+map("n", "<Leader>fT", function() Util.float_term() end, { desc = "Terminal (cwd)" })
 map("n", "<C-|>", lazyterm, { desc = "Terminal (root dir)" })
 -- NOTE: Only works with ANSI keyboard distribution
 -- map("n", "<C-/>", lazyterm, { desc = "Terminal (root dir)" })
