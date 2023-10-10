@@ -319,8 +319,8 @@ return {
         opts = {
             css = { css = true },
             html = { css = true },
-            r = { names = false, rgb_fn = true },
-            rmd = { names = false, rgb_fn = true },
+            r = { names = false, rgb_fn = true, hsl_fn = true },
+            rmd = { names = false, rgb_fn = true, hsl_fn = true },
         },
     },
 
