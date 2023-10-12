@@ -48,7 +48,7 @@ return {
                 s("head1", fmt("# {} ----", { i(1, "SECTION 1") })),
                 s("head2", fmt("## {} ----", { i(1, "SECTION 2") })),
                 s("head3", fmt("### {} ----", { i(1, "SECTION 3") })),
-                s("#!", t("#! /usr/bin/env Rscript")),
+                s("exc", t("#! /usr/bin/env Rscript")),
             })
 
             -- Rmd
@@ -113,7 +113,7 @@ return {
                     {
                         name = "path",
                         option = {
-                            -- get path to current working directory (cwd),
+                            -- set path to current working directory (cwd),
                             -- defaults to current buffer directory
                             get_cwd = function()
                                 return vim.fn.getcwd()
@@ -227,10 +227,6 @@ return {
     -- Better text-objects
     {
         "echasnovski/mini.ai",
-        -- keys = {
-        --   { "a", mode = { "x", "o" } },
-        --   { "i", mode = { "x", "o" } },
-        -- },
         event = "VeryLazy",
         dependencies = { "nvim-treesitter-textobjects" },
         opts = function()
@@ -300,7 +296,7 @@ return {
         cmd = "IronRepl",
         opts = function()
             -- Remove extra <CR> when sending lines to R console
-            local function bracketed_paste_radian(lines)
+            local bracketed_paste_radian = function(lines)
                 local open_code = "\27[200~"
                 local close_code = "\27[201~"
                 local cr = "\13"
@@ -335,7 +331,7 @@ return {
                         },
                         python = require("iron.fts.python").ipython,
                     },
-                    repl_open_cmd = view.split("30%", {
+                    repl_open_cmd = view.split("40%", {
                         number = false,
                         relativenumber = false,
                     }),
