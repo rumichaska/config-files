@@ -111,6 +111,7 @@ map("n", "<Leader>uS", function() Util.language() end, { desc = "Changing Spelli
 map("n", "<Leader>uw", function() Util.toggle("wrap") end, { desc = "Toggle Word Wrap" })
 map("n", "<Leader>ul", function() Util.toggle_number() end, { desc = "Toggle Line Numbers" })
 map("n", "<Leader>ud", Util.toggle_diagnostics, { desc = "Toggle Diagnostics" })
+map("n", "<Leader>ut", "<cmd>TSContextToggle<CR>", { desc = "Toggle Treesitter Context" })
 local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
 map("n", "<Leader>uc", function() Util.toggle("conceallevel", false, { 0, conceallevel }) end,
     { desc = "Toggle Conceal" })

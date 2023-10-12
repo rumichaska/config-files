@@ -324,6 +324,13 @@ return {
         },
     },
 
+    -- Sticky scroll
+    {
+        "nvim-treesitter/nvim-treesitter-context",
+        event = { "BufReadPost", "BufNewFile" },
+
+    },
+
     -- Icons
     { "nvim-tree/nvim-web-devicons" },
 
