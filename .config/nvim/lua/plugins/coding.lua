@@ -331,7 +331,7 @@ return {
                         },
                         python = require("iron.fts.python").ipython,
                     },
-                    repl_open_cmd = view.split("40%", {
+                    repl_open_cmd = view.split("30%", {
                         number = false,
                         relativenumber = false,
                     }),
