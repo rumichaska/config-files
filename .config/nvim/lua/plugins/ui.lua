@@ -318,6 +318,7 @@ return {
         event = { "BufReadPost", "BufNewFile" },
         opts = {
             css = { css = true },
+            scss = { css = true },
             html = { css = true },
             r = { names = false, rgb_fn = true, hsl_fn = true },
             rmd = { names = false, rgb_fn = true, hsl_fn = true },
