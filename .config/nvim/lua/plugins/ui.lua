@@ -184,6 +184,7 @@ return {
                 },
                 extensions = {
                     "lazy",
+                    "mason",
                     "neo-tree",
                     "quickfix",
                     "trouble",
