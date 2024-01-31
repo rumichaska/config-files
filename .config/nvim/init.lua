@@ -20,6 +20,30 @@ require("lazy").setup("plugins", {
     ui = {
         size = { width = 0.8, height = 0.9 },
         border = "rounded",
+        icons = {
+            cmd = " ",
+            config = " ",
+            event = "",
+            ft = " ",
+            init = " ",
+            import = " ",
+            keys = " ",
+            lazy = "󰒲 ",
+            loaded = "●",
+            not_loaded = "○",
+            plugin = " ",
+            runtime = " ",
+            require = "󰢱 ",
+            source = " ",
+            start = "󰼛",
+            task = "✔ ",
+            list = {
+                "●",
+                "➜",
+                "★",
+                "‒",
+            },
+        },
     },
     checker = { enabled = true },
     performance = {
@@ -27,7 +51,6 @@ require("lazy").setup("plugins", {
             disabled_plugins = {
                 "gzip",
                 "matchit",
-                -- "matchparen",
                 "netrwPlugin",
                 "tarPlugin",
                 "tohtml",

@@ -36,7 +36,7 @@ format = '[$user]($style) '
 
 # Hostname Module
 [hostname]
-ssh_symbol = ' '
+ssh_symbol = '󰒍 '
 format = '\[[$ssh_symbol$hostname]($style)\] '
 
 # Directory Module
