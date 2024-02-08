@@ -1,6 +1,9 @@
 
 # Encondificación
-options(encoding = "UTF-8")
+options(
+    encoding = "UTF-8",
+    max.print = 1000
+)
 
 # httpgd
 try(httpgd::hgd(silent = TRUE), silent = TRUE)
