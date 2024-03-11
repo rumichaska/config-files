@@ -214,7 +214,8 @@ return {
                     -- Lua
                     nls.builtins.formatting.stylua,
                     -- Python
-                    nls.builtins.formatting.autopep8,
+                    -- TODO: actualizar el formatter a ruff
+                    -- nls.builtins.formatting.autopep8,
                     nls.builtins.diagnostics.pylint.with({
                         diagnostics_postprocess = function(diagnostic)
                             diagnostic.code = diagnostic.message_id
