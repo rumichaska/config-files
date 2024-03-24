@@ -36,6 +36,12 @@ return {
         opts = {
             flavour = "mocha",
             term_colors = true,
+            styles = {
+                comments = { "italic" },
+                conditionals = { "italic" },
+                loops = { "italic" },
+                functions = { "italic", "bold" },
+            },
             custom_highlights = function(colors)
                 return {
                     CursorLineNr = { bold = true },
