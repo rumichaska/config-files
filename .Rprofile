@@ -6,7 +6,7 @@ options(
 )
 
 # httpgd
-try(httpgd::hgd(silent = TRUE), silent = TRUE)
+# try(httpgd::hgd(silent = TRUE), silent = TRUE)
 
 # Función para ver dataframes en browser
 view <- function(.data) {
