@@ -30,17 +30,10 @@ map("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move Down" })
 map("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move Up" })
 
 -- Buffer navigation
-if Util.has("bufferline.nvim") then
-    map("n", "<S-h>", "<cmd>BufferLineCyclePrev<CR>", { desc = "Prev Buffer" })
-    map("n", "<S-l>", "<cmd>BufferLineCycleNext<CR>", { desc = "Next Buffer" })
-    map("n", "[b", "<cmd>BufferLineCyclePrev<CR>", { desc = "Prev Buffer" })
-    map("n", "]b", "<cmd>BufferLineCycleNext<CR>", { desc = "Next Buffer" })
-else
-    map("n", "<S-h>", "<cmd>bprevious<CR>", { desc = "Prev Buffer" })
-    map("n", "<S-l>", "<cmd>bnext<CR>", { desc = "Next Buffer" })
-    map("n", "[b", "<cmd>bprevious<CR>", { desc = "Prev Buffer" })
-    map("n", "]b", "<cmd>bnext<CR>", { desc = "Next Buffer" })
-end
+map("n", "<S-h>", "<cmd>bprevious<CR>", { desc = "Prev Buffer" })
+map("n", "<S-l>", "<cmd>bnext<CR>", { desc = "Next Buffer" })
+map("n", "[b", "<cmd>bprevious<CR>", { desc = "Prev Buffer" })
+map("n", "]b", "<cmd>bnext<CR>", { desc = "Next Buffer" })
 map("n", "<Leader>bb", "<cmd>e #<Cr>", { desc = "Switch To Other Buffer" })
 map("n", "<Leader>`", "<cmd>e #<CR>", { desc = "Switch To Other Buffer" })
 

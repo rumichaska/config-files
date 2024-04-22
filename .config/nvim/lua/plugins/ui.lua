@@ -49,54 +49,34 @@ return {
 
     -- Buffer
     {
-        "akinsho/bufferline.nvim",
-        version = "*",
-        event = "VeryLazy",
-        keys = {
-            { "<Leader>bp", "<cmd>BufferLineTogglePin<CR>", desc = "Toggle Pin" },
-            { "<Leader>bP", "<cmd>BufferLineGroupCloe ungrouped<CR>", desc = "Delete Non-pinned Buffers" },
-        },
-        opts = {
-            options = {
-                indicator = {
-                    icon = "▌",
-                    style = "icon",
+        "b0o/incline.nvim",
+        config = function()
+            local helpers = require("incline.helpers")
+            local devicons = require("nvim-web-devicons")
+            require("incline").setup({
+                window = {
+                    padding = 0,
+                    margin = { horizontal = 0 },
                 },
-                buffer_close_icon = "󰅖",
-                modified_icon = "●",
-                close_icon = "",
-                left_trunc_marker = "",
-                right_trunc_marker = "",
-                offsets = {
-                    {
-                        filetype = "neo-tree",
-                        text = "File Explorer",
-                        text_align = "center",
-                        separator = true,
-                    },
-                },
-                get_element_icon = function(element)
-                    local icon, hl =
-                        require("nvim-web-devicons").get_icon_by_filetype(element.filetype, { default = false })
-                    return icon, hl
+                render = function(props)
+                    local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
+                    if filename == "" then
+                        filename = "[No Name]"
+                    end
+                    local ft_icon, ft_color = devicons.get_icon_color(filename)
+                    local modified = vim.bo[props.buf].modified
+                    return {
+                        ft_icon and { " ", ft_icon, " ", guibg = ft_color, guifg = helpers.contrast_color(ft_color) }
+                            or "",
+                        " ",
+                        { filename, gui = modified and "bold,italic" or "bold" },
+                        " ",
+                        guibg = require("catppuccin.palettes").get_palette("mocha").crust
+                    }
                 end,
-                always_show_bufferline = true,
-            },
-            highlights = require("catppuccin.groups.integrations.bufferline").get({
-                styles = { "italic", "bold" },
-                custom = {
-                    all = {
-                        fill = { fg = "#000000" },
-                    },
-                    mocha = {
-                        background = { fg = require("catppuccin.palettes").get_palette("mocha").text },
-                    },
-                    latte = {
-                        background = { fg = "#000000" },
-                    },
-                },
-            }),
-        },
+            })
+        end,
+        event = "VeryLazy",
     },
 
     -- Statusline
@@ -330,7 +310,6 @@ return {
     {
         "nvim-treesitter/nvim-treesitter-context",
         event = { "BufReadPost", "BufNewFile" },
-
     },
 
     -- Icons
