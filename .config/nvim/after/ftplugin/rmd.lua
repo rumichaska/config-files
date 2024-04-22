@@ -22,12 +22,10 @@ map("i", "<C-S-i>", "<Esc>:normal! a %in%<CR>a ", "R: `%in%` Operator")
 map("i", "<M-->", "<Esc>:normal! a <-<CR>a ", "R: 'Asign' Operator")
 
 -- Commands shortcuts
-map("n", "<LocalLeader>cr", "<cmd>!R -e " .. render .. "<CR>", "R: Render Rmd File")
-map("n", "<LocalLeader>cv", "<cmd>IronSend httpgd::hgd_url()<CR>", "R: Viewer")
-
--- Console
-map("n", "<LocalLeader>tr", "<cmd>IronRepl<CR>", "Open/Hide R Console")
-map("n", "<LocalLeader>tc", "<cmd>IronSend system('clear')<CR>", "Clear Console")
+map("n", "<LocalLeader>ts", "<cmd>!R -e " .. render .. "<CR>", "R: Render Rmd File")
+map("n", "<LocalLeader>tv", "<cmd>IronSend httpgd::hgd_url()<CR>", "R: Viewer")
+map("n", "<LocalLeader>tr", "<cmd>IronRepl<CR>", "R: Open/Hide Console")
+map("n", "<LocalLeader>tc", "<cmd>IronSend system('clear')<CR>", "R: Clear Console")
 
 -- Register which-key
 require("which-key").register({

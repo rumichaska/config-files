@@ -133,9 +133,13 @@ map("n", "<Leader>qc", "<cmd>bdelete<CR>", { desc = "Quit Current Buffer" })
 map("n", "<Leader>ui", vim.show_pos, { desc = "Inspect Pos" })
 
 -- Floating terminal
-local lazyterm = function() Util.float_term(nil, { cwd = Util.get_root() }) end
+local lazyterm = function()
+    Util.float_term(nil, { cwd = Util.get_root() })
+end
 map("n", "<Leader>ft", lazyterm, { desc = "Terminal (root dir)" })
-map("n", "<Leader>fT", function() Util.float_term() end, { desc = "Terminal (cwd)" })
+map("n", "<Leader>fT", function()
+    Util.float_term()
+end, { desc = "Terminal (cwd)" })
 map("n", "<C-|>", lazyterm, { desc = "Terminal (root dir)" })
 -- NOTE: Only works with ANSI keyboard distribution
 -- map("n", "<C-/>", lazyterm, { desc = "Terminal (root dir)" })

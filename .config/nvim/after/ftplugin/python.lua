@@ -12,15 +12,12 @@ end
 
 local source = vim.fn.expand("%:p:.")
 
--- Commands shortcuts
-map("n", "<LocalLeader>cs", ":!python3 " .. source .. "<CR>", "Python: Source Current File")
-
--- Console
+-- Commands shortcuts and console
+map("n", "<LocalLeader>ts", ":!python3 " .. source .. "<CR>", "Python: Source Current File")
 map("n", "<LocalLeader>tr", "<cmd>IronRepl<CR>", "Python: Open/Hide ipython Console")
 
 -- Register which-key
 require("which-key").register({
-    ["<LocalLeader>c"] = { name = "+code", buffer = 0 },
     ["<LocalLeader>t"] = { name = "+REPL", buffer = 0 },
 })
 

@@ -17,17 +17,14 @@ map("i", "<C-S-m>", "<Esc>:normal! a |><CR>a ", "R: 'Base pipe' Operator")
 map("i", "<C-S-i>", "<Esc>:normal! a %in%<CR>a ", "R: `%in%` Operator")
 map("i", "<M-->", "<Esc>:normal! a <-<CR>a ", "R: 'Asign' Operator")
 
--- Commands shortcuts
-map("n", "<LocalLeader>cs", "<cmd>IronSend " .. source .. "<CR>", "R: Source Current File")
-map("n", "<LocalLeader>cv", "<cmd>IronSend httpgd::hgd_url()<CR>", "R: Plot Viewer")
-
--- Console
+-- Commands shortcuts and console
+map("n", "<LocalLeader>ts", "<cmd>IronSend " .. source .. "<CR>", "R: Source Current File")
+map("n", "<LocalLeader>tv", "<cmd>IronSend httpgd::hgd_url()<CR>", "R: Plot Viewer")
 map("n", "<LocalLeader>tr", "<cmd>IronRepl<CR>", "R: Open/Hide Console")
 map("n", "<LocalLeader>tc", "<cmd>IronSend system('clear')<CR>", "R: Clear Console")
 
 -- Register which-key
 require("which-key").register({
-    ["<LocalLeader>c"] = { name = "+code", buffer = 0 },
     ["<LocalLeader>t"] = { name = "+REPL", buffer = 0 },
 })
 
