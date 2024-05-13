@@ -203,6 +203,18 @@ return {
                     },
                 },
             },
+            pickers = {
+                buffers = {
+                    previewer = false,
+                    theme = "dropdown"
+                },
+                live_grep = {
+                    theme = "dropdown"
+                },
+                current_buffer_fuzzy_find = {
+                    theme = "dropdown"
+                },
+            },
         },
     },
 

@@ -59,6 +59,10 @@ return {
                 },
                 r_language_server = {
                     mason = false,
+                    root_dir = function(fname)
+                        local util = require("lspconfig.util")
+                        return util.root_pattern("*.Rproj")(fname) or util.find_git_ancestor(fname) or vim.loop.os_homedir()
+                    end,
                     settings = {
                         r = {
                             lsp = {

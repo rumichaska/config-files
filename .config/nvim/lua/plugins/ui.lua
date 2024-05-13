@@ -50,13 +50,18 @@ return {
     -- Buffer
     {
         "b0o/incline.nvim",
-        config = function()
-            local helpers = require("incline.helpers")
+        event = "VeryLazy",
+        opts = function()
             local devicons = require("nvim-web-devicons")
-            require("incline").setup({
+            local palette = require("catppuccin.palettes").get_palette("mocha")
+
+            return {
                 window = {
                     padding = 0,
                     margin = { horizontal = 0 },
+                },
+                hide = {
+                    cursorline = true,
                 },
                 render = function(props)
                     local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
@@ -64,19 +69,23 @@ return {
                         filename = "[No Name]"
                     end
                     local ft_icon, ft_color = devicons.get_icon_color(filename)
-                    local modified = vim.bo[props.buf].modified
-                    return {
-                        ft_icon and { " ", ft_icon, " ", guibg = ft_color, guifg = helpers.contrast_color(ft_color) }
-                            or "",
-                        " ",
-                        { filename, gui = modified and "bold,italic" or "bold" },
-                        " ",
-                        guibg = require("catppuccin.palettes").get_palette("mocha").crust
-                    }
+
+                    local function get_file_name()
+                        local label = {}
+                        table.insert( label, { " " .. (vim.bo[props.buf].modified and " " or ""), guifg = palette.maroon })
+                        table.insert(label, { (ft_icon or "") .. " ", guifg = ft_color })
+                        table.insert( label, { filename .. " ", gui = vim.bo[props.buf].modified and "bold,italic" or "bold" })
+                        if not props.focused then
+                            label["group"] = "BufferInactive"
+                        end
+
+                        return label
+                    end
+
+                    return { get_file_name() }
                 end,
-            })
+            }
         end,
-        event = "VeryLazy",
     },
 
     -- Statusline
