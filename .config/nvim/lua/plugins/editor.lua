@@ -195,10 +195,16 @@ return {
                         ["<C-b>"] = function(...)
                             return require("telescope.actions").preview_scrolling_up(...)
                         end,
+                        ["<C-d>"] = function(...)
+                            return require("telescope.actions").delete_buffer(...)
+                        end,
                     },
                     n = {
                         ["q"] = function(...)
                             return require("telescope.actions").close(...)
+                        end,
+                        ["<C-d>"] = function(...)
+                            return require("telescope.actions").delete_buffer(...)
                         end,
                     },
                 },
