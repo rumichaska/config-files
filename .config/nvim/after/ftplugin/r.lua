@@ -1,5 +1,5 @@
 -- Local options
-vim.opt_local.colorcolumn = "80"
+vim.opt.colorcolumn = "80"
 
 -- Functions and variables
 local function map(mode, lhs, rhs, desc)
@@ -38,7 +38,7 @@ vim.api.nvim_create_autocmd("TermOpen", {
             map("t", "<C-S-i>", " %in% ")
             map("t", "<M-->", " <- ")
             -- set filetype as "ironterm"
-            vim.opt_local.filetype = "ironterm"
+            vim.opt.filetype = "ironterm"
         end
     end,
 })

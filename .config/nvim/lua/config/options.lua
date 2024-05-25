@@ -64,25 +64,3 @@ opt.fillchars = {
     diff = "╱",
     eob = " ",
 }
-
-if vim.fn.has("nvim-0.10") == 1 then
-    opt.smoothscroll = true
-end
-
--- Folding
-opt.foldlevel = 99
-opt.foldtext = "v:lua.require'util.ui'.foldtext()"
-
-if vim.fn.has("nvim-0.9.0") == 1 then
-    opt.statuscolumn = [[%!v:lua.require'util.ui'.statuscolumn()]]
-end
-
-if vim.fn.has("nvim-0.10") == 1 then
-    opt.foldmethod = "expr"
-    opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-else
-    opt.foldmethod = "indent"
-end
-
--- Fix markdown indentation settings
-vim.g.markdown_recommended_style = 0
