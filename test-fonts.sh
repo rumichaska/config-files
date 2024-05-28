@@ -196,7 +196,7 @@ function test-fonts() {
   echo; echo
 
   echo "Nerd Fonts - Aditional Sets"
-  print-unicode-ranges e276c 2771 2500 259f
+  print-unicode-ranges e276c e2771 2500 259f
   echo; echo
 
   # echo "Misc Code Point Fixes"
