@@ -3,7 +3,7 @@
 -- vim.cmd.runtime("ftplugin/r.lua")
 
 -- Local options
-vim.opt.colorcolumn = "100"
+vim.opt_local.colorcolumn = "100"
 
 -- Functions and variables
 local function map(mode, lhs, rhs, desc)
@@ -43,7 +43,7 @@ vim.api.nvim_create_autocmd("TermOpen", {
             map("t", "<C-S-i>", " %in% ")
             map("t", "<M-->", " <- ")
             -- set filetype as "ironterm"
-            vim.opt.filetype = "ironterm"
+            vim.opt_local.filetype = "ironterm"
         end
     end,
 })

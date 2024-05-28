@@ -9,28 +9,21 @@ opt.autowrite = true -- Enable auto write
 opt.breakindent = true
 opt.clipboard = "unnamedplus" -- Sync with system clipboard
 opt.completeopt = "menu,menuone,noselect"
--- opt.colorcolumn = "80" -- Column highlight (ftplugin/)
 opt.conceallevel = 3 -- Hide * markup for bold and italic
 opt.confirm = true -- Confirm to save changes before exiting modified buffer
 opt.cursorline = true -- Enable highlighting of the current line
 opt.expandtab = true -- Use spaces instead of tabs
--- opt.formatoptions = "jcrqln" (config.autocmds)
 opt.grepformat = "%f:%l:%c:%m"
 opt.grepprg = "rg --vimgrep"
 opt.ignorecase = true -- Ignore case
-opt.inccommand = "nosplit" -- preview incremental substitute
+opt.inccommand = "split" -- preview incremental substitute
 opt.laststatus = 0
 opt.linebreak = true
 opt.list = true -- Show some invisible characters (tabs...
-opt.listchars = {
-    eol = "↴",
-    -- space = "⋅",
-    tab = "  ",
-    trail = "•",
-}
+opt.listchars = { eol = "↴", tab = "» ", trail = "•", nbsp = "␣" }
+
 opt.mouse = "a" -- Enable mouse mode
 opt.number = true -- Print line number
--- opt.pumblend = 10 -- Popup blend (render problems NerdFont symbols)
 opt.pumheight = 10 -- Maximum number of entries in a popup
 opt.relativenumber = true -- Relative line numbers
 opt.scrolloff = 999 -- Lines of context
@@ -55,12 +48,3 @@ opt.updatetime = 200 -- Save swap file and trigger CursorHold
 opt.wildmode = "longest:full,full" -- Command-line completion mode
 opt.winminwidth = 5 -- Minimum window width
 opt.wrap = false -- Disable line wrap
-opt.fillchars = {
-    foldopen = "",
-    foldclose = "",
-    -- fold = "⸱",
-    fold = " ",
-    foldsep = " ",
-    diff = "╱",
-    eob = " ",
-}
