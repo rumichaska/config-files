@@ -72,9 +72,15 @@ return {
 
                     local function get_file_name()
                         local label = {}
-                        table.insert( label, { " " .. (vim.bo[props.buf].modified and " " or ""), guifg = palette.maroon })
+                        table.insert(
+                            label,
+                            { " " .. (vim.bo[props.buf].modified and " " or ""), guifg = palette.maroon }
+                        )
                         table.insert(label, { (ft_icon or "") .. " ", guifg = ft_color })
-                        table.insert( label, { filename .. " ", gui = vim.bo[props.buf].modified and "bold,italic" or "bold" })
+                        table.insert(
+                            label,
+                            { filename .. " ", gui = vim.bo[props.buf].modified and "bold,italic" or "bold" }
+                        )
                         if not props.focused then
                             label["group"] = "BufferInactive"
                         end
@@ -235,6 +241,7 @@ return {
         "folke/noice.nvim",
         event = "VeryLazy",
         opts = {
+            messages = { enabled = false },
             lsp = {
                 override = {
                     ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
@@ -248,24 +255,24 @@ return {
                     },
                 },
             },
-            routes = {
-                {
-                    filter = {
-                        event = "msg_show",
-                        any = {
-                            { find = "%d+L, %d+B" },
-                            { find = "; after #%d+" },
-                            { find = "; before #%d+" },
-                        },
-                    },
-                    view = "mini",
-                },
-            },
+            -- routes = {
+            --     {
+            --         filter = {
+            --             event = "msg_show",
+            --             any = {
+            --                 { find = "%d+L, %d+B" },
+            --                 { find = "; after #%d+" },
+            --                 { find = "; before #%d+" },
+            --             },
+            --         },
+            --         view = "mini",
+            --     },
+            -- },
             presets = {
                 bottom_search = true,
                 command_palette = true,
                 long_message_to_split = true,
-                inc_rename = true,
+                inc_rename = false,
                 lsp_doc_border = true, -- rounded border for hover (K)
             },
         },
