@@ -218,8 +218,6 @@ return {
                     -- Lua
                     nls.builtins.formatting.stylua,
                     -- Python
-                    -- TODO: actualizar el formatter a ruff
-                    -- nls.builtins.formatting.autopep8,
                     nls.builtins.diagnostics.pylint.with({
                         diagnostics_postprocess = function(diagnostic)
                             diagnostic.code = diagnostic.message_id
@@ -241,8 +239,6 @@ return {
         opts = {
             ensure_installed = {
                 "stylua",
-                "autopep8",
-                "pylint",
             },
             ui = {
                 border = "rounded",
