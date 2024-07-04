@@ -24,7 +24,7 @@ require("lazy").setup("plugins", {
             start = "󰼛 ",
         },
     },
-    checker = { enabled = true, notify = false },
+    checker = { enabled = true, notify = false, frequency = 86400 },
     performance = {
         rtp = {
             disabled_plugins = {

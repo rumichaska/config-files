@@ -87,11 +87,9 @@ return {
                 window = {
                     completion = cmp.config.window.bordered({
                         winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
-                        -- scrollbar = false,
                     }),
                     documentation = cmp.config.window.bordered({
                         winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
-                        -- scrollbar = false,
                     }),
                 },
                 completion = {
@@ -203,26 +201,6 @@ return {
             },
         },
     },
-
-    -- Comments
-    -- {
-    --     "JoosepAlviste/nvim-ts-context-commentstring",
-    --     opts = {
-    --         enable_autocmd = false,
-    --     },
-    -- },
-    -- {
-    --     "echasnovski/mini.comment",
-    --     event = "VeryLazy",
-    --     opts = {
-    --         options = {
-    --             custom_commentstring = function()
-    --                 return require("ts_context_commentstring.internal").calculate_commentstring()
-    --                     or vim.bo.commentstring
-    --             end,
-    --         },
-    --     },
-    -- },
 
     -- Better text-objects
     {

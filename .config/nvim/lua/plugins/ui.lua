@@ -130,10 +130,10 @@ return {
                                 hint = icons.diagnostics.Hint,
                             },
                         },
-                        -- stylua: ignore
                         {
-                            function() return require("nvim-navic").get_location() end,
-                            cond = function() return package.loaded["nvim-navic"] and require("nvim-navic").is_available() end,
+                            function()
+                                return require("util").get_root()
+                            end,
                         },
                     },
                     lualine_x = {
@@ -150,11 +150,11 @@ return {
                             color = Util.fg("Constant")
                         },
                         -- stylua: ignore
-                        {
-                            function() return  "  " .. require("dap").status() end,
-                            cond = function() return package.loaded["dap"] and require("dap").status ~= "" end,
-                            color = Util.fg("Debug")
-                        },
+                        -- {
+                        --     function() return  "  " .. require("dap").status() end,
+                        --     cond = function() return package.loaded["dap"] and require("dap").status ~= "" end,
+                        --     color = Util.fg("Debug")
+                        -- },
                         {
                             require("lazy.status").updates,
                             cond = require("lazy.status").has_updates,
@@ -170,13 +170,12 @@ return {
                         },
                     },
                     lualine_y = {
-                        { "progress", separator = " ", padding = { left = 1, right = 0 } },
-                        { "location", padding = { left = 0, right = 1 } },
+                        { "fileformat" },
+                        { "encoding" },
                     },
                     lualine_z = {
-                        function()
-                            return " " .. os.date("%R")
-                        end,
+                        { "progress", padding = { left = 1, right = 0 } },
+                        { "location", padding = { left = 0, right = 1 } },
                     },
                 },
                 extensions = {
@@ -274,27 +273,6 @@ return {
         },
     },
 
-    -- LSP symbol navigation
-    {
-        "SmiteshP/nvim-navic",
-        init = function()
-            vim.g.navic_silence = true
-            require("util").on_attach(function(client, buffer)
-                if client.server_capabilities.documentSymbolProvider then
-                    require("nvim-navic").attach(client, buffer)
-                end
-            end)
-        end,
-        opts = function()
-            return {
-                separator = " > ",
-                highlight = true,
-                depth_limit = 5,
-                icons = require("config").icons.kinds,
-            }
-        end,
-    },
-
     -- Color highlighter
     {
         "norcalli/nvim-colorizer.lua",
@@ -305,13 +283,14 @@ return {
             html = { css = true },
             r = { names = false, rgb_fn = true, hsl_fn = true },
             rmd = { names = false, rgb_fn = true, hsl_fn = true },
+            qmd = { names = false, rgb_fn = true, hsl_fn = true },
         },
     },
 
     -- Sticky scroll
     {
         "nvim-treesitter/nvim-treesitter-context",
-        event = { "BufReadPost", "BufNewFile" },
+        ft = { "python", "lua" },
     },
 
     -- Icons
