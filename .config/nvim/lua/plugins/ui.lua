@@ -229,14 +229,6 @@ return {
 
     -- Noice UI
     {
-        "folke/which-key.nvim",
-        opts = function(_, opts)
-            if require("util").has("noice.nvim") then
-                opts.defaults["<Leader>sn"] = { name = "+noice" }
-            end
-        end,
-    },
-    {
         "folke/noice.nvim",
         event = "VeryLazy",
         opts = {
@@ -263,6 +255,7 @@ return {
         },
         -- stylua: ignore
         keys = {
+            { "<Leader>s", desc = "+noice"},
             { "<S-Enter>", function() require("noice").redirect(vim.fn.getcmdline()) end, mode = "c", desc = "Redirect Cmdline" },
             { "<Leader>snl", function() require("noice").cmd("last") end, desc = "Noice Last Message" },
             { "<Leader>snh", function() require("noice").cmd("history") end, desc = "Noice History" },
@@ -290,7 +283,7 @@ return {
     -- Sticky scroll
     {
         "nvim-treesitter/nvim-treesitter-context",
-        ft = { "python", "lua" },
+        event = { "BufReadPost", "BufNewFile" },
     },
 
     -- Icons

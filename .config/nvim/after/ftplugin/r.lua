@@ -24,8 +24,8 @@ map("n", "<LocalLeader>tr", "<cmd>IronRepl<CR>", "R: Open/Hide Console")
 map("n", "<LocalLeader>tc", "<cmd>IronSend system('clear')<CR>", "R: Clear Console")
 
 -- Register which-key
-require("which-key").register({
-    ["<LocalLeader>t"] = { name = "+REPL", buffer = 0 },
+require("which-key").add({
+    { "<LocalLeader>t", group = "+REPL", buffer = 0 },
 })
 
 -- Autocmds
