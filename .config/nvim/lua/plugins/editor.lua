@@ -212,13 +212,13 @@ return {
             pickers = {
                 buffers = {
                     previewer = false,
-                    theme = "dropdown"
+                    theme = "dropdown",
                 },
                 live_grep = {
-                    theme = "dropdown"
+                    theme = "dropdown",
                 },
                 current_buffer_fuzzy_find = {
-                    theme = "dropdown"
+                    theme = "dropdown",
                 },
             },
         },
