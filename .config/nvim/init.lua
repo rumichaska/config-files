@@ -19,10 +19,6 @@ require("lazy").setup("plugins", {
     ui = {
         size = { width = 0.8, height = 0.9 },
         border = "rounded",
-        icons = {
-            cmd = " ",
-            start = "󰼛 ",
-        },
     },
     checker = { enabled = true, notify = false, frequency = 86400 },
     performance = {
