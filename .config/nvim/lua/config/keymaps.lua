@@ -30,8 +30,6 @@ map("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move Down" })
 map("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move Up" })
 
 -- Buffer navigation
-map("n", "<S-h>", "<cmd>bprevious<CR>", { desc = "Prev Buffer" })
-map("n", "<S-l>", "<cmd>bnext<CR>", { desc = "Next Buffer" })
 map("n", "[b", "<cmd>bprevious<CR>", { desc = "Prev Buffer" })
 map("n", "]b", "<cmd>bnext<CR>", { desc = "Next Buffer" })
 map("n", "<Leader>bb", "<cmd>e #<Cr>", { desc = "Switch To Other Buffer" })
@@ -109,12 +107,8 @@ local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
 map("n", "<Leader>uc", function() Util.toggle("conceallevel", false, { 0, conceallevel }) end,
     { desc = "Toggle Conceal" })
 if vim.lsp.inlay_hint then
-    map("n", "<Leader>uh", function() vim.lsp.inlay_hint(0, nil) end, { desc = "Toggle Inlay Hints" })
+    map("n", "<Leader>uh", function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(0)) end, { desc = "Toggle Inlay Hints" })
 end
-
--- Lazygit
--- map("n", "<Leader>gg", function() Util.float_term({ "lazygit" }, { cwd = Util.get_root(), esc_esc = false, ctrl_hjkl = false }) end, { desc = "Lazygit {root dir}" })
--- map("n", "<Leader>gG", function() Util.float_term({ "lazygit" }, { esc_esc = false, ctrl_hjkl = false }) end, { desc = "Lazygit {cwd}" })
 
 -- Quit
 map("n", "<Leader>qq", "<cmd>qa<CR>", { desc = "Quit All" })
@@ -133,10 +127,8 @@ map("n", "<Leader>ft", lazyterm, { desc = "Terminal (root dir)" })
 map("n", "<Leader>fT", function()
     Util.float_term()
 end, { desc = "Terminal (cwd)" })
--- map("n", "<C-|>", lazyterm, { desc = "Terminal (root dir)" })
--- NOTE: Only works with ANSI keyboard distribution
 map("n", "<C-/>", lazyterm, { desc = "Terminal (root dir)" })
-map("n", "<C-_>", lazyterm, { desc = "which_key_ignore" })
+-- map("n", "<C-_>", lazyterm, { desc = "which_key_ignore" })
 
 -- Terminal Mappings
 map("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Enter Normal Mode" })
@@ -144,10 +136,8 @@ map("t", "<C-h>", "<cmd>wincmd h<CR>", { desc = "Go To Left Window" })
 map("t", "<C-j>", "<cmd>wincmd j<CR>", { desc = "Go To Lower Window" })
 map("t", "<C-k>", "<cmd>wincmd k<CR>", { desc = "Go To Upper Window" })
 map("t", "<C-l>", "<cmd>wincmd l<CR>", { desc = "Go To Right Window" })
--- map("t", "<C-|>", "<cmd>close<CR>", { desc = "Hide Terminal" })
--- NOTE: Only works with ANSI keyboard distribution
-map("n", "<C-/>", lazyterm, { desc = "Terminal (root dir)" })
-map("t", "<C-_>", "<cmd>close<CR>", { desc = "which_key_ignore" })
+map("n", "<C-/>", lazyterm, { desc = "Hide Terminal" })
+-- map("t", "<C-_>", "<cmd>close<CR>", { desc = "which_key_ignore" })
 
 -- Windows
 map("n", "<Leader>ww", "<C-W>p", { desc = "Other Window", remap = true })
