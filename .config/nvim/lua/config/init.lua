@@ -1,7 +1,5 @@
 local M = {}
 
-M.lazy_version = ">=9.1.0"
-
 local defaults = {
     colorscheme = function()
         require("catppuccin").load()
@@ -78,16 +76,6 @@ local options
 
 function M.setup(opts)
     options = vim.tbl_deep_extend("force", defaults, opts or {})
-    if not M.has() then
-        require("lazy.core.util").error(
-            "**Neovim package manager** needs **lazy.nvim** version "
-                .. M.lazy_version
-                .. " to work properly.\n"
-                .. "Please upgrade **lazy.nvim**",
-            { title = "Config" }
-        )
-        error("Exiting")
-    end
 
     if vim.fn.argc(-1) == 0 then
         -- autocmds and keymaps can wait to load
@@ -118,11 +106,6 @@ function M.setup(opts)
             vim.cmd.colorscheme("habamax")
         end,
     })
-end
-
-function M.has(range)
-    local Semver = require("lazy.manage.semver")
-    return Semver.range(range or M.lazy_version):matches(require("lazy.core.config").version or "0.0.0")
 end
 
 function M.load(name)
