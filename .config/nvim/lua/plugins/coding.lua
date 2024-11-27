@@ -252,6 +252,7 @@ return {
 
             return {
                 config = {
+                    highlight_last = false,
                     scratch_repl = true,
                     close_window_on_exit = true,
                     repl_definition = {
