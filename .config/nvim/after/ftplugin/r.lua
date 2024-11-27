@@ -21,7 +21,6 @@ map("i", "<M-->", "<Esc>:normal! a <-<CR>a ", "R: 'Asign' Operator")
 map("n", "<LocalLeader>ts", "<cmd>IronSend " .. source .. "<CR>", "R: Source Current File")
 map("n", "<LocalLeader>tv", "<cmd>IronSend httpgd::hgd_url()<CR>", "R: Plot Viewer")
 map("n", "<LocalLeader>tr", "<cmd>IronRepl<CR>", "R: Open/Hide Console")
-map("n", "<LocalLeader>tc", "<cmd>IronSend system('clear')<CR>", "R: Clear Console")
 
 -- Autocmds
 vim.api.nvim_create_autocmd("TermOpen", {

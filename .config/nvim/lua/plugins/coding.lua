@@ -252,7 +252,6 @@ return {
 
             return {
                 config = {
-                    highlight_last = false,
                     scratch_repl = true,
                     close_window_on_exit = true,
                     repl_definition = {
@@ -275,7 +274,10 @@ return {
                 keymaps = {
                     visual_send = "<C-CR>",
                     send_line = "<C-CR>",
+                    send_paragraph = "<A-p>",
                     send_until_cursor = "<A-b>",
+                    exit = "<Leader>tq",
+                    clear = "<Leader>tc",
                 },
                 ignore_blank_lines = true,
             }
