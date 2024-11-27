@@ -1,37 +1,5 @@
 return {
 
-    -- Better `vim.notify()`
-    {
-        "rcarriga/nvim-notify",
-        keys = {
-            {
-                "<Leader>un",
-                function()
-                    require("notify").dismiss({ silent = true, pending = true })
-                end,
-                desc = "Dismiss All Notifications",
-            },
-        },
-        opts = {
-            timeout = 3000,
-            max_height = function()
-                return math.floor(vim.o.lines * 0.75)
-            end,
-            max_width = function()
-                return math.floor(vim.o.columns * 0.75)
-            end,
-        },
-        init = function()
-            -- when noice is not enabled, install notify on VeryLazy
-            local Util = require("util")
-            if not Util.has("noice.nvim") then
-                Util.on_very_lazy(function()
-                    vim.notify = require("notify")
-                end)
-            end
-        end,
-    },
-
     -- Better vim.ui
     {
         "stevearc/dressing.nvim",
@@ -137,24 +105,6 @@ return {
                         },
                     },
                     lualine_x = {
-                        -- stylua: ignore
-                        {
-                            function() return require("noice").api.status.command.get() end,
-                            cond = function() return package.loaded["noice"] and require("noice").api.status.command.has() end,
-                            color = Util.fg("Statement")
-                        },
-                        -- stylua: ignore
-                        {
-                            function() return require("noice").api.status.mode.get() end,
-                            cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
-                            color = Util.fg("Constant")
-                        },
-                        -- stylua: ignore
-                        -- {
-                        --     function() return  "  " .. require("dap").status() end,
-                        --     cond = function() return package.loaded["dap"] and require("dap").status ~= "" end,
-                        --     color = Util.fg("Debug")
-                        -- },
                         {
                             require("lazy.status").updates,
                             cond = require("lazy.status").has_updates,
@@ -219,50 +169,10 @@ return {
                     "Trouble",
                     "lazy",
                     "mason",
-                    "notify",
                     "lazyterm",
                     "ironterm",
                 },
             },
-        },
-    },
-
-    -- Noice UI
-    {
-        "folke/noice.nvim",
-        event = "VeryLazy",
-        opts = {
-            lsp = {
-                override = {
-                    ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-                    ["vim.lsp.util.stylize_markdown"] = true,
-                    ["cmp.entry.get_documentation"] = true,
-                },
-                signature = {
-                    enabled = true,
-                    auto_open = {
-                        enabled = false,
-                    },
-                },
-            },
-            presets = {
-                bottom_search = true,
-                command_palette = true,
-                long_message_to_split = true,
-                inc_rename = false,
-                lsp_doc_border = true, -- rounded border for hover (K)
-            },
-        },
-        -- stylua: ignore
-        keys = {
-            { "<Leader>s", desc = "+noice"},
-            { "<S-Enter>", function() require("noice").redirect(vim.fn.getcmdline()) end, mode = "c", desc = "Redirect Cmdline" },
-            { "<Leader>snl", function() require("noice").cmd("last") end, desc = "Noice Last Message" },
-            { "<Leader>snh", function() require("noice").cmd("history") end, desc = "Noice History" },
-            { "<Leader>sna", function() require("noice").cmd("all") end, desc = "Noice All" },
-            { "<Leader>snd", function() require("noice").cmd("dismiss") end, desc = "Dismiss All" },
-            { "<C-f>", function() if not require("noice.lsp").scroll(4) then return "<C-f>" end end, silent = true, expr = true, desc = "Scroll Forward", mode = {"i", "n", "s"} },
-            { "<C-b>", function() if not require("noice.lsp").scroll(-4) then return "<C-b>" end end, silent = true, expr = true, desc = "Scroll Backward", mode = {"i", "n", "s"}},
         },
     },
 

@@ -16,11 +16,6 @@ local source = vim.fn.expand("%:p:.")
 map("n", "<LocalLeader>ts", ":!python3 " .. source .. "<CR>", "Python: Source Current File")
 map("n", "<LocalLeader>tr", "<cmd>IronRepl<CR>", "Python: Open/Hide ipython Console")
 
--- Register which-key
-require("which-key").register({
-    ["<LocalLeader>t"] = { name = "+REPL", buffer = 0 },
-})
-
 -- Autocmds
 vim.api.nvim_create_autocmd("TermOpen", {
     group = augroup("ipython"),

@@ -128,7 +128,6 @@ map("n", "<Leader>fT", function()
     Util.float_term()
 end, { desc = "Terminal (cwd)" })
 map("n", "<C-/>", lazyterm, { desc = "Terminal (root dir)" })
--- map("n", "<C-_>", lazyterm, { desc = "which_key_ignore" })
 
 -- Terminal Mappings
 map("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Enter Normal Mode" })
@@ -137,7 +136,6 @@ map("t", "<C-j>", "<cmd>wincmd j<CR>", { desc = "Go To Lower Window" })
 map("t", "<C-k>", "<cmd>wincmd k<CR>", { desc = "Go To Upper Window" })
 map("t", "<C-l>", "<cmd>wincmd l<CR>", { desc = "Go To Right Window" })
 map("n", "<C-/>", lazyterm, { desc = "Hide Terminal" })
--- map("t", "<C-_>", "<cmd>close<CR>", { desc = "which_key_ignore" })
 
 -- Windows
 map("n", "<Leader>ww", "<C-W>p", { desc = "Other Window", remap = true })

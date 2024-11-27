@@ -27,11 +27,6 @@ map("n", "<LocalLeader>tv", "<cmd>IronSend httpgd::hgd_url()<CR>", "R: Viewer")
 map("n", "<LocalLeader>tr", "<cmd>IronRepl<CR>", "R: Open/Hide Console")
 map("n", "<LocalLeader>tc", "<cmd>IronSend system('clear')<CR>", "R: Clear Console")
 
--- Register which-key
-require("which-key").add({
-    { "<LocalLeader>t", group = "+REPL", buffer = 0 },
-})
-
 -- Autocmds
 vim.api.nvim_create_autocmd("TermOpen", {
     group = augroup("console"),

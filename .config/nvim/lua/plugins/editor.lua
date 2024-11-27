@@ -224,39 +224,6 @@ return {
         },
     },
 
-    -- Which-key
-    {
-        "folke/which-key.nvim",
-        event = "VeryLazy",
-        opts = {
-            plugins = { spelling = true },
-            defaults = {
-                mode = { "n", "v" },
-                { "<Leader><Tab>", group = "+tabs" },
-                { "<Leader>b", group = "+buffer" },
-                { "<Leader>c", group = "+code" },
-                { "<Leader>f", group = "+file/find" },
-                { "<Leader>g", group = "+git" },
-                { "<Leader>gh", group = "+hunks" },
-                { "<Leader>q", group = "+quit/session" },
-                { "<Leader>s", group = "+search" },
-                { "<Leader>sn", group = "+noice" },
-                { "<Leader>u", group = "+ui" },
-                { "<Leader>w", group = "+windows" },
-                { "<Leader>x", group = "+diagnostics/quickfix" },
-                { "[", group = "+prev" },
-                { "]", group = "+next" },
-                { "g", group = "+goto" },
-                { "gz", group = "+surround" },
-            },
-        },
-        config = function(_, opts)
-            local wk = require("which-key")
-            wk.setup(opts)
-            wk.add(opts.defaults)
-        end,
-    },
-
     -- Git
     {
         "lewis6991/gitsigns.nvim",
