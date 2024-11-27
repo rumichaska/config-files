@@ -265,6 +265,7 @@ return {
                             format = bracketed_paste_radian,
                         },
                         python = require("iron.fts.python").ipython,
+                        julia = require("iron.fts.julia").julia,
                     },
                     repl_open_cmd = view.split("30%", {
                         number = false,
