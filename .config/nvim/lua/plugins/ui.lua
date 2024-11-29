@@ -176,6 +176,40 @@ return {
         },
     },
 
+    -- Noice UI
+    {
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        opts = {
+            cmdline = { view = "cmdline" },
+            lsp = {
+                override = {
+                    ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+                    ["vim.lsp.util.stylize_markdown"] = true,
+                    ["cmp.entry.get_documentation"] = true,
+                },
+                signature = {
+                    enabled = true,
+                    auto_open = {
+                        enabled = false,
+                    },
+                },
+            },
+            presets = {
+                bottom_search = true,
+                command_palette = true,
+                long_message_to_split = false,
+                inc_rename = false,
+                lsp_doc_border = true, -- rounded border for hover (K)
+            },
+        },
+        -- stylua: ignore
+        keys = {
+            { "<C-f>", function() if not require("noice.lsp").scroll(4) then return "<C-f>" end end, silent = true, expr = true, desc = "Scroll Forward", mode = {"i", "n", "s"} },
+            { "<C-b>", function() if not require("noice.lsp").scroll(-4) then return "<C-b>" end end, silent = true, expr = true, desc = "Scroll Backward", mode = {"i", "n", "s"}},
+        },
+    },
+
     -- Color highlighter
     {
         "norcalli/nvim-colorizer.lua",

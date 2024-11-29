@@ -47,6 +47,7 @@ return {
                     CursorLineNr = { bold = true },
                     FloatBorder = { bg = colors.mantle },
                     TelescopeNormal = { link = "NormalFloat" },
+                    NoiceSplit = {link = "Normal"},
                     TroubleNormal = { link = "Normal" },
                 }
             end,
@@ -80,7 +81,7 @@ return {
                     enabled = false,
                 },
                 neotree = true,
-                noice = false,
+                noice = true,
                 notify = false,
                 nvimtree = false,
                 semantic_tokens = true,

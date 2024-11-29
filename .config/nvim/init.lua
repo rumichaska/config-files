@@ -21,6 +21,7 @@ require("lazy").setup("plugins", {
         border = "rounded",
     },
     checker = { enabled = true, notify = false, frequency = 86400 },
+    change_detection = { notify = false },
     performance = {
         rtp = {
             disabled_plugins = {
