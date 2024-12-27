@@ -42,6 +42,13 @@ return {
                 loops = { "italic" },
                 functions = { "italic", "bold" },
             },
+            color_overrides = {
+                mocha = {
+                    base = "#000000",
+                    mantle = "#000000",
+                    crust = "#000000"
+                },
+            },
             custom_highlights = function(colors)
                 return {
                     CursorLineNr = { bold = true },
@@ -96,4 +103,19 @@ return {
             vim.cmd.colorscheme("catppuccin")
         end,
     },
+    {
+        "rebelot/kanagawa.nvim",
+        enabled = false,
+        lazy = false,
+        priority = 1000,
+        opts = {
+            theme = "dragon",
+        },
+        config = function(_, opts)
+            require("kanagawa").setup(opts)
+            vim.o.background = ""
+            vim.cmd.colorscheme("kanagawa")
+        end,
+    },
 }
+
