@@ -26,21 +26,18 @@ overlay0 = "#6c7086"
 surface2 = "#585b70"
 surface1 = "#45475a"
 surface0 = "#313244"
-base = "#000000"
-mantle = "#000000"
-crust = "#000000"
-# base = "#1e1e2e"
-# mantle = "#181825"
-# crust = "#11111b"
+base = "#1e1e2e"
+mantle = "#181825"
+crust = "#11111b"
 
 # Username Module
 [username]
-format = '[$user]($style) '
+format = '\[[$user]($style)\]'
 
 # Hostname Module
 [hostname]
 ssh_symbol = '󰒍 '
-format = '\[[$ssh_symbol$hostname]($style)\] '
+format = '\[[$ssh_symbol$hostname]($style)\]'
 
 # Directory Module
 [directory]
@@ -61,41 +58,44 @@ format = '([\[$all_status$ahead_behind\]]($style))'
 # Docker Context module
 [docker_context]
 symbol = ' '
+format = '\[[$symbol$context]($style)\]'
 
 # Package Version Module
 [package]
 symbol = ' '
+format = '\[[$symbol$version]($style)\]'
 
 # Julia Module
 [julia]
 symbol = ' '
-format = ' \[[$symbol($version)]($style)\]'
+format = '\[[$symbol($version)]($style)\]'
 
 # Lua module
 [lua]
 symbol = ' '
-format = ' \[[$symbol($version)]($style)\]'
+format = '\[[$symbol($version)]($style)\]'
 
 # Python Module
 [python]
 symbol = ' '
-format = ' \[[$symbol($version)(\($virtualenv\))]($style)\]'
+format = '\[[${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)\]'
 
 # R Module
 [rlang]
 symbol = ' '
-format = ' \[[$symbol($version)]($style)\]'
+format = '\[[$symbol($version)]($style)\]'
 detect_files = ['']
 
 # Conda Module
 [conda]
 symbol = '󱔎 '
-format = '\[[$symbol$environment]($style)\] '
+format = '\[[$symbol$environment]($style)\]'
 
 # Memory Usage Module
 [memory_usage]
 symbol = '󰍛 '
+format = '\[$symbol[$ram( | $swap)]($style)\]'
 
 # Command Duration Module
 [cmd_duration]
-format = '\[[󱑌 $duration]($style)\] '
+format = '\[[󱑌 $duration]($style)\]'
