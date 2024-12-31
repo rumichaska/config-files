@@ -120,6 +120,7 @@ error_symbol = '[[󰄛](red) ❯](peach)'
 
 # Username Module
 [username]
+show_always = true
 format = '\[[$user]($style)\]'
 
 # Hostname Module
