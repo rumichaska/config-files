@@ -14,24 +14,25 @@ vim.cmd("filetype plugin indent on") -- Enable all filetype plugins
 
 -- Appearance
 -- vim.o.background = ""       -- Setting for 'kanagawa.nvim' theme
-vim.opt.laststatus = 3      -- Setting with 'incline.nvim'
+vim.opt.laststatus = 3        -- Setting with 'incline.nvim'
 
-vim.opt.breakindent = true  -- Indent wrapped lines to match line start
-vim.opt.cursorline = true   -- Highlight current line
-vim.opt.linebreak = true    -- Wrap long lines at 'breakat' (if 'wrap' is set)
-vim.opt.number = true       -- Show line numbers
-vim.opt.splitbelow = true   -- Horizontal splits will be below
-vim.opt.splitright = true   -- Vertical splits will be to the right
+vim.opt.breakindent = true    -- Indent wrapped lines to match line start
+vim.opt.cursorline = true     -- Highlight current line
+vim.opt.linebreak = true      -- Wrap long lines at 'breakat' (if 'wrap' is set)
+vim.opt.number = true         -- Show line numbers
+vim.opt.relativenumber = true -- Show relarive numbers
+vim.opt.splitbelow = true     -- Horizontal splits will be below
+vim.opt.splitright = true     -- Vertical splits will be to the right
 
-vim.opt.ruler = false       -- Don't show cursor position in command line
-vim.opt.scrolloff = 10      -- Minimal number of screen lines to keep above and below the cursor
-vim.opt.showmode = false    -- Don't show mode in command line
-vim.opt.wrap = false        -- Display long lines as just one line
+vim.opt.ruler = false         -- Don't show cursor position in command line
+vim.opt.scrolloff = 10        -- Minimal number of screen lines to keep above and below the cursor
+vim.opt.showmode = false      -- Don't show mode in command line
+vim.opt.wrap = false          -- Display long lines as just one line
 
-vim.opt.fillchars = "eob: " -- Don't show `~` outside of buffer
-vim.opt.signcolumn = "yes"  -- Always show sign column (otherwise it will shift text)
+vim.opt.fillchars = "eob: "   -- Don't show `~` outside of buffer
+vim.opt.signcolumn = "yes"    -- Always show sign column (otherwise it will shift text)
 
-vim.opt.pumheight = 10      -- Make popup menu smaller
+vim.opt.pumheight = 10        -- Make popup menu smaller
 
 vim.opt.listchars = {
   tab = "> ", trail = "·", extends = "…", precedes = "…", nbsp = "␣"
