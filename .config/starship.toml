@@ -169,6 +169,10 @@ format = '\[[$symbol($version)]($style)\]'
 symbol = ' '
 format = '\[[${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)\]'
 
+# Quarto Module
+[quarto]
+format = '\[[$symbol($version)]($style)\]'
+
 # R Module
 [rlang]
 symbol = ' '
