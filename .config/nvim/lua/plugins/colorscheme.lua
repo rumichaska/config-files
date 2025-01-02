@@ -1,121 +1,69 @@
 return {
-    -- Tokyonight
-    {
-        "folke/tokyonight.nvim",
-        enabled = false,
-        lazy = false,
-        priority = 1000,
-        opts = {
-            style = "night",
-            styles = {
-                comments = { italic = true },
-                keywords = { italic = false, bold = true },
-                functions = { italic = true, bold = true },
-                variables = {},
-            },
-            sidebars = { "terminal", "help" },
-            lualine_bold = true,
-            on_highlights = function(hl, c)
-                hl.CursorLineNr = {
-                    fg = c.yellow,
-                    bold = true,
-                }
-            end,
+  -- Kanagawa
+  {
+    "rebelot/kanagawa.nvim",
+    enabled = false,
+    lazy = false,
+    priority = 1000,
+    opts = {
+      colors = {
+        palette = { dragonBlack3 = "#000000" },
+        theme = {
+          all = {
+            ui = { bg_gutter = "none" },
+          },
         },
-        config = function(_, opts)
-            require("tokyonight").setup(opts)
-            vim.cmd.colorscheme("tokyonight")
-        end,
+      },
+      overrides = function(colors)
+        local theme = colors.theme
+        return {
+          Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 },
+          PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
+          PmenuSbar = { bg = theme.ui.bg_m1 },
+          PmenuThumb = { bg = theme.ui.bg_p2 },
+        }
+      end,
+      theme = "dragon",
     },
-
-    -- Catppuccin
-    {
-        "catppuccin/nvim",
-        lazy = false,
-        priority = 1000,
-        opts = {
-            flavour = "mocha",
-            term_colors = true,
-            styles = {
-                comments = { "italic" },
-                conditionals = { "italic" },
-                loops = { "italic" },
-                functions = { "italic", "bold" },
-            },
-            color_overrides = {
-                mocha = {
-                    base = "#000000",
-                    mantle = "#000000",
-                    crust = "#000000"
-                },
-            },
-            custom_highlights = function(colors)
-                return {
-                    CursorLineNr = { bold = true },
-                    FloatBorder = { bg = colors.mantle },
-                    TelescopeNormal = { link = "NormalFloat" },
-                    NoiceSplit = {link = "Normal"},
-                    TroubleNormal = { link = "Normal" },
-                }
-            end,
-            integrations = {
-                cmp = true,
-                gitsigns = true,
-                illuminate = true,
-                indent_blankline = { enabled = true },
-                lsp_trouble = true,
-                mason = true,
-                mini = true,
-                native_lsp = {
-                    enabled = true,
-                    virtual_text = {
-                        errors = { "italic" },
-                        hints = { "italic" },
-                        warnings = { "italic" },
-                        information = { "italic" },
-                    },
-                    underlines = {
-                        errors = { "undercurl" },
-                        hints = { "undercurl" },
-                        warnings = { "undercurl" },
-                        information = { "undercurl" },
-                    },
-                    inlay_hints = {
-                        background = true,
-                    },
-                },
-                navic = {
-                    enabled = false,
-                },
-                neotree = true,
-                noice = true,
-                notify = false,
-                nvimtree = false,
-                semantic_tokens = true,
-                telescope = true,
-                treesitter = true,
-                treesitter_context = true,
-                which_key = false,
-            },
+    config = function(_, opts)
+      require("kanagawa").setup(opts)
+      vim.cmd.colorscheme("kanagawa")
+    end,
+  },
+  -- Catppuccin
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      flavour = "mocha",
+      term_colors = true,
+      styles = {
+        conditionals = {"bold"},
+        loops = {"bold"},
+        keywords = { "bold" }
+      },
+      color_overrides = {
+        mocha = {
+          base = "#000000",
+          mantle = "#000000",
+          crust = "#000000"
         },
-        config = function(_, opts)
-            require("catppuccin").setup(opts)
-            vim.cmd.colorscheme("catppuccin")
-        end,
+      },
+      defaul_integrations = false,
+      integrations = {
+        blink_cmp = true,
+        gitsigns = true,
+        mason = true,
+        mini = { enabled = true },
+        treesitter = true,
+        telescope = { enabled = true },
+      },
     },
-    {
-        "rebelot/kanagawa.nvim",
-        enabled = false,
-        lazy = false,
-        priority = 1000,
-        opts = {
-            theme = "dragon",
-        },
-        config = function(_, opts)
-            require("kanagawa").setup(opts)
-            vim.o.background = ""
-            vim.cmd.colorscheme("kanagawa")
-        end,
-    },
+    config = function(_, opts)
+      require("catppuccin").setup(opts)
+      vim.cmd.colorscheme("catppuccin")
+    end,
+  }
 }
-
