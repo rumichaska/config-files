@@ -40,8 +40,8 @@ return {
       flavour = "mocha",
       term_colors = true,
       styles = {
-        conditionals = {"bold"},
-        loops = {"bold"},
+        conditionals = { "bold" },
+        loops = { "bold" },
         keywords = { "bold" }
       },
       color_overrides = {
@@ -51,12 +51,27 @@ return {
           crust = "#000000"
         },
       },
+      custom_highlights = function(colors)
+        return {
+          WinSeparator = { fg = colors.flamingo },
+        }
+      end,
       defaul_integrations = false,
       integrations = {
         blink_cmp = true,
         gitsigns = true,
         mason = true,
         mini = { enabled = true },
+        native_lsp = {
+          enabled = true,
+          underlines = {
+            errors = { "undercurl" },
+            hints = { "undercurl" },
+            warnings = { "undercurl" },
+            information = { "undercurl" },
+            ok = { "undercurl" },
+          },
+        },
         treesitter = true,
         telescope = { enabled = true },
       },
