@@ -8,18 +8,8 @@ return {
       end,
       desc = "Open oil"
     },
-    {
-      "q",
-      function()
-        require("oil").close()
-      end,
-      desc = "Close oil"
-    },
   },
   opts = {
-    keymaps = {
-      ["<C-c>"] = false,
-    },
     view_options = {
       show_hidden = true,
     },
