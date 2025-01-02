@@ -77,6 +77,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(event)
     local buf = event.buf
     local telescope = require("telescope.builtin")
+    local autoformat = { enabled = true }
     local map = function(keys, func, desc, mode)
       mode = mode or "n"
       vim.keymap.set(mode, keys, func, { buffer = buf, desc = "LSP: " .. desc })
@@ -89,26 +90,40 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("gO", telescope.lsp_document_symbols, "Document symbols")
     map("K", function() vim.lsp.buf.hover({ border = "rounded" }) end, "Hover")
     map("<Leader>cd", function() vim.diagnostic.open_float({ border = "rounded" }) end, "Line diagnostic")
+    map("<Leader>cf", vim.lsp.buf.format, "Fomart code", { "n", "v" })
     local client = vim.lsp.get_client_by_id(event.data.client_id)
     if not client then return end
-    ---@diagnostic disable-next-line: missing-parameter
+    ---@diagnostic disable-next-line: missing-parameter, param-type-mismatch
     if client.supports_method("textDocument/formatting") then
+      map("<Leader>tf", function()
+          if autoformat.enabled then
+            autoformat.enabled = false
+            vim.notify("Disabled format on save", vim.log.levels.WARN)
+          else
+            autoformat.enabled = not autoformat.enabled
+            vim.notify("Enabled format on save", vim.log.levels.WARN)
+          end
+        end,
+        "Toggle autoformat"
+      )
       vim.api.nvim_create_autocmd("BUfWritePre", {
         group = augroup("lsp_format_on_save"),
         buffer = buf,
         desc = "Format on save",
         callback = function()
+          if not autoformat.enabled then return end
           vim.lsp.buf.format({ bufnr = buf, id = client.id })
         end,
       })
     end
+    ---@diagnostic disable-next-line: missing-parameter, param-type-mismatch
     if client.supports_method("textDocument/inlayHint") then
       map("<Leader>th", function()
           vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = buf }))
           if vim.lsp.inlay_hint.is_enabled() then
-            vim.notify("Enabled inlay hint")
+            vim.notify("Enabled inlay hint", vim.log.levels.WARN)
           else
-            vim.notify("Disabled inlay hint")
+            vim.notify("Disabled inlay hint", vim.log.levels.WARN)
           end
         end,
         "Toggle inlay hint"
