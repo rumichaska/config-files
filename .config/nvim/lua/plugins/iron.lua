@@ -47,7 +47,6 @@ return {
         exit = "<Leader>tq",
         clear = "<Leader>tc",
       },
-      highlight_last = false,
       ignore_blank_lines = true,
     }
   end,
