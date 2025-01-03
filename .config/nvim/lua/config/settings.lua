@@ -32,30 +32,44 @@ vim.opt.wrap = false          -- Display long lines as just one line
 vim.opt.fillchars = "eob: "   -- Don't show `~` outside of buffer
 vim.opt.signcolumn = "yes"    -- Always show sign column (otherwise it will shift text)
 
-vim.opt.pumheight = 10        -- Make popup menu smaller
+vim.opt.shortmess:append({
+  W = true,
+  I = true,
+  c = true,
+  C = true
+})                                     -- Messages
+vim.opt.pumheight = 10                 -- Make popup menu smaller
+vim.opt.wildmode = "longest:full,full" -- Command-line completion mode
 
-vim.opt.listchars = {
-  tab = "> ", trail = "·", extends = "…", precedes = "…", nbsp = "␣"
-}                   -- Define which helper symbols to show
+vim.opt.listchars = ({
+  tab = "> ",
+  trail = "·",
+  extends = "…",
+  precedes = "…",
+  nbsp = "␣"
+})                  -- Define which helper symbols to show
 vim.opt.list = true -- Show some helper symbols
 
--- Enable syntax highlighting if it wasn't already (as it is time consuming)
-if vim.fn.exists("syntax_on") ~= 1 then vim.cmd([[syntax enable]]) end
+if vim.fn.exists("syntax_on") ~= 1 then
+  vim.cmd([[syntax enable]])
+end -- Enable syntax highlighting if it wasn"t already (as it is time consuming)
 
 -- Editing
-vim.opt.expandtab = true                                       -- Spaces instead of tabs
-vim.opt.smartindent = true                                     -- Make indenting smart
+vim.opt.expandtab = true     -- Spaces instead of tabs
+vim.opt.smartindent = true   -- Make indenting smart
 
-vim.opt.ignorecase = true                                      -- Ignore case when searching (use `\C` to force not doing that)
-vim.opt.incsearch = true                                       -- Show search results while typing
-vim.opt.infercase = true                                       -- Infer letter cases for a richer built-in keyword completion
-vim.opt.smartcase = true                                       -- Don't ignore case when searching if pattern has upper case
-vim.opt.inccommand = "split"                                   -- Preview substitution live
+vim.opt.ignorecase = true    -- Ignore case when searching (use `\C` to force not doing that)
+vim.opt.incsearch = true     -- Show search results while typing
+vim.opt.infercase = true     -- Infer letter cases for a richer built-in keyword completion
+vim.opt.smartcase = true     -- Don't ignore case when searching if pattern has upper case
+vim.opt.inccommand = "split" -- Preview substitution live
 
-vim.schedule(function() vim.opt.clipboard = "unnamedplus" end) -- Paste from clipboard
-vim.opt.completeopt = "menuone,noinsert,noselect"              -- Customize completions
-vim.opt.virtualedit = "block"                                  -- Allow going past the end of line in visual block mode
-vim.opt.formatoptions = "qjl1"                                 -- Don't autoformat comments
+vim.schedule(function()
+  vim.opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus"
+end)                                              -- Paste from clipboard if not in SSH
+vim.opt.completeopt = "menuone,noinsert,noselect" -- Customize completions
+vim.opt.virtualedit = "block"                     -- Allow going past the end of line in visual block mode
+vim.opt.formatoptions = "qjl1"                    -- Don't autoformat comments
 
 -- Enable gui colors
 if vim.fn.has('nvim-0.10') == 0 then vim.o.termguicolors = true end
