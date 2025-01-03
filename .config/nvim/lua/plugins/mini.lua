@@ -34,4 +34,12 @@ return {
     version = false,
     opts = {},
   },
+  -- Indentscope
+  {
+    "echasnovski/mini.indentscope",
+    version = false,
+    opts = {
+      symbol = "│"
+    }
+  },
 }
