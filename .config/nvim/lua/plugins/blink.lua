@@ -49,6 +49,7 @@ return {
         per_filetype = {
           -- add lazydev to your completion providers
           lua = { "lazydev", "lsp", "path", "snippets", "buffer" },
+          r = { "lsp", "snippets", "buffer", "path" },
         },
         providers = {
           lazydev = {
