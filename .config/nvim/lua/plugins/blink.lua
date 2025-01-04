@@ -49,7 +49,7 @@ return {
         per_filetype = {
           -- add lazydev to your completion providers
           lua = { "lazydev", "lsp", "path", "snippets", "buffer" },
-          r = { "lsp", "snippets", "buffer", "path" },
+          r = { "lsp", "buffer", "path", "snippets" },
         },
         providers = {
           lazydev = {
@@ -57,6 +57,11 @@ return {
             module = "lazydev.integrations.blink",
             -- make lazydev completions top priority (see `:h blink.cmp`)
             score_offset = 100,
+          },
+          path = {
+            opts = {
+              get_cwd = function() return vim.fn.getcwd() end,
+            }
           },
         },
       },

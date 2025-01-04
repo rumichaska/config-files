@@ -16,9 +16,8 @@ end
 map("i", "<C-S-m>", "<Esc>:normal! a |><CR>a ", "Base pipe operator")
 map("i", "<C-S-i>", "<Esc>:normal! a %in%<CR>a ", "`%in%` operator")
 map("i", "<M-->", "<Esc>:normal! a <-<CR>a ", "Asign operator")
-map("n", "<LocalLeader>ts", "<Cmd>IronSend " .. source .. "<CR>", "Source file")
--- map("n", "<LocalLeader>tv", "<cmd>IronSend httpgd::hgd_url()<CR>", "Plot Viewer")
-map("n", "<LocalLeader>tr", "<Cmd>IronRepl<CR>", "Open/Hide console")
+map("n", "<LocalLeader>cs", "<Cmd>IronSend " .. source .. "<CR>", "Run source file")
+map("n", "<LocalLeader>tr", "<Cmd>IronRepl<CR>", "Toggle console")
 
 -- Autocommands
 vim.api.nvim_create_autocmd("TermOpen", {
@@ -26,7 +25,7 @@ vim.api.nvim_create_autocmd("TermOpen", {
   desc = "R console",
   callback = function(event)
     if vim.bo[event.buf].filetype ~= "lazyterm" then
-      map("n", "<LocalLeader>tr", "<cmd>IronHide r<CR>", "Open/Hide console")
+      map("n", "<LocalLeader>tr", "<cmd>IronHide r<CR>", "Toggle console")
       map("t", "<C-S-m>", " |> ", "Base pipe operator")
       map("t", "<C-S-i>", " %in% ", "`%in%`, operator")
       map("t", "<M-->", " <- ", "Asign operator")

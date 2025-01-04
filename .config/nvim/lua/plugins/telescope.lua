@@ -34,7 +34,7 @@ return {
           cwd = vim.fs.joinpath(vim.fn.stdpath("data"), "lazy")
         })
       end,
-      desc = "Find files"
+      desc = "Find files (Plugins)"
     },
     {
       "<Leader>sb",
@@ -74,26 +74,46 @@ return {
       desc = "Search keymaps"
     },
     -- NOTE: Mejorar en función a la configuración anterior, crear 'util.lua'
-    -- {
-    --   "<Leader>ss",
-    --   function()
-    --     require("telescope.builtin").lsp_document_symbols({
-    --       symbols = {
-    --         "Class",
-    --         "Function",
-    --         "Method",
-    --         "Constructor",
-    --         "Interface",
-    --         "Module",
-    --         "Struct",
-    --         "Trait",
-    --         "Field",
-    --         "Property",
-    --       },
-    --     })
-    --   end,
-    --   desc = "Go to symbols"
-    -- }
+    {
+      "<Leader>ss",
+      function()
+        require("telescope.builtin").lsp_document_symbols({
+          symbols = {
+            "Class",
+            "Function",
+            "Method",
+            "Constructor",
+            "Interface",
+            "Module",
+            "Struct",
+            "Trait",
+            "Field",
+            "Property",
+          },
+        })
+      end,
+      desc = "Go to document symbols"
+    },
+    {
+      "<Leader>sw",
+      function()
+        require("telescope.builtin").lsp_workspace_symbols({
+          symbols = {
+            "Class",
+            "Function",
+            "Method",
+            "Constructor",
+            "Interface",
+            "Module",
+            "Struct",
+            "Trait",
+            "Field",
+            "Property",
+          },
+        })
+      end,
+      desc = "Go to workspace symbols"
+    },
   },
   opts = {
     pickers = {
