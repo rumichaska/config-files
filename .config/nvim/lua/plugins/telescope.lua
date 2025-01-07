@@ -13,28 +13,18 @@ return {
   },
   keys = {
     {
-      "<Leader>ff",
+      "<Leader>sh",
       function()
-        require("telescope.builtin").find_files()
+        require("telescope.builtin").help_tags()
       end,
-      desc = "Find files"
+      desc = "Search help"
     },
     {
-      "<Leader>fb",
+      "<Leader>sk",
       function()
-        require("telescope.builtin").buffers()
+        require("telescope.builtin").keymaps()
       end,
-      desc = "Find buffers"
-    },
-    {
-      "<Leader>fp",
-      function()
-        require("telescope.builtin").find_files({
-          ---@diagnostic disable-next-line: param-type-mismatch
-          cwd = vim.fs.joinpath(vim.fn.stdpath("data"), "lazy")
-        })
-      end,
-      desc = "Find files (Plugins)"
+      desc = "Search keymaps"
     },
     {
       "<Leader>sb",
@@ -48,7 +38,7 @@ return {
       function()
         require("telescope.builtin").live_grep()
       end,
-      desc = "Grep"
+      desc = "Grep string (cwd)"
     },
     {
       "<Leader>sw",
@@ -58,20 +48,6 @@ return {
         })
       end,
       desc = "Search word (cwd)"
-    },
-    {
-      "<Leader>sh",
-      function()
-        require("telescope.builtin").help_tags()
-      end,
-      desc = "Search help"
-    },
-    {
-      "<Leader>sk",
-      function()
-        require("telescope.builtin").keymaps()
-      end,
-      desc = "Search keymaps"
     },
     -- NOTE: Mejorar en función a la configuración anterior, crear 'util.lua'
     {
@@ -92,10 +68,10 @@ return {
           },
         })
       end,
-      desc = "Go to document symbols"
+      desc = "Go to document symbols (cwd)"
     },
     {
-      "<Leader>sw",
+      "<Leader>sS",
       function()
         require("telescope.builtin").lsp_workspace_symbols({
           symbols = {
@@ -112,7 +88,31 @@ return {
           },
         })
       end,
-      desc = "Go to workspace symbols"
+      desc = "Go to workspace symbols (cwd)"
+    },
+    {
+      "<Leader>ff",
+      function()
+        require("telescope.builtin").find_files()
+      end,
+      desc = "Find files"
+    },
+    {
+      "<Leader>fb",
+      function()
+        require("telescope.builtin").buffers()
+      end,
+      desc = "Find buffers (cwd)"
+    },
+    {
+      "<Leader>fp",
+      function()
+        require("telescope.builtin").find_files({
+          ---@diagnostic disable-next-line: param-type-mismatch
+          cwd = vim.fs.joinpath(vim.fn.stdpath("data"), "lazy")
+        })
+      end,
+      desc = "Find files (Plugins)"
     },
   },
   opts = {

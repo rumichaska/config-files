@@ -16,7 +16,7 @@ end
 map("i", "<C-S-m>", "<Esc>:normal! a |><CR>a ", "Base pipe operator")
 map("i", "<C-S-i>", "<Esc>:normal! a %in%<CR>a ", "`%in%` operator")
 map("i", "<M-->", "<Esc>:normal! a <-<CR>a ", "Asign operator")
-map("n", "<LocalLeader>cs", "<Cmd>IronSend " .. source .. "<CR>", "Run source file")
+map("n", "<M-s>", "<Cmd>IronSend " .. source .. "<CR>", "Run source file")
 map("n", "<LocalLeader>tr", "<Cmd>IronRepl<CR>", "Toggle console")
 
 -- Autocommands
