@@ -24,13 +24,9 @@ vim.api.nvim_create_autocmd("TermOpen", {
   group = augroup("console"),
   desc = "R console",
   callback = function(event)
-    if vim.bo[event.buf].filetype ~= "lazyterm" then
-      map("n", "<LocalLeader>tr", "<cmd>IronHide r<CR>", "Toggle console")
-      map("t", "<C-S-m>", " |> ", "Base pipe operator")
-      map("t", "<C-S-i>", " %in% ", "`%in%`, operator")
-      map("t", "<M-->", " <- ", "Asign operator")
-      -- set filetype as "REPL"
-      vim.opt_local.filetype = "REPL"
-    end
+    map("n", "<LocalLeader>tr", "<cmd>IronHide r<CR>", "Toggle console")
+    map("t", "<C-S-m>", " |> ", "Base pipe operator")
+    map("t", "<C-S-i>", " %in% ", "`%in%`, operator")
+    map("t", "<M-->", " <- ", "Asign operator")
   end,
 })
