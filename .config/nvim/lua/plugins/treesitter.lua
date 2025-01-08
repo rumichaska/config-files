@@ -5,7 +5,20 @@ return {
   main = "nvim-treesitter.configs",
   opts = {
     ensure_installed = {
-      "bash", "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline", "r", "python", "julia"
+      "bash",
+      "c",
+      "html",
+      "javascript",
+      "julia",
+      "lua",
+      "markdown",
+      "markdown_inline",
+      "python",
+      "query",
+      "r",
+      "vim",
+      "vimdoc",
+      "yaml",
     },
     auto_install = false,
     highlight = {
