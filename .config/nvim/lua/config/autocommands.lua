@@ -1,3 +1,5 @@
+local Util = require("util")
+
 -- Augroup
 
 local function augroup(name)
@@ -92,17 +94,17 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("K", function() vim.lsp.buf.hover({ border = "rounded" }) end, "Documentation")
     map("<C-s>", function() vim.lsp.buf.signature_help({ border = "rounded" }) end, "Signature help")
     map("<Leader>cd", function() vim.diagnostic.open_float({ border = "rounded" }) end, "Line diagnostic")
-    map("<Leader>cf", vim.lsp.buf.format, "Fomart code", { "n", "v" })
+    map("<Leader>cf", vim.lsp.buf.format, "Format code", { "n", "v" })
     if not client then return end
     ---@diagnostic disable-next-line: missing-parameter, param-type-mismatch
     if client.supports_method("textDocument/formatting") then
       map("<Leader>tf", function()
           if autoformat.enabled then
             autoformat.enabled = false
-            vim.notify("Disabled format on save", vim.log.levels.WARN)
+            Util.warn("Disabled format on save")
           else
             autoformat.enabled = not autoformat.enabled
-            vim.notify("Enabled format on save", vim.log.levels.WARN)
+            Util.warn("Enabled format on save")
           end
         end,
         "Toggle autoformat"
@@ -122,9 +124,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
       map("<Leader>th", function()
           vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = buffer }))
           if vim.lsp.inlay_hint.is_enabled() then
-            vim.notify("Enabled inlay hint", vim.log.levels.WARN)
+            Util.warn("Enabled inlay hint")
           else
-            vim.notify("Disabled inlay hint", vim.log.levels.WARN)
+            Util.warn("Disabled inlay hint")
           end
         end,
         "Toggle inlay hint"

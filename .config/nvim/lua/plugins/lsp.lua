@@ -57,7 +57,19 @@ return {
               },
             },
           },
-        }
+        },
+        pyright = {
+          mason = false,
+          settings = {
+            python = {
+              analysis = {
+                autoSearchPaths = true,
+                diagnosticMode = "workspace",
+                useLibraryCodeForTypes = true,
+              },
+            },
+          },
+        },
       }
     },
     config = function(_, opts)
