@@ -1,3 +1,18 @@
+local Util = require("util")
+
+-- Toggle options
+vim.keymap.set("n", "<Leader>ts", function() Util.toggle("spell") end, { desc = "Options: Toggle spelling" })
+vim.keymap.set("n", "<Leader>tS", function() Util.language() end, { desc = "Options: Changing spelling language" })
+vim.keymap.set("n", "<Leader>tw", function() Util.toggle("wrap") end, { desc = "Options: Toggle word wrap" })
+vim.keymap.set("n", "<Leader>tl", function() Util.toggle_number() end, { desc = "Options: Toggle line numbers" })
+vim.keymap.set("n", "<Leader>td", Util.toggle_diagnostics, { desc = "Options: Toggle diagnostics" })
+vim.keymap.set("n", "<Leader>tc",
+  function()
+    local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
+    Util.toggle("conceallevel", false, { 0, conceallevel })
+  end,
+  { desc = "Options: Toggle conceal" })
+
 -- Highlight on search
 vim.keymap.set({ "n", "i" }, "<Esc>", "<Cmd>nohlsearch<CR><Esc>", { desc = "Clear highlights" })
 
@@ -15,10 +30,15 @@ vim.keymap.set("n", "<C-Up>", "<Cmd>resize +2<CR>", { desc = "Increase window he
 vim.keymap.set("n", "<C-Down>", "<Cmd>resize -2<CR>", { desc = "Decrease window height" })
 vim.keymap.set("n", "<C-Left>", "<Cmd>vertical resize -2<CR>", { desc = "Decrease window width" })
 vim.keymap.set("n", "<C-Right>", "<Cmd>vertical resize +2<CR>", { desc = "Increase window width" })
-vim.keymap.set(
-  "n", "<Leader>ur", "<cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>",
+vim.keymap.set("n", "<Leader>ur", "<cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>",
   { desc = "Redraw / clear hlsearch / diff update" }
 )
+
+-- Floating terminal
+vim.keymap.set("n", "<Leader>wt", function() Util.float_term(nil, { cwd = Util.get_root() }) end,
+  { desc = "Terminal (root dir)" })
+vim.keymap.set("n", "<Leader>wT", function() Util.float_term(nil, { cwd = vim.uv.os_homedir() }) end,
+  { desc = "Terminal (home dir)" })
 
 -- Terminal
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
@@ -50,3 +70,6 @@ vim.keymap.set({ "n", "x", "o" }, "N", "'nN'[v:searchforward]", { expr = true, d
 
 -- Lazy
 vim.keymap.set("n", "<Leader>l", "<Cmd>Lazy<CR>", { desc = "Lazy" })
+
+-- Mason
+vim.keymap.set("n", "<Leader>m", "<Cmd>Mason<CR>", {desc = "Mason"})

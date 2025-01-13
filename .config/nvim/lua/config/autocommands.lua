@@ -75,12 +75,13 @@ vim.api.nvim_create_autocmd("VimResized", {
 vim.api.nvim_create_autocmd("LspAttach", {
   group = augroup("lsp_configuration"),
   callback = function(event)
-    local buf = event.buf
+    local buffer = event.buf
+    local client = vim.lsp.get_client_by_id(event.data.client_id)
     local telescope = require("telescope.builtin")
     local autoformat = { enabled = true }
     local map = function(keys, func, desc, mode)
       mode = mode or "n"
-      vim.keymap.set(mode, keys, func, { buffer = buf, desc = "LSP: " .. desc })
+      vim.keymap.set(mode, keys, func, { buffer = buffer, desc = "LSP: " .. desc })
     end
     map("gd", telescope.lsp_definitions, "Goto definition")
     map("grn", vim.lsp.buf.rename, "Rename")
@@ -88,10 +89,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("grr", telescope.lsp_references, "Goto references")
     map("gri", telescope.lsp_implementations, "Goto implementation")
     map("gO", telescope.lsp_document_symbols, "Document symbols")
-    map("K", function() vim.lsp.buf.hover({ border = "rounded" }) end, "Hover")
+    map("K", function() vim.lsp.buf.hover({ border = "rounded" }) end, "Documentation")
+    map("<C-s>", function() vim.lsp.buf.signature_help({ border = "rounded" }) end, "Signature help")
     map("<Leader>cd", function() vim.diagnostic.open_float({ border = "rounded" }) end, "Line diagnostic")
     map("<Leader>cf", vim.lsp.buf.format, "Fomart code", { "n", "v" })
-    local client = vim.lsp.get_client_by_id(event.data.client_id)
     if not client then return end
     ---@diagnostic disable-next-line: missing-parameter, param-type-mismatch
     if client.supports_method("textDocument/formatting") then
@@ -108,18 +109,18 @@ vim.api.nvim_create_autocmd("LspAttach", {
       )
       vim.api.nvim_create_autocmd("BUfWritePre", {
         group = augroup("lsp_format_on_save"),
-        buffer = buf,
+        buffer = buffer,
         desc = "Format on save",
         callback = function()
           if not autoformat.enabled then return end
-          vim.lsp.buf.format({ bufnr = buf, id = client.id })
+          vim.lsp.buf.format({ bufnr = buffer, id = client.id })
         end,
       })
     end
     ---@diagnostic disable-next-line: missing-parameter, param-type-mismatch
     if client.supports_method("textDocument/inlayHint") then
       map("<Leader>th", function()
-          vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = buf }))
+          vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = buffer }))
           if vim.lsp.inlay_hint.is_enabled() then
             vim.notify("Enabled inlay hint", vim.log.levels.WARN)
           else
