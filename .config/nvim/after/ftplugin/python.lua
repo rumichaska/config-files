@@ -9,7 +9,7 @@ local map = function(mode, lhs, rhs, desc)
 end
 local source = vim.fn.expand("%:p:.")
 local function augroup(name)
-    return vim.api.nvim_create_augroup("Python_" .. name, { clear = true })
+  return vim.api.nvim_create_augroup("Python_" .. name, { clear = true })
 end
 
 -- Keymaps
@@ -21,7 +21,7 @@ vim.api.nvim_create_autocmd("TermOpen", {
   group = augroup("ipython"),
   desc = "Python console",
   callback = function(event)
-    if vim.bo[event.buf].filetype ~= "floaterm" then
+    if vim.bo[event.buf].filetype == "iron" then
       map("n", "<LocalLeader>tr", "<cmd>IronHide python<CR>", "Toggle console")
     end
   end,
