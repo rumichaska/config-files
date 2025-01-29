@@ -21,8 +21,6 @@ vim.api.nvim_create_autocmd("TermOpen", {
   group = augroup("ipython"),
   desc = "Python console",
   callback = function(event)
-    if vim.bo[event.buf].filetype == "iron" then
-      map("n", "<LocalLeader>tr", "<cmd>IronHide python<CR>", "Toggle console")
-    end
+    map("n", "<LocalLeader>tr", "<cmd>IronHide python<CR>", "Toggle console")
   end,
 })
