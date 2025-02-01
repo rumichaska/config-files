@@ -40,6 +40,8 @@ return {
         }),
       },
       keymaps = {
+        toggle_repl = "<Leader>tr",
+        restart_repl = "<Leader>tR",
         visual_send = "<C-CR>",
         send_line = "<C-CR>",
         send_paragraph = "<A-p>",

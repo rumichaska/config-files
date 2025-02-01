@@ -14,7 +14,7 @@ end
 
 -- Keymaps
 map("n", "<M-s>", ":!python3 " .. source .. "<CR>", "Run source file")
-map("n", "<LocalLeader>tr", "<cmd>IronRepl<CR>", "Toggle console")
+map("n", "<LocalLeader>wr", "<cmd>IronRepl<CR>", "Toggle console")
 
 -- Autocommands
 vim.api.nvim_create_autocmd("TermOpen", {
