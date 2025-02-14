@@ -1,4 +1,3 @@
-
 # Encondificación
 options(
     encoding = "UTF-8",
@@ -19,7 +18,6 @@ view <- function(.data) {
             striped = TRUE,
             highlight = TRUE,
             compact = TRUE,
-            # bordered = TRUE,
             height = 750,
             showPageSizeOptions = TRUE,
             defaultPageSize = 50,
