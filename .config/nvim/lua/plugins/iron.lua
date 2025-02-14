@@ -2,6 +2,7 @@ return {
   "Vigemus/iron.nvim",
   cmd = "IronRepl",
   main = "iron.core",
+  ft = { "r", "rmd", "python", "julia" },
   opts = function()
     -- Remove extra <CR> when sending lines to R console
     local bracketed_paste_radian = function(lines)
@@ -30,7 +31,14 @@ return {
             command = { "radian" },
             format = bracketed_paste_radian,
           },
-          -- r = require("iron.fts.r").radian,
+          rmd = {
+            command = { "radian" },
+            format = bracketed_paste_radian,
+          },
+          qmd = {
+            command = { "radian" },
+            format = bracketed_paste_radian,
+          },
           python = require("iron.fts.python").ipython,
           julia = require("iron.fts.julia").julia,
         },
