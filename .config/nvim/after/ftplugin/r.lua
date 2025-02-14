@@ -17,7 +17,7 @@ map("i", "<C-S-m>", "<Esc>:normal! a |><CR>a ", "Base pipe operator")
 map("i", "<C-S-i>", "<Esc>:normal! a %in%<CR>a ", "`%in%` operator")
 map("i", "<M-->", "<Esc>:normal! a <-<CR>a ", "Asign operator")
 map("n", "<M-s>", "<Cmd>IronSend " .. source .. "<CR>", "Run source file")
-map("n", "<LocalLeader>wr", "<Cmd>IronRepl<CR>", "Toggle console")
+-- map("n", "<LocalLeader>wr", "<Cmd>IronRepl<CR>", "Toggle console")
 
 -- Autocommands
 vim.api.nvim_create_autocmd("TermOpen", {
