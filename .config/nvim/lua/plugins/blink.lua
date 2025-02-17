@@ -44,9 +44,9 @@ return {
         enabled = true,
         window = { border = "rounded" }
       },
+      cmdline = { enabled = false },
       sources = {
         default = { "lsp", "path", "snippets", "buffer" },
-        cmdline = {},
         per_filetype = {
           -- add lazydev to your completion providers
           lua = { "lazydev", "lsp", "path", "snippets", "buffer" },
