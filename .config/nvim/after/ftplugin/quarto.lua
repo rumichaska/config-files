@@ -1,6 +1,8 @@
 -- Settings
 vim.opt_local.colorcolumn = "100"
 vim.opt_local.shiftwidth = 4
+vim.opt_local.wrap = true
+vim.opt_local.spell = false
 
 -- Functions and variables
 local map = function(mode, lhs, rhs, desc)

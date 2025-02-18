@@ -55,7 +55,7 @@ vim.api.nvim_create_autocmd("Filetype", {
 
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup("wrap_spell"),
-  pattern = { "text", "plaintex", "gitcommit", "markdown", "rmd", "quarto" },
+  pattern = { "text", "plaintex", "gitcommit", "markdown" },
   desc = "Wrap and check spell",
   callback = function()
     vim.opt_local.wrap = true
