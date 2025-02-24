@@ -1,7 +1,9 @@
 return {
   {
     "saghen/blink.cmp",
-    dependencies = "rafamadriz/friendly-snippets",
+    dependencies = {
+      "rafamadriz/friendly-snippets",
+    },
     version = "*",
     opts = {
       keymap = { preset = "default" },
@@ -48,7 +50,6 @@ return {
       sources = {
         default = { "lsp", "path", "snippets", "buffer" },
         per_filetype = {
-          -- add lazydev to your completion providers
           lua = { "lazydev", "lsp", "path", "snippets", "buffer" },
           r = { "lsp", "buffer", "path", "snippets" },
         },
@@ -58,6 +59,11 @@ return {
             module = "lazydev.integrations.blink",
             -- make lazydev completions top priority (see `:h blink.cmp`)
             score_offset = 100,
+          },
+          markdown = {
+            name = "RenderMarkdown",
+            module = "render-markdown.integ.blink",
+            fallbacks = { "lsp" },
           },
           path = {
             opts = {

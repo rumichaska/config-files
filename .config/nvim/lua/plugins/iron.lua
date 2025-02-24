@@ -48,14 +48,14 @@ return {
         }),
       },
       keymaps = {
-        toggle_repl = "<Leader>tr",
-        restart_repl = "<Leader>tR",
+        toggle_repl = "<Leader>rt",
+        restart_repl = "<Leader>rR",
         visual_send = "<C-CR>",
         send_line = "<C-CR>",
         send_paragraph = "<A-p>",
         send_until_cursor = "<A-b>",
-        exit = "<Leader>tq",
-        clear = "<Leader>tc",
+        exit = "<Leader>rq",
+        clear = "<Leader>rc",
       },
       ignore_blank_lines = true,
     }

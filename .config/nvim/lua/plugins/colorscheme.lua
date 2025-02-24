@@ -60,6 +60,7 @@ return {
       integrations = {
         blink_cmp = true,
         gitsigns = true,
+        markdown = true,
         mason = true,
         mini = { enabled = true },
         native_lsp = {
@@ -72,6 +73,7 @@ return {
             ok = { "undercurl" },
           },
         },
+        render_markdown = true,
         treesitter = true,
         telescope = { enabled = true },
       },
