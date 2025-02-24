@@ -51,7 +51,10 @@ return {
         default = { "lsp", "path", "snippets", "buffer" },
         per_filetype = {
           lua = { "lazydev", "lsp", "path", "snippets", "buffer" },
-          r = { "lsp", "buffer", "path", "snippets" },
+          r = { "lsp", "buffer", "path" },
+          rmd = { "lsp", "buffer", "path", "markdown" },
+          quarto = { "lsp", "buffer", "path", "markdown" },
+          markdown = { "buffer", "path", "markdown" },
         },
         providers = {
           lazydev = {
