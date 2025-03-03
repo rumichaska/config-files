@@ -20,12 +20,12 @@ require("lazy").setup({
   spec = {
     { import = "plugins" },
   },
-  install = { colorscheme = { "catppuccin" } },
-  ui = { border = "rounded" },
   rocks = {
     enabled = false,
     hererocks = false,
   },
+  install = { colorscheme = { "catppuccin" } },
+  ui = { border = "rounded" },
   checker = {
     enabled = true,
     notify = false,
