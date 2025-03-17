@@ -8,6 +8,8 @@ end
 
 -- Autocommands
 
+-- Utilities
+
 vim.api.nvim_create_autocmd("TextYankPost", {
   group = augroup("highlight_yank"),
   desc = "Highlight when yanking (copying) text",
@@ -33,13 +35,11 @@ vim.api.nvim_create_autocmd("BufReadPost", {
   end,
 })
 
+-- By filetypes
+
 vim.api.nvim_create_autocmd("Filetype", {
   group = augroup("close_q"),
-  pattern = {
-    "help",
-    "qf",
-    "checkhealth",
-  },
+  pattern = { "help", "qf", "checkhealth" },
   desc = "Close with q",
   callback = function(event)
     local buf = event.buf
@@ -63,6 +63,16 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup("indent_scope"),
+  pattern = { "iron", "lazy", "mason" },
+  desc = "Disable `mini.indentscope` by filetype",
+  callback = function(event)
+    vim.b[event.buf].miniindentscope_disable = true
+  end,
+})
+
+-- Split window
 
 vim.api.nvim_create_autocmd("VimResized", {
   group = augroup("resize_splits"),
@@ -73,6 +83,8 @@ vim.api.nvim_create_autocmd("VimResized", {
     vim.cmd("tabnext " .. current_tab)
   end,
 })
+
+-- LSP
 
 vim.api.nvim_create_autocmd("LspAttach", {
   group = augroup("lsp_configuration"),
