@@ -59,7 +59,6 @@ return {
           },
         },
         pyright = {
-          mason = false,
           settings = {
             python = {
               analysis = {
