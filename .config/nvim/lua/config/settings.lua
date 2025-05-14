@@ -26,6 +26,7 @@ vim.opt.splitright = true     -- Vertical splits will be to the right
 
 vim.opt.ruler = false         -- Don't show cursor position in command line
 vim.opt.scrolloff = 10        -- Minimal number of screen lines to keep above and below the cursor
+vim.opt.sidescrolloff = 8     -- Minimal number of horizontal columns to keep the cursor sideways
 vim.opt.showmode = false      -- Don't show mode in command line
 vim.opt.wrap = false          -- Display long lines as just one line
 
@@ -44,8 +45,6 @@ vim.opt.wildmode = "longest:full,full" -- Command-line completion mode
 vim.opt.listchars = ({
   tab = "> ",
   trail = "·",
-  extends = "…",
-  precedes = "…",
   nbsp = "␣"
 })                  -- Define which helper symbols to show
 vim.opt.list = true -- Show some helper symbols

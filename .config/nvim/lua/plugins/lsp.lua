@@ -11,8 +11,14 @@ return {
           },
         },
       },
-      "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
+      {
+        "williamboman/mason.nvim",
+        version = "^1.0.0"
+      },
+      {
+        "williamboman/mason-lspconfig.nvim",
+        version = "^1.0.0"
+      },
       "saghen/blink.cmp"
     },
     opts = {
@@ -77,7 +83,6 @@ return {
       local ensure_installed = vim.tbl_keys(opts.servers or {})
       require("mason-lspconfig").setup({
         ensure_installed = ensure_installed,
-        automatic_installation = false,
       })
       -- Diagnostics
       local diagnostics = {

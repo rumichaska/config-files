@@ -10,6 +10,7 @@ return {
     },
   },
   opts = {
+    delete_to_trash = true,
     view_options = {
       show_hidden = true,
     },
@@ -17,5 +18,5 @@ return {
       max_width = 0.8,
       max_height = 0.8,
     },
-  }
+  },
 }
