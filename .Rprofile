@@ -1,9 +1,12 @@
 # Opciones globales
 options(
     encoding = "UTF-8",
-    max.print = 100,
+    max.print = 1000,
     setWidthOnResize = TRUE
 )
+
+# Entorno par funciones locales
+.custom_fn <- new.env()
 
 # Función para ver dataframes en browser
 if (interactive()) {
@@ -26,7 +29,7 @@ if (interactive()) {
     }
     # Revisar tablas
     if ("reactable" %in% utils::installed.packages()) {
-        view <- \(.data) {
+        .custom_fn$view <- \(.data) {
             reactable::reactable(
                 .data,
                 resizable = TRUE,
@@ -76,3 +79,5 @@ if (interactive()) {
         }
     }
 }
+
+attach(.custom_fn)
