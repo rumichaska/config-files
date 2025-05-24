@@ -30,7 +30,7 @@ vim.keymap.set("n", "<C-Up>", "<Cmd>resize +2<CR>", { desc = "Increase window he
 vim.keymap.set("n", "<C-Down>", "<Cmd>resize -2<CR>", { desc = "Decrease window height" })
 vim.keymap.set("n", "<C-Left>", "<Cmd>vertical resize -2<CR>", { desc = "Decrease window width" })
 vim.keymap.set("n", "<C-Right>", "<Cmd>vertical resize +2<CR>", { desc = "Increase window width" })
-vim.keymap.set("n", "<Leader>ur", "<cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>",
+vim.keymap.set("n", "<Leader>ur", "<Cmd>wincmd=<Bar>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>",
   { desc = "Redraw / clear hlsearch / diff update" }
 )
 
@@ -72,4 +72,4 @@ vim.keymap.set({ "n", "x", "o" }, "N", "'nN'[v:searchforward]", { expr = true, d
 vim.keymap.set("n", "<Leader>l", "<Cmd>Lazy<CR>", { desc = "Lazy" })
 
 -- Mason
-vim.keymap.set("n", "<Leader>m", "<Cmd>Mason<CR>", {desc = "Mason"})
+vim.keymap.set("n", "<Leader>m", "<Cmd>Mason<CR>", { desc = "Mason" })
