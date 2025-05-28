@@ -22,8 +22,8 @@ map("n", "<M-s>", "<Cmd>IronSend " .. source .. "<CR>", "Run source file")
 vim.api.nvim_create_autocmd("TermOpen", {
   group = augroup("console"),
   desc = "R console",
-  callback = function(event)
-    map("n", "<LocalLeader>rt", "<cmd>IronHide r<CR>", "Toggle console")
+  callback = function()
+    map("n", "<LocalLeader>rr", "<cmd>IronHide r<CR>", "Toggle console")
     map("t", "<C-S-m>", " |> ", "Base pipe operator")
     map("t", "<C-S-i>", " %in% ", "`%in%`, operator")
     map("t", "<M-->", " <- ", "Asign operator")

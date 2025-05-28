@@ -20,7 +20,7 @@ map("n", "<LocalLeader>wr", "<cmd>IronRepl<CR>", "Toggle console")
 vim.api.nvim_create_autocmd("TermOpen", {
   group = augroup("ipython"),
   desc = "Python console",
-  callback = function(event)
-    map("n", "<LocalLeader>tr", "<cmd>IronHide python<CR>", "Toggle console")
+  callback = function()
+    map("n", "<LocalLeader>rr", "<cmd>IronHide python<CR>", "Toggle console")
   end,
 })
