@@ -28,8 +28,8 @@ return {
         }),
       },
       keymaps = {
-        toggle_repl = "<Leader>rt",
-        restart_repl = "<Leader>rR",
+        toggle_repl = "<Leader>rr",
+        restar_repl = "<Leader>rR",
         visual_send = "<C-CR>",
         send_line = "<C-CR>",
         send_paragraph = "<A-p>",
