@@ -1,5 +1,9 @@
 return {
   "MeanderingProgrammer/render-markdown.nvim",
   ft = { "markdown", "quarto", "rmd" },
-  opts = {},
+  opts = {
+    code = {
+      style = "language"
+    }
+  },
 }
