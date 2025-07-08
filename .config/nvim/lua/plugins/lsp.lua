@@ -1,26 +1,23 @@
 return {
   {
-    "neovim/nvim-lspconfig",
-    dependencies = {
-      {
-        "folke/lazydev.nvim",
-        ft = "lua",
-        opts = {
-          library = {
-            { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-          },
-        },
+    "folke/lazydev.nvim",
+    ft = "lua",
+    opts = {
+      library = {
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
       },
-      {
-        "williamboman/mason.nvim",
-        version = "^1.0.0"
-      },
-      {
-        "williamboman/mason-lspconfig.nvim",
-        version = "^1.0.0"
-      },
-      "saghen/blink.cmp"
     },
+  },
+  {
+    "williamboman/mason.nvim",
+    version = "^1.0.0"
+  },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    version = "^1.0.0"
+  },
+  {
+    "neovim/nvim-lspconfig",
     opts = {
       servers = {
         lua_ls = {
