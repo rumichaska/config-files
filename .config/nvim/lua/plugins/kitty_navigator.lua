@@ -1,10 +1,8 @@
 return {
   "MunsMan/kitty-navigator.nvim",
-  -- dir = "~/plugins/kitty-navigator.nvim",
   build = {
     "cp navigate_kitty.py ~/.config/kitty",
     "cp pass_keys.py ~/.config/kitty",
-    -- "cp get_layout.py ~/.config/kitty",
   },
   keys = {
     { "<C-h>", function() require("kitty-navigator").navigateLeft() end,  desc = "Move left a Split" },
