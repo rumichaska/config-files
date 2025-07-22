@@ -2,7 +2,9 @@
 options(
     encoding = "UTF-8",
     max.print = 1000,
-    setWidthOnResize = TRUE
+    setWidthOnResize = TRUE,
+    shiny.launch.browser = FALSE,
+    shiny.port = 4545
 )
 
 # Bienvenida
