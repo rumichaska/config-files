@@ -1,14 +1,9 @@
 local M = {}
 
--- function M.on_attach(on_attach)
---   vim.api.nvim_create_autocmd("LspAttach", {
---     callback = function(args)
---       local buffer = args.buf
---       local client = vim.lsp.get_client_by_id(args.data.client_id)
---       on_attach(client, buffer)
---     end,
---   })
--- end
+-- Create autogroup for autocommands
+function M.augroup(name)
+  return vim.api.nvim_create_augroup("Config_" .. name, { clear = true })
+end
 
 -- Check if plugin is present and enabled
 function M.has(plugin)
