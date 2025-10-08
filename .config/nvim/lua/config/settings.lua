@@ -3,6 +3,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- General
+vim.o.winborder = "rounded"          -- Floating windows border
 vim.opt.undofile = true              -- Enable persistent undo (see also `:h undodir`)
 
 vim.opt.backup = false               -- Don't store backup while overwriting the file
@@ -69,6 +70,3 @@ end)                                              -- Paste from clipboard if not
 vim.opt.completeopt = "menuone,noinsert,noselect" -- Customize completions
 vim.opt.virtualedit = "block"                     -- Allow going past the end of line in visual block mode
 vim.opt.formatoptions = "qjl1"                    -- Don't autoformat comments
-
--- Enable gui colors
-if vim.fn.has('nvim-0.10') == 0 then vim.o.termguicolors = true end

@@ -9,7 +9,6 @@ return {
       completion = {
         accept = { auto_brackets = { enabled = false } },
         menu = {
-          border = "rounded",
           scrollbar = false,
           draw = {
             columns = {
@@ -34,7 +33,6 @@ return {
         documentation = {
           auto_show = false,
           window = {
-            border = "rounded",
             scrollbar = false,
           }
         },
@@ -42,7 +40,6 @@ return {
       },
       signature = {
         enabled = true,
-        window = { border = "rounded" }
       },
       cmdline = { enabled = false },
       sources = {

@@ -38,11 +38,29 @@ return {
     priority = 1000,
     opts = {
       flavour = "mocha",
-      term_colors = true,
       styles = {
         conditionals = { "bold" },
         loops = { "bold" },
         keywords = { "bold" }
+      },
+      lsp_styles = {
+        virtual_text = {
+          errors = { "italic" },
+          hints = { "italic" },
+          warnings = { "italic" },
+          information = { "italic" },
+          ok = { "italic" },
+        },
+        underlines = {
+          errors = { "undercurl" },
+          hints = { "undercurl" },
+          warnings = { "undercurl" },
+          information = { "undercurl" },
+          ok = { "undercurl" },
+        },
+        inlay_hints = {
+          background = true,
+        },
       },
       color_overrides = {
         mocha = {
@@ -58,23 +76,11 @@ return {
       end,
       defaul_integrations = false,
       integrations = {
-        blink_cmp = true,
+        blink_cmp = { style = "bordered" },
         gitsigns = true,
-        markdown = true,
         mason = true,
         mini = { enabled = true },
-        native_lsp = {
-          enabled = true,
-          underlines = {
-            errors = { "undercurl" },
-            hints = { "undercurl" },
-            warnings = { "undercurl" },
-            information = { "undercurl" },
-            ok = { "undercurl" },
-          },
-        },
         render_markdown = true,
-        treesitter = true,
         telescope = { enabled = true },
       },
     },
