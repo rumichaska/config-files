@@ -39,17 +39,18 @@ vim.api.nvim_create_autocmd("LspAttach", {
     ---@diagnostic disable-next-line: missing-parameter, param-type-mismatch
     if client.supports_method("textDocument/formatting") then
       map("<Leader>tf", function()
+          local msg = require("lazy.core.util")
           if autoformat.enabled then
             autoformat.enabled = false
-            Util.warn("Disabled format on save")
+            msg.warn("Disabled format on save")
           else
             autoformat.enabled = not autoformat.enabled
-            Util.warn("Enabled format on save")
+            msg.warn("Enabled format on save")
           end
         end,
         "Toggle autoformat"
       )
-      vim.api.nvim_create_autocmd("BUfWritePre", {
+      vim.api.nvim_create_autocmd("BufWritePre", {
         group = Util.augroup("lsp_format_on_save"),
         buffer = buffer,
         desc = "Format on save",
@@ -62,11 +63,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
     ---@diagnostic disable-next-line: missing-parameter, param-type-mismatch
     if client.supports_method("textDocument/inlayHint") then
       map("<Leader>th", function()
+          local msg = require("lazy.core.util")
           vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = buffer }))
           if vim.lsp.inlay_hint.is_enabled() then
-            Util.warn("Enabled inlay hint")
+            msg.warn("Enabled inlay hint")
           else
-            Util.warn("Disabled inlay hint")
+            msg.warn("Disabled inlay hint")
           end
         end,
         "Toggle inlay hint"

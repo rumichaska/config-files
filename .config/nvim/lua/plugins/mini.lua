@@ -2,13 +2,13 @@ return {
   -- Icons
   {
     "echasnovski/mini.icons",
-    version = false,
+    version = "*",
     opts = {},
   },
   -- Hipatterns
   {
     "echasnovski/mini.hipatterns",
-    version = false,
+    version = "*",
     opts = function()
       local hipatterns = require("mini.hipatterns")
       return {
@@ -25,19 +25,19 @@ return {
   -- Pairs
   {
     "echasnovski/mini.pairs",
-    version = false,
+    version = "*",
     opts = {},
   },
   -- Surround
   {
     "echasnovski/mini.surround",
-    version = false,
+    version = "*",
     opts = {},
   },
   -- Indentscope
   {
     "echasnovski/mini.indentscope",
-    version = false,
+    version = "*",
     opts = {
       symbol = "│"
     }

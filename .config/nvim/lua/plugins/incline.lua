@@ -4,7 +4,7 @@ return {
     event = "VeryLazy",
     opts = function()
       return {
-        hide = { cursorline = true },
+        hide = { cursorline = "smart" },
         render = function(props)
           local icons = require("mini.icons")
           local palette = require("catppuccin.palettes").get_palette("mocha")
