@@ -52,9 +52,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
       )
       vim.api.nvim_create_autocmd("BufWritePre", {
         group = Util.augroup("lsp_format_on_save"),
-        buffer = buffer,
         desc = "Format on save",
-        callback = function()
+        callback = function(event)
+          local buffer = event.buf
           if not autoformat.enabled then return end
           vim.lsp.buf.format({ bufnr = buffer, id = client.id })
         end,
