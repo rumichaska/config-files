@@ -45,19 +45,12 @@ return {
       sources = {
         default = { "lsp", "path", "snippets", "buffer" },
         per_filetype = {
-          lua = { "lazydev", "lsp", "path", "snippets", "buffer" },
           r = { "lsp", "buffer", "path" },
           rmd = { "lsp", "buffer", "path", "markdown" },
           quarto = { "lsp", "buffer", "path", "markdown" },
           markdown = { "buffer", "path", "markdown" },
         },
         providers = {
-          lazydev = {
-            name = "LazyDev",
-            module = "lazydev.integrations.blink",
-            -- make lazydev completions top priority (see `:h blink.cmp`)
-            score_offset = 100,
-          },
           markdown = {
             name = "RenderMarkdown",
             module = "render-markdown.integ.blink",
