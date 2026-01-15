@@ -21,6 +21,8 @@ return {
         checkThirdParty = false,
         library = {
           vim.env.VIMRUNTIME,
+          vim.fn.stdpath("config"),
+          vim.fn.stdpath("data") .. "/lazy",
           "${3rd}/luv/library",
           "${3rd}/busted/library",
         }
