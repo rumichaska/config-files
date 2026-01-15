@@ -1,10 +1,12 @@
 return {
   settings = {
     python = {
+      venvPath = ".",
+      venv = ".venv",
       analysis = {
         autoSearchPaths = true,
-        diagnosticMode = "workspace",
         useLibraryCodeForTypes = true,
+        diagnosticMode = "workspace",
       },
     },
   },
