@@ -1,5 +1,8 @@
 -- Settings
 vim.opt_local.shiftwidth = 2
+vim.opt_local.foldmethod = "expr"
+vim.opt_local.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt_local.foldlevel = 99
 
 -- Functions and variables
 local map = function(mode, lhs, rhs, desc)
