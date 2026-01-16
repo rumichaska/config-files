@@ -1,12 +1,13 @@
 return {
   settings = {
+    pyright = {
+      disableOrganizeImports = true,
+    },
     python = {
       venvPath = ".",
       venv = ".venv",
       analysis = {
-        autoSearchPaths = true,
-        useLibraryCodeForTypes = true,
-        diagnosticMode = "workspace",
+        ignore = { "*" },
       },
     },
   },

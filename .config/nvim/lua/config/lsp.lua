@@ -15,10 +15,10 @@ vim.diagnostic.config(vim.deepcopy(diagnostics))
 -- LSP
 
 vim.api.nvim_create_autocmd("LspAttach", {
-  group = Util.augroup("aucmd_lsp"),
-  callback = function(event)
-    local buffer = event.buf
-    local client = vim.lsp.get_client_by_id(event.data.client_id)
+  group = Util.augroup("lsp_init"),
+  callback = function(args)
+    local buffer = args.buf
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
     local telescope = require("telescope.builtin")
     local autoformat = { enabled = true }
     local map = function(keys, func, desc, mode)
@@ -74,4 +74,22 @@ vim.api.nvim_create_autocmd("LspAttach", {
       )
     end
   end,
+  desc = "LSP: On attach configuration",
+})
+
+--- LSP TOOLS
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = Util.augroup("lsp_disable_ruff_hover"),
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if client == nil then
+      return
+    end
+    if client.name == "ruff" then
+      -- Disable hover in favor of Pyright
+      client.server_capabilities.hoverProvider = false
+    end
+  end,
+  desc = "LSP: Disable hover capability from Ruff",
 })
