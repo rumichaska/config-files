@@ -31,8 +31,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("grr", telescope.lsp_references, "Goto references")
     map("gri", telescope.lsp_implementations, "Goto implementation")
     map("gO", telescope.lsp_document_symbols, "Document symbols")
-    map("K", function() vim.lsp.buf.hover() end, "Documentation")
-    map("<C-s>", function() vim.lsp.buf.signature_help() end, "Signature help")
+    map("K", vim.lsp.buf.hover, "Documentation")
+    map("<C-s>", vim.lsp.buf.signature_help, "Signature help")
     map("<Leader>cd", function() vim.diagnostic.open_float() end, "Line diagnostic")
     map("<Leader>cf", vim.lsp.buf.format, "Format code", { "n", "v" })
     if not client then return end
