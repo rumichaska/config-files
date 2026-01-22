@@ -6,6 +6,7 @@ return {
   config = function()
     local ts = require("nvim-treesitter")
     local parsers = { "bash", "css", "html", "json", "python", "r" }
+    local Util = require("util")
 
     -- Install parsers
     ts.install(parsers)
@@ -29,7 +30,8 @@ return {
 
     -- Run treesitter features
     vim.api.nvim_create_autocmd("Filetype", {
-      group = vim.api.nvim_create_augroup("Config_treesitter", { clear = true }),
+      group = Util.augroup("treesitter"),
+      desc = "Enable treesitter and features",
       callback = install_parser_and_enable_features
     })
   end,
