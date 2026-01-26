@@ -4,10 +4,12 @@ return {
       disableOrganizeImports = true,
     },
     python = {
-      venvPath = ".",
-      venv = ".venv",
+      pythonPath = ".venv/bin/python",
       analysis = {
-        ignore = { "*" },
+        autoSearchPaths = true,
+        useLibraryCodeForTypes = true,
+        diagnosticMode = "workspace",
+        typeCheckingMode = "basic",
       },
     },
   },
