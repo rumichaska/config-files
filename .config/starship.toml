@@ -1,6 +1,6 @@
 # Prompt
 
-scan_timeout = 30
+scan_timeout = 50
 
 # Set palettes
 palette = "catppuccin_mocha"
