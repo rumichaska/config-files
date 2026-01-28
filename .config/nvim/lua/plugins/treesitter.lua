@@ -5,22 +5,23 @@ return {
   build = ":TSUpdate",
   config = function()
     local ts = require("nvim-treesitter")
-    local parsers = { "bash", "css", "html", "json", "python", "r", "scss" }
+    local parsers = { "bash", "css", "html", "json", "latex", "python", "r", "scss", "yaml" }
     local Util = require("util")
 
     -- Install parsers
     ts.install(parsers)
+
+    -- Register parsers
+    vim.treesitter.language.register("markdown", { "quarto", "rmd" })
+    vim.treesitter.language.register("bash", "sh")
 
     -- Run treesitter features
     vim.api.nvim_create_autocmd("Filetype", {
       group = Util.augroup("treesitter"),
       desc = "Enable treesitter and features",
       callback = function(args)
-        -- Language
-        local lang = args.match == "sh" and "bash" or args.match
-
         -- Enable syntax highlighting for the buffer
-        local ok, _ = pcall(vim.treesitter.start, args.buf, lang)
+        local ok, _ = pcall(vim.treesitter.start, args.buf)
         if not ok then return end
 
         -- Enable folds in window-local

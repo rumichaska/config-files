@@ -3,9 +3,6 @@ vim.opt_local.shiftwidth = 4
 vim.opt_local.wrap = true
 vim.opt_local.spell = false
 
--- Set highlight as markdown
-vim.treesitter.language.register("markdown", { "rmd" })
-
 -- Functions and variables
 local map = function(mode, lhs, rhs, desc)
   desc = desc or ""
