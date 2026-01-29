@@ -204,7 +204,9 @@ conda() {
 # <<< juliaup initialize <<<
 
 # >>> fzf >>>
-[ -f "$HOME/.fzf.bash" ] && source "$HOME/.fzf.bash"
+if has fzf; then
+    eval "$(fzf --bash)"
+fi
 export FZF_DEFAULT_OPTS=" \
 --color=bg+:#313244,bg:#000000,spinner:#f5e0dc,hl:#f38ba8 \
 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
