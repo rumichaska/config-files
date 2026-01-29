@@ -168,38 +168,38 @@ fi
 # <<< RIG <<<
 
 # >>> cargo >>>
-[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
+[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 # <<< cargo <<<
 
 # >>> nvm initialize >>>
 export NVM_DIR="$HOME/.nvm"
 nvm() {
     unset -f nvm
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+    [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
+    [ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"
     nvm "$@"
 }
 # <<< nvm initialize <<<
 
 # >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-if [ -x "$HOME/miniconda3/bin/conda" ]; then
-    __conda_setup="$('$HOME/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-    if [ $? -eq 0 ]; then
-        eval "$__conda_setup"
-    else
-        if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
-            . "$HOME/miniconda3/etc/profile.d/conda.sh"
+conda() {
+    unset -f conda
+    if [ -x "$HOME/miniconda3/bin/conda" ]; then
+        __conda_setup="$("$HOME/miniconda3/bin/conda" shell.bash hook 2> /dev/null)"
+        if [ $? -eq 0 ]; then
+            eval "$__conda_setup"
+        elif [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
+            source "$HOME/miniconda3/etc/profile.d/conda.sh"
         else
             export PATH="$HOME/miniconda3/bin:$PATH"
         fi
     fi
     unset __conda_setup
-fi
+    conda "$@"
+}
 # <<< conda initialize <<<
 
 # >>> juliaup initialize >>>
-# !! Contents within this block are managed by juliaup !!
 [ -d "$HOME/.juliaup/bin" ] && add_path "$HOME/.juliaup/bin"
 # <<< juliaup initialize <<<
 
