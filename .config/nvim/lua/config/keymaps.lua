@@ -16,12 +16,6 @@ vim.keymap.set("n", "<Leader>tc",
 -- Highlight on search
 vim.keymap.set({ "n", "i" }, "<Esc>", "<Cmd>nohlsearch<CR><Esc>", { desc = "Clear highlights" })
 
--- Make split navigation easier.
-vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
-vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
-vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
-vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
-
 -- Buffer navigation
 vim.keymap.set("n", "<Leader>bb", "<Cmd>e #<Cr>", { desc = "Switch to last buffer" })
 
@@ -42,15 +36,10 @@ vim.keymap.set("n", "<Leader>wT", function() Util.float_term(nil, { cwd = vim.uv
 
 -- Terminal
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
-vim.keymap.set("t", "<C-h>", "<Cmd>wincmd h<CR>", { desc = "Move focus to left window" })
-vim.keymap.set("t", "<C-l>", "<Cmd>wincmd l<CR>", { desc = "Move focus to right window" })
-vim.keymap.set("t", "<C-j>", "<Cmd>wincmd j<CR>", { desc = "Move focus to lower window" })
-vim.keymap.set("t", "<C-k>", "<Cmd>wincmd k<CR>", { desc = "Move focus to upper window" })
-
--- Windows
-vim.keymap.set("n", "<Leader>wd", "<C-W>c", { desc = "Delete window", remap = true })
-vim.keymap.set("n", "<Leader>w-", "<C-W>s", { desc = "Split window below", remap = true })
-vim.keymap.set("n", "<Leader>w|", "<C-W>v", { desc = "Split window right", remap = true })
+vim.keymap.set("t", "<C-w><C-h>", "<Cmd>wincmd h<CR>", { desc = "Move focus to left window" })
+vim.keymap.set("t", "<C-w><C-l>", "<Cmd>wincmd l<CR>", { desc = "Move focus to right window" })
+vim.keymap.set("t", "<C-w><C-j>", "<Cmd>wincmd j<CR>", { desc = "Move focus to lower window" })
+vim.keymap.set("t", "<C-w><C-k>", "<Cmd>wincmd k<CR>", { desc = "Move focus to upper window" })
 
 -- Better up/down
 vim.keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
