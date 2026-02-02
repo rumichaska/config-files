@@ -181,6 +181,12 @@ nvm() {
 }
 # <<< nvm initialize <<<
 
+# >>> node initialize >>>
+if [ -d "$HOME/.nvm/versions/node" ]; then
+    export PATH="$HOME/.nvm/versions/node/$(ls "$HOME/.nvm/versions/node" | tail -n1)/bin:$PATH"
+fi
+# <<< node initialize <<<
+
 # >>> conda initialize >>>
 conda() {
     unset -f conda
