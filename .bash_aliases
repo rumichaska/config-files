@@ -13,9 +13,10 @@ if command -v lsd >/dev/null 2>&1; then
     alias lla='ls -la'
     alias lt='ls --tree'
 else
-    alias l='ls -l'
+    alias ls='ls --color=auto --group-directories-first'
+    alias l='ls -lh'
     alias la='ls -a'
-    alias lla='ls -la'
+    alias lla='ls -lah'
 fi
 command -v tree >/dev/null 2>&1 &&
     alias tree='tree --dirsfirst -F'
