@@ -10,7 +10,6 @@ options(
 # Bienvenida
 if (interactive() && requireNamespace("cli", quietly = TRUE)) {
     # Bienvenida
-    cat("\014")
     cli::cli_h1(cli::style_bold(cli::col_blue(R.version.string)))
     cli::cli_text("Running under {utils::osVersion}")
     cli::cli_text("System time is {Sys.time()}")
