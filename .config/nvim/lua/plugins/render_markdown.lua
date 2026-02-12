@@ -4,6 +4,9 @@ return {
   opts = {
     code = {
       style = "language"
+    },
+    pipe_table = {
+      cell = "trimmed",
     }
   },
 }
