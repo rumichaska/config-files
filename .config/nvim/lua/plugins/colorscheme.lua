@@ -10,16 +10,10 @@ return {
       styles = {
         conditionals = { "bold" },
         loops = { "bold" },
+        functions = { "bold" },
         keywords = { "bold" }
       },
       lsp_styles = {
-        virtual_text = {
-          errors = { "italic" },
-          hints = { "italic" },
-          warnings = { "italic" },
-          information = { "italic" },
-          ok = { "italic" },
-        },
         underlines = {
           errors = { "undercurl" },
           hints = { "undercurl" },
@@ -31,13 +25,6 @@ return {
           background = true,
         },
       },
-      -- color_overrides = {
-      --   mocha = {
-      --     base = "#000000",
-      --     mantle = "#000000",
-      --     crust = "#000000"
-      --   },
-      -- },
       custom_highlights = function(colors)
         return {
           WinSeparator = { fg = colors.flamingo },
