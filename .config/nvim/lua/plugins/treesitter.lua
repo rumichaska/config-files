@@ -5,7 +5,7 @@ return {
   build = ":TSUpdate",
   config = function()
     local ts = require("nvim-treesitter")
-    local parsers = { "bash", "css", "html", "json", "latex", "python", "r", "scss", "yaml" }
+    local parsers = { "bash", "css", "html", "json", "kitty", "latex", "python", "r", "scss", "yaml" }
     local Util = require("util")
 
     -- Install parsers
