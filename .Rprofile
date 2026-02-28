@@ -56,7 +56,7 @@ if (interactive() && requireNamespace("httpgd", quietly = TRUE)) {
     })
 }
 
-# Enterno de apoyo para funciones y variables
+# Entorno de apoyo para funciones y variables
 if (!exists(".custom_fn", envir = .GlobalEnv)) {
     .custom_fn <- new.env()
 }
