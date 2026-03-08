@@ -161,7 +161,7 @@ done
 # >>> RIG >>>
 # NOTE: Set up or validate on OS update
 if has rig; then
-    export RIG_PLATFORM=ubuntu-22.04
+    export RIG_PLATFORM=ubuntu-24.04
 else
     unset RIG_PLATFORM
 fi
