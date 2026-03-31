@@ -40,7 +40,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     if not client then return end
 
     ---@diagnostic disable-next-line: missing-parameter, param-type-mismatch
-    if client.supports_method("textDocument/formatting") then
+    if client:supports_method("textDocument/formatting") then
       map("<Leader>tf", function()
           local msg = require("lazy.core.util")
           autoformat_enabled = not autoformat_enabled
@@ -60,7 +60,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       })
     end
     ---@diagnostic disable-next-line: missing-parameter, param-type-mismatch
-    if client.supports_method("textDocument/inlayHint") then
+    if client:supports_method("textDocument/inlayHint") then
       map("<Leader>th", function()
           local msg = require("lazy.core.util")
           local is_enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = buffer })
