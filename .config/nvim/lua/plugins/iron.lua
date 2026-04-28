@@ -19,7 +19,7 @@ return {
           quarto = {
             command = { "R", "--no-save", "-q" },
           },
-          python = require("iron.fts.python").ipython,
+          python = require("iron.fts.python").python,
           julia = require("iron.fts.julia").julia,
         },
         repl_open_cmd = require("iron.view").split("30%", {
