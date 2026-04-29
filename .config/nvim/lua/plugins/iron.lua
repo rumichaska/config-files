@@ -19,7 +19,15 @@ return {
           quarto = {
             command = { "R", "--no-save", "-q" },
           },
-          python = require("iron.fts.python").python,
+          python = {
+            command = function()
+              local venv_dir = vim.fs.find(".venv", { upward = true, stop = vim.fn.getcwd(), type = "directory", limit = 1 })
+              local venv_exist = #venv_dir > 0
+              local uv_exist = vim.fn.executable("uv") == 1
+              return (venv_exist and uv_exist) and { "uv", "run", "python3" } or { "python3" }
+            end,
+            format = require("iron.fts.common").bracketed_paste_python
+          },
           julia = require("iron.fts.julia").julia,
         },
         repl_open_cmd = require("iron.view").split("30%", {
