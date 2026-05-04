@@ -16,7 +16,7 @@ return {
     vim.treesitter.language.register("bash", "sh")
 
     -- Run treesitter features
-    vim.api.nvim_create_autocmd("Filetype", {
+    vim.api.nvim_create_autocmd("FileType", {
       group = Util.augroup("treesitter"),
       desc = "Enable treesitter and features",
       callback = function(args)

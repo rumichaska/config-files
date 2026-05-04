@@ -20,9 +20,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
   group = Util.augroup("lsp_init"),
   callback = function(args)
     local buffer = args.buf
-    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    local client_id = args.data.client_id
+    local client = vim.lsp.get_client_by_id(client_id)
     local telescope = require("telescope.builtin")
-    local autoformat = { enabled = true }
     local map = function(keys, func, desc, mode)
       mode = mode or "n"
       vim.keymap.set(mode, keys, func, { buffer = buffer, desc = "LSP: " .. desc })
@@ -38,6 +38,23 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("<Leader>cd", function() vim.diagnostic.open_float() end, "Line diagnostic")
     map("<Leader>cf", vim.lsp.buf.format, "Format code", { "n", "v" })
     if not client then return end
+
+    ---@diagnostic disable-next-line: param-type-mismatch
+    if client:supports_method("textDocument/colorProvider") then
+      vim.lsp.document_color.enable(false, { bufnr = buffer })
+      map("<Leader>tr", function()
+          local msg = require("lazy.core.util")
+          local is_enabled = vim.lsp.document_color.is_enabled({ bufnr = buffer })
+          vim.lsp.document_color.enable(not is_enabled, { bufnr = buffer }, { style = "virtual" })
+          if not is_enabled then
+            msg.warn("Enabled document color")
+          else
+            msg.warn("Disabled document color")
+          end
+        end,
+        "Toggle document color"
+      )
+    end
 
     ---@diagnostic disable-next-line: missing-parameter, param-type-mismatch
     if client:supports_method("textDocument/formatting") then
@@ -61,6 +78,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
     ---@diagnostic disable-next-line: missing-parameter, param-type-mismatch
     if client:supports_method("textDocument/inlayHint") then
+      vim.lsp.inlay_hint.enable(false, { bufnr = buffer })
       map("<Leader>th", function()
           local msg = require("lazy.core.util")
           local is_enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = buffer })
