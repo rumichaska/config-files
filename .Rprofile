@@ -20,9 +20,10 @@ if (interactive() && requireNamespace("cli", quietly = TRUE)) {
 
 # Consola
 if (interactive() || isatty(stdout())) {
+    options(colorout.verbose = 0)
     # Consola
     if (requireNamespace("colorout", quietly = TRUE)) {
-        options(colorout.verbose = 0)
+        colorout::ColorOut()
         colorout::setOutputColors(
             index = "\x1b[38;2;116;199;236m", # Blue
             normal = "\x1b[38;2;205;214;244m", # Text
@@ -46,13 +47,9 @@ if (interactive() || isatty(stdout())) {
 if (interactive() && requireNamespace("httpgd", quietly = TRUE)) {
     options(device = \(...) {
         httpgd::hgd(silent = TRUE)
-        plot_url <- httpgd::hgd_url(history = FALSE)
-        message("httpgd running at: ", plot_url)
-        if (Sys.info()["sysname"] == "Linux") {
-            system2("firefox", args = c("-new-window", plot_url), wait = FALSE)
-        } else {
-            httpgd::hgd_browse(history = FALSE)
-        }
+        plot_url <- httpgd::hgd_url()
+        rlang::inform(c("v" = paste("httpgd running at:", plot_url)))
+        httpgd::hgd_browse(sidebar = 0)
     })
 }
 
@@ -67,20 +64,12 @@ assign(
         if (interactive() && requireNamespace("httpgd", quietly = TRUE)) {
             tryCatch(
                 {
-                    httpgd::hgd_state()$active
+                    httpgd::hgd_browse(sidebar = 0)
                 },
                 error = function(e) {
-                    message("httpgd server state check failed (likely not active): ", e$message)
+                    rlang::warn(e$message)
                 }
             )
-            if (httpgd::hgd_state()$active) {
-                plot_url <- httpgd::hgd_url(history = FALSE)
-                if (Sys.info()["sysname"] == "Linux") {
-                    system2("firefox", c("-new-window", plot_url), wait = FALSE)
-                } else {
-                    httpgd::hgd_browse(history = FALSE)
-                }
-            }
         }
     },
     envir = .custom_fn
