@@ -25,10 +25,7 @@ require("lazy").setup({
     hererocks = false,
   },
   install = { colorscheme = { "catppuccin" } },
-  ui = {
-    enabled = true,
-    border = "rounded"
-  },
+  ui = { enabled = true },
   checker = {
     enabled = true,
     notify = false,

@@ -14,7 +14,6 @@ vim.opt.mouse = "a"                  -- Enable mouse for all available modes
 vim.cmd("filetype plugin indent on") -- Enable all filetype plugins
 
 -- Appearance
--- vim.o.background = ""       -- Setting for 'kanagawa.nvim' theme
 vim.opt.laststatus = 3        -- Setting with 'incline.nvim'
 
 vim.opt.breakindent = true    -- Indent wrapped lines to match line start
