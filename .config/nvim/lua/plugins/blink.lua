@@ -2,7 +2,7 @@ return {
   { "rafamadriz/friendly-snippets" },
   {
     "saghen/blink.cmp",
-    version = "*",
+    version = "1.*",
     opts = {
       keymap = { preset = "default" },
       completion = {
