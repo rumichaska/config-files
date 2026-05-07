@@ -6,9 +6,7 @@ local Util = require("util")
 vim.api.nvim_create_autocmd("TextYankPost", {
   group = Util.augroup("aucmd_highlight_yank"),
   desc = "Highlight when yanking (copying) text",
-  callback = function()
-    vim.hl.on_yank()
-  end,
+  callback = function() vim.hl.on_yank() end,
 })
 
 vim.api.nvim_create_autocmd("BufReadPost", {
@@ -30,7 +28,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 
 -- By filetypes
 
-vim.api.nvim_create_autocmd("Filetype", {
+vim.api.nvim_create_autocmd("FileType", {
   group = Util.augroup("aucmd_close_q"),
   pattern = { "help", "qf", "checkhealth" },
   desc = "Close with q",
