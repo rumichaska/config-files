@@ -26,8 +26,6 @@ return {
 
         -- Enable folds in window-local
         vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-        vim.wo.foldmethod = "expr"
-        vim.wo.foldlevel = 99
 
         -- Enable indentation in buffer-local
         vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
