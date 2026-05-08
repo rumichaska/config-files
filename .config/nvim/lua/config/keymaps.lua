@@ -1,18 +1,5 @@
 local Util = require("util")
 
--- Toggle options
-vim.keymap.set("n", "<Leader>ts", function() Util.toggle("spell") end, { desc = "Options: Toggle spelling" })
-vim.keymap.set("n", "<Leader>tS", function() Util.language() end, { desc = "Options: Changing spelling language" })
-vim.keymap.set("n", "<Leader>tw", function() Util.toggle("wrap") end, { desc = "Options: Toggle word wrap" })
-vim.keymap.set("n", "<Leader>tl", function() Util.toggle_number() end, { desc = "Options: Toggle line numbers" })
-vim.keymap.set("n", "<Leader>td", Util.toggle_diagnostics, { desc = "Options: Toggle diagnostics" })
-vim.keymap.set("n", "<Leader>tc",
-  function()
-    local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
-    Util.toggle("conceallevel", false, { 0, conceallevel })
-  end,
-  { desc = "Options: Toggle conceal" })
-
 -- Highlight on search
 vim.keymap.set({ "n", "i" }, "<Esc>", "<Cmd>nohlsearch<CR><Esc>", { desc = "Clear highlights" })
 
@@ -29,9 +16,9 @@ vim.keymap.set("n", "<Leader>ur", "<Cmd>wincmd=<Bar>nohlsearch<Bar>diffupdate<Ba
 )
 
 -- Floating terminal
-vim.keymap.set("n", "<Leader>wt", function() Util.float_term(nil, { cwd = Util.get_root() }) end,
-  { desc = "Terminal (root dir)" })
-vim.keymap.set("n", "<Leader>wT", function() Util.float_term(nil, { cwd = vim.uv.os_homedir() }) end,
+vim.keymap.set("n", "<Leader>wt", function() Util.float_term({ name = "term-proj", cwd = Util.get_root() }) end,
+  { desc = "Terminal (project root dir)" })
+vim.keymap.set("n", "<Leader>wT", function() Util.float_term({ cwd = vim.uv.os_homedir() }) end,
   { desc = "Terminal (home dir)" })
 
 -- Terminal
@@ -56,6 +43,14 @@ vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move up" })
 -- n always forward and N always backwards in search with / and ?
 vim.keymap.set({ "n", "x", "o" }, "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
 vim.keymap.set({ "n", "x", "o" }, "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
+
+-- Toggle options
+vim.keymap.set("n", "<Leader>ts", "<Cmd>setlocal spell!<CR>", { desc = "Toggle: spell" })
+vim.keymap.set("n", "<Leader>tw", "<Cmd>setlocal wrap!<CR>", { desc = "Toggle: wrap" })
+vim.keymap.set("n", "<Leader>tl", "<Cmd>setlocal number!<CR>", { desc = "Toggle: number" })
+vim.keymap.set("n", "<Leader>tr", "<Cmd>setlocal relativenumber!<CR>", { desc = "Toggle: relativenumber" })
+vim.keymap.set("n", "<Leader>td", "<Cmd>lua vim.diagnostic.enable(not vim.diagnostic.is_enabled())<CR>",
+  { desc = "Toggle: diagnostics" })
 
 -- Lazy
 vim.keymap.set("n", "<Leader>l", "<Cmd>Lazy<CR>", { desc = "Lazy" })
