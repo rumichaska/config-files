@@ -3,14 +3,7 @@ local Util = require("util")
 
 -- Diagnostics
 
-local diagnostics = {
-  underline = true,
-  update_in_insert = false,
-  virtual_text = false,
-  severity_sort = true,
-  float = true
-}
-vim.diagnostic.config(vim.deepcopy(diagnostics))
+vim.diagnostic.config({ severity_sort = true })
 
 -- LSP
 
@@ -35,7 +28,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("gO", telescope.lsp_document_symbols, "Document symbols")
     map("K", vim.lsp.buf.hover, "Documentation")
     map("<C-s>", vim.lsp.buf.signature_help, "Signature help")
-    map("<Leader>cd", function() vim.diagnostic.open_float() end, "Line diagnostic")
+    map("<Leader>cd", vim.diagnostic.open_float, "Line diagnostic")
     map("<Leader>cf", vim.lsp.buf.format, "Format code", { "n", "v" })
     if not client then return end
 
