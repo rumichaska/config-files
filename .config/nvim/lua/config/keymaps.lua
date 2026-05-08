@@ -45,12 +45,12 @@ vim.keymap.set({ "n", "x", "o" }, "n", "'Nn'[v:searchforward]", { expr = true, d
 vim.keymap.set({ "n", "x", "o" }, "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
 
 -- Toggle options
-vim.keymap.set("n", "<Leader>ts", "<Cmd>setlocal spell!<CR>", { desc = "Toggle: spell" })
-vim.keymap.set("n", "<Leader>tw", "<Cmd>setlocal wrap!<CR>", { desc = "Toggle: wrap" })
-vim.keymap.set("n", "<Leader>tl", "<Cmd>setlocal number!<CR>", { desc = "Toggle: number" })
-vim.keymap.set("n", "<Leader>tr", "<Cmd>setlocal relativenumber!<CR>", { desc = "Toggle: relativenumber" })
+vim.keymap.set("n", "<Leader>ts", "<Cmd>setlocal spell!<CR>", { desc = "Toggle spell" })
+vim.keymap.set("n", "<Leader>tw", "<Cmd>setlocal wrap!<CR>", { desc = "Toggle wrap" })
+vim.keymap.set("n", "<Leader>tl", "<Cmd>setlocal number!<CR>", { desc = "Toggle number" })
+vim.keymap.set("n", "<Leader>tr", "<Cmd>setlocal relativenumber!<CR>", { desc = "Toggle relativenumber" })
 vim.keymap.set("n", "<Leader>td", "<Cmd>lua vim.diagnostic.enable(not vim.diagnostic.is_enabled())<CR>",
-  { desc = "Toggle: diagnostics" })
+  { desc = "Toggle diagnostics" })
 
 -- Lazy
 vim.keymap.set("n", "<Leader>l", "<Cmd>Lazy<CR>", { desc = "Lazy" })
