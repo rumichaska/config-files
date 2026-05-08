@@ -9,5 +9,4 @@ end
 
 -- Keymaps
 map("n", "<LocalLeader><Space>x", "<Cmd>source %<CR>", "Source currente file")
-map("n", "<LocalLeader>x", ":.lua<CR>", "Execute currente line")
-map("v", "<LocalLeader>x", ":lua<CR>", "Execute currente line")
+map({ "n", "v" }, "<LocalLeader>x", ":lua<CR>", "Execute currente line")
