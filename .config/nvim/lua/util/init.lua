@@ -106,6 +106,7 @@ function M.get_root()
   end)
   local root = roots[1] -- longest root
   if not root then
+    ---@diagnostic disable-next-line: cast-local-type
     path = path and vim.fs.dirname(path) or vim.uv.cwd()
     root = vim.fs.find(root_patterns, { path = path, upward = true })[1]
     root = root and vim.fs.dirname(root) or vim.uv.cwd()
