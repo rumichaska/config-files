@@ -3,11 +3,19 @@ local Util = require("util")
 
 -- Diagnostics
 
-vim.diagnostic.config({ severity_sort = true })
+vim.diagnostic.config({
+  severity_sort = true,
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = "󰯈 ",
+      [vim.diagnostic.severity.WARN] = "󰯪 ",
+      [vim.diagnostic.severity.INFO] = "󰋽 ",
+      [vim.diagnostic.severity.HINT] = "󰌶 ",
+    },
+  },
+})
 
 -- LSP
-
-local autoformat_enabled = true
 
 vim.api.nvim_create_autocmd("LspAttach", {
   group = Util.augroup("lsp_init"),
@@ -15,6 +23,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
     local buffer = args.buf
     local client_id = args.data.client_id
     local client = vim.lsp.get_client_by_id(client_id)
+
+    if not client then return end
+
     local telescope = require("telescope.builtin")
     local map = function(keys, func, desc, mode)
       mode = mode or "n"
