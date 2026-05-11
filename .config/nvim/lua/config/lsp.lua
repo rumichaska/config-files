@@ -18,19 +18,20 @@ vim.api.nvim_create_autocmd("LspAttach", {
     local telescope = require("telescope.builtin")
     local map = function(keys, func, desc, mode)
       mode = mode or "n"
-      vim.keymap.set(mode, keys, func, { buffer = buffer, desc = "LSP: " .. desc })
+      vim.keymap.set(mode, keys, func, { buf = buffer, desc = "LSP: " .. desc })
     end
-    map("gd", telescope.lsp_definitions, "Goto definition")
-    map("grn", vim.lsp.buf.rename, "Rename")
-    map("gra", vim.lsp.buf.code_action, "Code action", { "n", "x" })
+    map("grd", telescope.lsp_definitions, "Goto definition")
+    map("grt", telescope.lsp_type_definitions, "Goto type definition")
     map("grr", telescope.lsp_references, "Goto references")
     map("gri", telescope.lsp_implementations, "Goto implementation")
-    map("gO", telescope.lsp_document_symbols, "Document symbols")
-    map("K", vim.lsp.buf.hover, "Documentation")
-    map("<C-s>", vim.lsp.buf.signature_help, "Signature help")
-    map("<Leader>cd", vim.diagnostic.open_float, "Line diagnostic")
-    map("<Leader>cf", vim.lsp.buf.format, "Format code", { "n", "v" })
-    if not client then return end
+    map("grn", vim.lsp.buf.rename, "Rename")
+    map("gra", vim.lsp.buf.code_action, "Code action", { "n", "x" })
+    map("gO", telescope.lsp_document_symbols, "Open document symbols")
+    map("gW", telescope.lsp_dynamic_workspace_symbols, "Open workspace symbols")
+    map("K", vim.lsp.buf.hover, "Open documentation")
+    map("<C-s>", vim.lsp.buf.signature_help, "Open signature help")
+    map("<Leader>cd", vim.diagnostic.open_float, "Open line diagnostic")
+    map("<Leader>cf", vim.lsp.buf.format, "Format code", { "n", "x" })
 
     ---@diagnostic disable-next-line: param-type-mismatch
     if client:supports_method("textDocument/colorProvider") then

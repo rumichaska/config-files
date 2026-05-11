@@ -1,7 +1,7 @@
 local Util = require("util")
 
 -- Highlight on search
-vim.keymap.set({ "n", "i" }, "<Esc>", "<Cmd>nohlsearch<CR><Esc>", { desc = "Clear highlights" })
+vim.keymap.set("n", "<Esc>", "<Cmd>nohlsearch<CR>", { desc = "Clear highlights" })
 
 -- Buffer navigation
 vim.keymap.set("n", "<Leader>bb", "<Cmd>e #<Cr>", { desc = "Switch to last buffer" })
@@ -47,8 +47,7 @@ vim.keymap.set({ "n", "x", "o" }, "N", "'nN'[v:searchforward]", { expr = true, d
 -- Toggle options
 vim.keymap.set("n", "<Leader>ts", "<Cmd>setlocal spell!<CR>", { desc = "Toggle spell" })
 vim.keymap.set("n", "<Leader>tw", "<Cmd>setlocal wrap!<CR>", { desc = "Toggle wrap" })
-vim.keymap.set("n", "<Leader>tl", "<Cmd>setlocal number!<CR>", { desc = "Toggle number" })
-vim.keymap.set("n", "<Leader>tr", "<Cmd>setlocal relativenumber!<CR>", { desc = "Toggle relativenumber" })
+vim.keymap.set("n", "<Leader>tn", "<Cmd>setlocal number! relativenumber!<CR>", { desc = "Toggle number" })
 vim.keymap.set("n", "<Leader>td", "<Cmd>lua vim.diagnostic.enable(not vim.diagnostic.is_enabled())<CR>",
   { desc = "Toggle diagnostics" })
 

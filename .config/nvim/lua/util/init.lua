@@ -75,7 +75,6 @@ function M.float_term(opts)
     terminals[name].win = win
     vim.cmd("startinsert!")
   end
-vim.print(terminals)
 end
 
 -- Returns the root directory based on:

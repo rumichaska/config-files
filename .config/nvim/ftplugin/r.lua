@@ -5,7 +5,7 @@ vim.opt_local.shiftwidth = 4
 -- Functions and variables
 local map = function(mode, lhs, rhs, desc)
   desc = desc or ""
-  vim.keymap.set(mode, lhs, rhs, { buffer = 0, desc = "R: " .. desc })
+  vim.keymap.set(mode, lhs, rhs, { buf = 0, desc = "R: " .. desc })
 end
 local source = 'source("' .. vim.fn.expand("%") .. '")'
 local function augroup(name)
