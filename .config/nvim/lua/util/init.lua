@@ -94,6 +94,7 @@ function M.get_root()
       end, workspace) or client.config.root_dir and { client.config.root_dir } or {}
       for _, p in ipairs(paths) do
         local r = vim.uv.fs_realpath(p)
+        ---@diagnostic disable-next-line: param-type-mismatch
         if path:find(r, 1, true) then
           roots[#roots + 1] = r
         end
@@ -103,7 +104,7 @@ function M.get_root()
   table.sort(roots, function(a, b)
     return #a > #b
   end)
-  local root = roots[1]
+  local root = roots[1] -- longest root
   if not root then
     path = path and vim.fs.dirname(path) or vim.uv.cwd()
     root = vim.fs.find(root_patterns, { path = path, upward = true })[1]

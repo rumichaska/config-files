@@ -21,9 +21,6 @@ return {
           information = { "undercurl" },
           ok = { "undercurl" },
         },
-        inlay_hints = {
-          background = true,
-        },
       },
       custom_highlights = function(colors)
         return {
@@ -35,7 +32,7 @@ return {
         blink_cmp = { style = "bordered" },
         gitsigns = true,
         mason = true,
-        mini = { enabled = true },
+        mini = { enabled = true, indentscope_color = "lavender" },
         render_markdown = true,
         telescope = { enabled = true },
       },
