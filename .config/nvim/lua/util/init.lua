@@ -2,7 +2,7 @@ local M = {}
 
 -- Create autogroup for autocommands
 function M.augroup(name)
-  return vim.api.nvim_create_augroup("Config_" .. name, { clear = true })
+  return vim.api.nvim_create_augroup("Dconfig" .. name, { clear = true })
 end
 
 -- Generate short path name
@@ -61,6 +61,7 @@ function M.float_term(opts)
     })
     terminals[name].win = win
     vim.fn.jobstart(vim.o.shell, { term = true, cwd = cwd })
+    vim.bo[buf].filetype = "FloaTerm"
     vim.cmd("startinsert!")
   else
     -- Reopen existing buf-terminal
@@ -73,6 +74,7 @@ function M.float_term(opts)
       style = "minimal",
     })
     terminals[name].win = win
+    vim.bo[buf].filetype = "FloaTerm"
     vim.cmd("startinsert!")
   end
 end
