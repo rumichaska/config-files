@@ -7,10 +7,10 @@ vim.diagnostic.config({
   severity_sort = true,
   signs = {
     text = {
-      [vim.diagnostic.severity.ERROR] = "󰯈 ",
-      [vim.diagnostic.severity.WARN] = "󰯪 ",
-      [vim.diagnostic.severity.INFO] = "󰋽 ",
-      [vim.diagnostic.severity.HINT] = "󰌶 ",
+      [vim.diagnostic.severity.ERROR] = Util.icons["error"],
+      [vim.diagnostic.severity.WARN] = Util.icons["warn"],
+      [vim.diagnostic.severity.INFO] = Util.icons["info"],
+      [vim.diagnostic.severity.HINT] = Util.icons["hint"],
     },
   },
 })

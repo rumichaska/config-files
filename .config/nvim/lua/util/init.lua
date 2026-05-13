@@ -1,5 +1,28 @@
 local M = {}
 
+-- Custom icons
+M.icons = {
+  error = "󰯈 ",
+  warn = "󰯪 ",
+  info = "󰋽 ",
+  hint = "󰌶 ",
+  color1 = " ",
+  color2 = " ",
+}
+
+-- Control LSP customization
+M.lsp = {
+  minihipatterns_disable = {
+    -- cssls
+    css = true,
+    scss = true,
+    -- lua_ls
+    lua = true,
+    -- r_language_server
+    r = true,
+  }
+}
+
 -- Create autogroup for autocommands
 function M.augroup(name)
   return vim.api.nvim_create_augroup("Dconfig_" .. name, { clear = true })
