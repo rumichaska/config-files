@@ -2,7 +2,7 @@ local M = {}
 
 -- Create autogroup for autocommands
 function M.augroup(name)
-  return vim.api.nvim_create_augroup("Dconfig" .. name, { clear = true })
+  return vim.api.nvim_create_augroup("Dconfig_" .. name, { clear = true })
 end
 
 -- Generate short path name
