@@ -16,7 +16,7 @@ vim.keymap.set("n", "<Leader>ur", "<Cmd>wincmd=<Bar>nohlsearch<Bar>diffupdate<Ba
 )
 
 -- Floating terminal
-vim.keymap.set("n", "<Leader>wt", function() Util.float_term({ name = "term-proj", cwd = Util.get_root() }) end,
+vim.keymap.set("n", "<Leader>wt", function() Util.float_term({ name = "proj", cwd = Util.get_root() }) end,
   { desc = "Terminal (project root dir)" })
 vim.keymap.set("n", "<Leader>wT", function() Util.float_term({ cwd = vim.uv.os_homedir() }) end,
   { desc = "Terminal (home dir)" })

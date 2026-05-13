@@ -97,7 +97,6 @@ function M.float_term(opts)
       style = "minimal",
     })
     terminals[name].win = win
-    vim.bo[buf].filetype = "FloaTerm"
     vim.cmd("startinsert!")
   end
 end
