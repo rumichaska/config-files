@@ -42,57 +42,47 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("K", vim.lsp.buf.hover, "Open documentation")
     map("<C-s>", vim.lsp.buf.signature_help, "Open signature help")
     map("<Leader>cd", vim.diagnostic.open_float, "Open line diagnostic")
+    -- LSP formatting
     map("<Leader>cf", vim.lsp.buf.format, "Format code", { "n", "x" })
 
-    ---@diagnostic disable-next-line: param-type-mismatch
-    if client:supports_method("textDocument/colorProvider") then
-      vim.lsp.document_color.enable(false, { bufnr = buffer })
-      map("<Leader>tr", function()
-          local msg = require("lazy.core.util")
-          local is_enabled = vim.lsp.document_color.is_enabled({ bufnr = buffer })
-          vim.lsp.document_color.enable(not is_enabled, { bufnr = buffer }, { style = "virtual" })
-          if not is_enabled then
-            msg.warn("Enabled document color")
-          else
-            msg.warn("Disabled document color")
-          end
-        end,
-        "Toggle document color"
-      )
+    -- LSP documentColor
+    if client:supports_method("textDocument/documentColor") then
+      vim.lsp.document_color.enable(true, { bufnr = buffer })
+      map("<Leader>tc", function()
+        vim.lsp.document_color.enable(not vim.lsp.document_color.is_enabled({ bufnr = buffer }), { bufnr = buffer })
+      end, "Toggle document color")
     end
 
-    ---@diagnostic disable-next-line: missing-parameter, param-type-mismatch
-    if client:supports_method("textDocument/formatting") then
-      map("<Leader>tf", function()
-          local msg = require("lazy.core.util")
-          autoformat_enabled = not autoformat_enabled
-          local status = autoformat_enabled and "Enabled" or "Disabled"
-          msg.warn(status .. " format on save")
-        end,
-        "Toggle autoformat"
-      )
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        buffer = buffer,
-        group = Util.augroup("lsp_format_on_save"),
-        desc = "Format on save",
-        callback = function(event)
-          if not autoformat_enabled then return end
-          vim.lsp.buf.format({ bufnr = event.buf, id = client.id, async = false })
-        end,
+    -- LSP foldingRange
+    if client:supports_method("textDocument/foldingRange") then
+      local win = vim.api.nvim_get_current_win()
+      -- LSP over treesitter
+      vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
+    end
+
+    -- LSP documentHighlight
+    if client:supports_method("textDocument/documentHighlight") then
+      vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+        buf = buffer,
+        group = Util.augroup("lsp_document_highglight"),
+        callback = function()
+          vim.lsp.buf.document_highlight()
+        end
+      })
+      vim.api.nvim_create_autocmd("CursorMoved", {
+        buf = buffer,
+        group = Util.augroup("lsp_highlight_clear"),
+        callback = function()
+          vim.lsp.buf.clear_references()
+        end
       })
     end
-    ---@diagnostic disable-next-line: missing-parameter, param-type-mismatch
+
+    -- LSP inlayHint
     if client:supports_method("textDocument/inlayHint") then
       vim.lsp.inlay_hint.enable(false, { bufnr = buffer })
       map("<Leader>th", function()
-          local msg = require("lazy.core.util")
-          local is_enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = buffer })
-          vim.lsp.inlay_hint.enable(not is_enabled, { bufnr = buffer })
-          if not is_enabled then
-            msg.warn("Enabled inlay hint")
-          else
-            msg.warn("Disabled inlay hint")
-          end
+          vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({bufnr = buffer}), { bufnr = buffer })
         end,
         "Toggle inlay hint"
       )

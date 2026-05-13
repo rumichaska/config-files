@@ -7,6 +7,8 @@ vim.o.undofile = true     -- Enable persistent undo (see also `:h undodir`)
 vim.o.backup = false      -- Don't store backup while overwriting the file
 vim.o.writebackup = false -- Don't store backup while overwriting the file
 
+vim.o.updatetime = 1000   -- Shorter updatetime, defaults to 4000
+
 vim.o.mouse = "a"         -- Enable mouse for all available modes
 
 -- Enable all filetype plugins
