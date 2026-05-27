@@ -146,3 +146,39 @@ else
         echo "btop is not installed"
         install_btop
 fi
+
+# ==== BAT ====
+
+install_bat() {
+        echo "Installing bat..."
+        curl -o "$BAT_DEB_FILE" -L "$BAT_DEB_URL"
+        sudo dpkg -i "$BAT_DEB_FILE"
+        rm "$BAT_DEB_FILE"
+        echo "bat is up to date"
+}
+
+BAT_REPO="sharkdp/bat"
+BAT_GH="https://api.github.com/repos/$BAT_REPO/releases/latest"
+
+BAT_LATEST_RELEASE=$(curl -fsSL "$BAT_GH")
+BAT_TAG_NAME=$(jq -r '.tag_name | ltrimstr("v")' <<< "$BAT_LATEST_RELEASE")
+BAT_RELEASE_NAME=$(jq -r '.name' <<< "$BAT_LATEST_RELEASE")
+
+if has bat; then
+        BAT_CURRENT_VERSION=$(bat --version | grep -Po "(?<=bat )*\d+\.\d+\.\d+")
+        BAT_DEB_URL=$(jq -r '.assets[] | select(.name | endswith("amd64.deb")) | .browser_download_url' <<< "$BAT_LATEST_RELEASE")
+        BAT_DEB_FILE="$HOME/Downloads/bat_latest.deb"
+
+        echo "Latest bat release: $BAT_RELEASE_NAME"
+        echo "Current bat version: $BAT_CURRENT_VERSION"
+
+        if [[ "$BAT_TAG_NAME" != "$BAT_CURRENT_VERSION" ]]; then
+                echo "bat needs update"
+                install_bat
+        else
+                echo "bat is up to date"
+        fi
+else
+        echo "bat is not installed"
+        install_bat
+fi
