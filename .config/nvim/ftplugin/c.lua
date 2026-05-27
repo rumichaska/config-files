@@ -10,4 +10,4 @@ end
 local source = vim.fn.expand("%")
 
 -- Keymaps
-map("n", "<M-s>", ":!gcc -Wall -g " .. source .. " -o " .. source:gsub("(%w+).c", "%1") .. "<CR>", "Compile file")
+map("n", "<M-s>", ":!gcc " .. source .. " -o " .. source:gsub("(%w+).c", "%1") .. " -Wall -Wextra -Wpedantic -g -lm<CR>", "Compile file")

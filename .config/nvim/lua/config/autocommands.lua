@@ -56,7 +56,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
 vim.api.nvim_create_autocmd("FileType", {
   group = Util.augroup("aucmd_indent_scope"),
-  pattern = { "iron", "lazy", "mason" },
+  pattern = { "FloaTerm","iron", "lazy", "mason" },
   desc = "Disable `mini.indentscope` by filetype",
   callback = function(event)
     vim.b[event.buf].miniindentscope_disable = true
