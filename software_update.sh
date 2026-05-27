@@ -106,3 +106,43 @@ else
         echo "fzf is not installed"
         install_fzf
 fi
+
+# ==== BTOP ====
+
+install_btop() {
+        echo "Installing btop..."
+        curl -o "$BTOP_TAR_FILE" -L "$BTOP_TAR_URL"
+        tar -xvzf "$BTOP_TAR_FILE" -C "$HOME/Downloads"
+        cd "$HOME/Downloads/btop"
+        sudo make install
+        cd "$HOME"
+        rm -r "$HOME/Downloads/btop"
+        rm "$BTOP_TAR_FILE"
+        echo "btop is up to date"
+}
+
+BTOP_REPO="aristocratos/btop"
+BTOP_GH="https://api.github.com/repos/$BTOP_REPO/releases/latest"
+
+BTOP_LATEST_RELEASE=$(curl -fsSL "$BTOP_GH")
+BTOP_TAG_NAME=$(jq -r '.tag_name | ltrimstr("v")' <<< "$BTOP_LATEST_RELEASE")
+BTOP_RELEASE_NAME=$(jq -r '.name' <<< "$BTOP_LATEST_RELEASE")
+
+if has btop; then
+        BTOP_CURRENT_VERSION=$(btop -v | sed "s/\x1b\[[0-9;]*m//g" | grep -Po "(?<=btop version: )\d+(\.\d+)*")
+        BTOP_TAR_URL=$(jq -r '.assets[] | select(.name | startswith("btop-x86_64")) | .browser_download_url' <<< "$BTOP_LATEST_RELEASE")
+        BTOP_TAR_FILE="$HOME/Downloads/btop_latest.tar.gz"
+
+        echo "Latest btop release: $BTOP_RELEASE_NAME"
+        echo "Current btop version: $BTOP_CURRENT_VERSION"
+
+        if [[ "$BTOP_TAG_NAME" != "$BTOP_CURRENT_VERSION" ]]; then
+                echo "btop needs update"
+                install_btop
+        else
+                echo "btop is up to date"
+        fi
+else
+        echo "btop is not installed"
+        install_btop
+fi
