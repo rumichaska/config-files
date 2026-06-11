@@ -18,30 +18,30 @@ if (interactive() && requireNamespace("cli", quietly = TRUE)) {
     cli::cli_ul(cli::style_bold(cli::col_cyan(paste(.libPaths()))))
 }
 
-# Consola
-if (interactive() || isatty(stdout())) {
-    options(colorout.verbose = 0)
-    # Consola
-    if (requireNamespace("colorout", quietly = TRUE)) {
-        colorout::ColorOut()
-        colorout::setOutputColors(
-            index = "\x1b[38;2;116;199;236m", # Blue
-            normal = "\x1b[38;2;205;214;244m", # Text
-            number = "\x1b[38;2;180;190;254m", # Lavender
-            negnum = "\x1b[38;2;245;194;178m", # Rosewater
-            zero = "\x1b[38;2;205;214;244m", zero.limit = 0.01, # Flamingo
-            infinite = "\x1b[38;2;250;179;135;1m", # Peach bold
-            string = "\x1b[38;2;166;227;161m", # Green
-            date = "\x1b[38;2;147;208;190m", # Teal
-            const = "\x1b[38;2;250;179;135;1m", # Peach bold
-            true = "\x1b[38;2;166;227;161m", # Green
-            false = "\x1b[38;2;250;179;135m", # Peach
-            warn = "\x1b[38;2;249;226;175m", # Yellow
-            stderror = "\x1b[38;2;243;139;168m", error = "\x1b[38;2;243;139;168m", # Red
-            verbose = FALSE
-        )
-    }
-}
+# # Consola
+# if (interactive() || isatty(stdout())) {
+#     options(colorout.verbose = 0)
+#     # Consola
+#     if (requireNamespace("colorout", quietly = TRUE)) {
+#         colorout::ColorOut()
+#         colorout::setOutputColors(
+#             index = "\x1b[38;2;116;199;236m", # Blue
+#             normal = "\x1b[38;2;205;214;244m", # Text
+#             number = "\x1b[38;2;180;190;254m", # Lavender
+#             negnum = "\x1b[38;2;245;194;178m", # Rosewater
+#             zero = "\x1b[38;2;205;214;244m", zero.limit = 0.01, # Flamingo
+#             infinite = "\x1b[38;2;250;179;135;1m", # Peach bold
+#             string = "\x1b[38;2;166;227;161m", # Green
+#             date = "\x1b[38;2;147;208;190m", # Teal
+#             const = "\x1b[38;2;250;179;135;1m", # Peach bold
+#             true = "\x1b[38;2;166;227;161m", # Green
+#             false = "\x1b[38;2;250;179;135m", # Peach
+#             warn = "\x1b[38;2;249;226;175m", # Yellow
+#             stderror = "\x1b[38;2;243;139;168m", error = "\x1b[38;2;243;139;168m", # Red
+#             verbose = FALSE
+#         )
+#     }
+# }
 
 # Configurar visor de plots
 if (interactive() && requireNamespace("httpgd", quietly = TRUE)) {
