@@ -8,6 +8,8 @@ has() { command -v "$1" >/dev/null 2>&1; }
 
 install_rig() {
         echo "Installing rig..."
+        RIG_DEB_URL=$(jq -r '.assets[] | select(.name | endswith("amd64.deb")) | .browser_download_url' <<< "$RIG_LATEST_RELEASE")
+        RIG_DEB_FILE="$HOME/Downloads/rig_latest.deb"
         curl -o "$RIG_DEB_FILE" -L "$RIG_DEB_URL"
         sudo dpkg -i "$RIG_DEB_FILE"
         rm "$RIG_DEB_FILE"
@@ -23,8 +25,6 @@ RIG_RELEASE_NAME=$(jq -r '.name' <<< "$RIG_LATEST_RELEASE")
 
 if has rig; then
         RIG_CURRENT_VERSION=$(rig --version | grep -Po "(?<=\w )*\d+(\.\d+)*")
-        RIG_DEB_URL=$(jq -r '.assets[] | select(.name | endswith("amd64.deb")) | .browser_download_url' <<< "$RIG_LATEST_RELEASE")
-        RIG_DEB_FILE="$HOME/Downloads/rig_latest.deb"
 
         echo "Latest rig release: $RIG_RELEASE_NAME"
         echo "Current rig version: $RIG_CURRENT_VERSION"
@@ -111,6 +111,8 @@ fi
 
 install_btop() {
         echo "Installing btop..."
+        BTOP_TAR_URL=$(jq -r '.assets[] | select(.name | startswith("btop-x86_64")) | .browser_download_url' <<< "$BTOP_LATEST_RELEASE")
+        BTOP_TAR_FILE="$HOME/Downloads/btop_latest.tar.gz"
         curl -o "$BTOP_TAR_FILE" -L "$BTOP_TAR_URL"
         tar -xvzf "$BTOP_TAR_FILE" -C "$HOME/Downloads"
         cd "$HOME/Downloads/btop"
@@ -130,8 +132,6 @@ BTOP_RELEASE_NAME=$(jq -r '.name' <<< "$BTOP_LATEST_RELEASE")
 
 if has btop; then
         BTOP_CURRENT_VERSION=$(btop -v | sed "s/\x1b\[[0-9;]*m//g" | grep -Po "(?<=btop version: )\d+(\.\d+)*")
-        BTOP_TAR_URL=$(jq -r '.assets[] | select(.name | startswith("btop-x86_64")) | .browser_download_url' <<< "$BTOP_LATEST_RELEASE")
-        BTOP_TAR_FILE="$HOME/Downloads/btop_latest.tar.gz"
 
         echo "Latest btop release: $BTOP_RELEASE_NAME"
         echo "Current btop version: $BTOP_CURRENT_VERSION"
@@ -151,6 +151,8 @@ fi
 
 install_bat() {
         echo "Installing bat..."
+        BAT_DEB_URL=$(jq -r '.assets[] | select(.name | endswith("_amd64.deb")) | .browser_download_url' <<< "$BAT_LATEST_RELEASE")
+        BAT_DEB_FILE="$HOME/Downloads/bat_latest.deb"
         curl -o "$BAT_DEB_FILE" -L "$BAT_DEB_URL"
         sudo dpkg -i "$BAT_DEB_FILE"
         rm "$BAT_DEB_FILE"
@@ -166,8 +168,6 @@ BAT_RELEASE_NAME=$(jq -r '.name' <<< "$BAT_LATEST_RELEASE")
 
 if has bat; then
         BAT_CURRENT_VERSION=$(bat --version | grep -Po "(?<=bat )*\d+\.\d+\.\d+")
-        BAT_DEB_URL=$(jq -r '.assets[] | select(.name | endswith("amd64.deb")) | .browser_download_url' <<< "$BAT_LATEST_RELEASE")
-        BAT_DEB_FILE="$HOME/Downloads/bat_latest.deb"
 
         echo "Latest bat release: $BAT_RELEASE_NAME"
         echo "Current bat version: $BAT_CURRENT_VERSION"
